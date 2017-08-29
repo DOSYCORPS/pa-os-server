@@ -3,8 +3,18 @@
   "version": "1.0.0",
   "description": "open source projectant server",
   "main": "index.js",
+  "watch": {
+    "start": {
+      "patterns": [
+        "*"
+      ],
+      "extensions": "js,html,css",
+      "quiet": false
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "watch": "npm-watch"
   },
   "repository": {
     "type": "git",
@@ -22,5 +32,10 @@
   "bugs": {
     "url": "https://github.com/dosyago-corp/pa-os-server/issues"
   },
-  "homepage": "https://github.com/dosyago-corp/pa-os-server#readme"
+  "homepage": "https://github.com/dosyago-corp/pa-os-server#readme",
+  "dependencies": {
+    "dosylook": "^1.0.8",
+    "express": "^4.15.4",
+    "npm-watch": "^0.2.0"
+  }
 }
