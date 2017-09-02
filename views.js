@@ -38,7 +38,7 @@
                 </p>
                 <h1>Generalized</h1>
                 <p>
-                  <input type=text value=${T.generalized}>
+                  <input id=generalized type=text value=${T.generalized}>
                   <input id=generalize type=submit value=Recalculate>
                 <h1>Positive</h1>
                 <ul>
