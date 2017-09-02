@@ -6,7 +6,7 @@
     <li>
       <p style=display:inline;>
         <input type=text size=${T.sel.length} name=negative value=${T.sel}>
-        <button value=delete.n.${T.idx}>Delete</button>
+        <button name=negative_delete value=${T.idx}>Delete</button>
     </li>
   `;
 
@@ -14,7 +14,7 @@
     <li>
       <p style=display:inline;>
         <input type=text size=${T.sel.length} name=positive value=${T.sel}>
-        <button value=delete.p.${T.idx}>Delete</button>
+        <button name=positive_delete value=${T.idx}>Delete</button>
     </li>
   `;
 

@@ -72,6 +72,22 @@
       positive = positive.filter( s => s.trim().length > 0 );
       negative = negative.filter( s => s.trim().length > 0 );
 
+    // mutate
+      let {positive_delete,negative_delete} = params;
+      // turn into sets
+        if ( !Array.isArray(positive_delete) ) {
+          positive_delete = [positive_delete]; 
+        }
+        if ( !Array.isArray(negative_delete) ) {
+          negative_delete = [negative_delete]; 
+        }
+        positive_delete = new Set(positive_delete.map( idx => parseInt(idx)));
+        negative_delete = new Set(negative_delete.map( idx => parseInt(idx)));
+
+      // mutate 
+        positive = positive.filter( (sel,idx) => !positive_delete.has(idx) );
+        negative = negative.filter( (sel,idx) => !negative_delete.has(idx) );
+
     db.examples = { positive, negative };
   }
 }
