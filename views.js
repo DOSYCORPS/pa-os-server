@@ -48,7 +48,7 @@
                 <ul>
                   <li>
                     <p style=display:inline;>
-                      <input type=text name=positive placeholder="Add new">
+                      <input type=text name=positive placeholder="Add new" autofocus>
                       <button value=save>Save</button>
                   </li>
                   ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
