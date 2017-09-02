@@ -1,6 +1,7 @@
 "use strict";
 {
   const bodyParser = require('body-parser');
+  const browserify = require('browserify-middleware');
   const sg = require('selector-generalization');
   const path = require('path');
   const views = require('./views.js');
@@ -27,7 +28,8 @@
     app = express();
     app.use(bodyParser.json()); 
     app.use(bodyParser.urlencoded({ extended: true })); 
-    app.use('/', express.static(path.join(__dirname, './')))
+    app.use('/', express.static(path.join(__dirname, './')));
+    app.use('/scripts', browserify((path.join(__dirname, './scripts'))));
     define_handlers();
     app.listen(8080, () => {
       console.log("Server started...");

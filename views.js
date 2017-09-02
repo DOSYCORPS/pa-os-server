@@ -39,7 +39,7 @@
                 <h1>Generalized</h1>
                 <p>
                   <input type=text value=${T.generalized}>
-                  <input type=submit value=Recalculate>
+                  <input id=generalize type=submit value=Recalculate>
                 <h1>Positive</h1>
                 <ul>
                   ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
@@ -83,6 +83,10 @@
         </li>
       </ul>
     </nav>
+    <script src=/scripts/build.js></script>
+    <script>
+      build.setup();
+    </script>
   `;
 
   const search = def`search ${0}
