@@ -1,6 +1,7 @@
 "use strict";
 {
   const sg = require('selector-generalization');
+  const rp = require('request-promise');
   const build = { setup };
 
   try { module.exports = build; } catch(e) {}
@@ -16,9 +17,13 @@
     generalize_action.addEventListener('click', e => recalculate(e));
   }
 
-  function recalculate(e) {
+  async function recalculate(e) {
+    e.preventDefault();
     console.log("Recalculating...");
     const generalized = document.querySelector('#generalized'); 
-    generalized.value = 'calculating...';
+    const db = JSON.parse(await rp('http://localhost:8080/db'));
+    const result = sg.generalize( db.examples.positive, db.examples.negative, true );
+    generalized.value = `${result.positive} !(${result.negative})`;
+    console.log("Generalization recomputed", generalized.value);
   }
 }

@@ -5,20 +5,20 @@
   const sg = require('selector-generalization');
   const path = require('path');
   const views = require('./views.js');
-  const express = require('express');
-
   const db = {
     generalized: 'asdasd',
     examples : {
       positive : [
-        'abc',
-        'ddd',
+        'body#hot > main.cris > div > span.hello',
+        'body#hot.stuff > main.cris.ting > span.hello',
       ],
       negative : [
-        'ooo'
+        'body#hot > main > div.spicy'
       ]
     }
   };
+  const express = require('express');
+
 
   let app;
 
@@ -41,6 +41,11 @@
       res.type('html');
       const html = await views.build(db);
       res.end(html);
+    });
+
+    app.get('/db', (req,res,next) => {
+      res.type('json');
+      res.end(JSON.stringify(db));
     });
 
     app.post('/build', async (req,res,next) => {

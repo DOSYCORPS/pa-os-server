@@ -40,7 +40,8 @@
     "dosylook": "^1.0.8",
     "express": "^4.15.4",
     "npm-watch": "^0.2.0",
-    "selector-generalization": "^1.0.8"
+    "request-promise": "^4.2.1",
+    "selector-generalization": "^1.0.9"
   },
   "devDependencies": {}
 }
