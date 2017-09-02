@@ -2,6 +2,22 @@
 {
   const {def,T,I} = require('dosyhil');
 
+  const negative_example = def`negative_example_widget ${0}
+    <li>
+      <p style=display:inline;>
+        <input type=text size=${T.sel.length} name=negative value=${T.sel}>
+        <button value=delete.n.${T.idx}>Delete</button>
+    </li>
+  `;
+
+  const positive_example = def`positive_example_widget ${0}
+    <li>
+      <p style=display:inline;>
+        <input type=text size=${T.sel.length} name=positive value=${T.sel}>
+        <button value=delete.p.${T.idx}>Delete</button>
+    </li>
+  `;
+
   const build = def`build ${0}
     <meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
@@ -14,17 +30,34 @@
           <input id=bt1 type=radio name=btabs value=t1 checked> 
           <label for=bt1>Build Maps</label>
           <article class=tab>
-            <form method=GET action=#build>
+            <form method=POST action=/build>
               <fieldset>
                 <legend>Build Maps</legend>
                 <p>
                   This is where you build for maps
                 </p>
+                <h1>Generalized</h1>
                 <p>
-                  <label for=bbuild_maps>Build</label>
-                  <input id=bbuild_maps type=build spellcheck=off>
-                  <input type=submit value=Build>
-                </p>
+                  <input type=text value=${T.generalized}>
+                  <input type=submit value=Recalculate>
+                <h1>Positive</h1>
+                <ul>
+                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
+                  <li>
+                    <p style=display:inline;>
+                      <input type=text name=positive placeholder="Add new">
+                      <button value=save>Save</button>
+                  </li>
+                </ul>
+                <h1>Negative</h1>
+                <ul>
+                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({sel,idx})).join('') }
+                  <li>
+                    <p style=display:inline;>
+                      <input type=text name=negative placeholder="Add new">
+                      <button value=save>Save</button>
+                  </li>
+                </ul>
               </fieldset>
             </form>
           </article>
