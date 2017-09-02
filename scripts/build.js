@@ -18,7 +18,7 @@
 
   function recalculate(e) {
     console.log("Recalculating...");
-    e.preventDefault();
-
+    const generalized = document.querySelector('#generalized'); 
+    generalized.value = 'calculating...';
   }
 }

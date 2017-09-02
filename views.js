@@ -38,25 +38,33 @@
                 </p>
                 <h1>Generalized</h1>
                 <p>
-                  <input id=generalized type=text value=${T.generalized}>
+                  <input id=generalized type=text value=${T.generalized} name=generalized>
                   <input id=generalize type=submit value=Recalculate>
+              </fieldset>
+            </form>
+            <form method=POST action=/build>
+              <fieldset>
                 <h1>Positive</h1>
                 <ul>
-                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
                   <li>
                     <p style=display:inline;>
                       <input type=text name=positive placeholder="Add new">
                       <button value=save>Save</button>
                   </li>
+                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
                 </ul>
+              </fieldset>
+            </form>
+            <form method=POST action=/build>
+              <fieldset>
                 <h1>Negative</h1>
                 <ul>
-                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({sel,idx})).join('') }
                   <li>
                     <p style=display:inline;>
                       <input type=text name=negative placeholder="Add new">
                       <button value=save>Save</button>
                   </li>
+                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({sel,idx})).join('') }
                 </ul>
               </fieldset>
             </form>

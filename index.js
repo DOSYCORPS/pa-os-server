@@ -60,36 +60,40 @@
   // TODO: might want to factor this out to separate file
   function update_db(db, params) {
     console.log(params);
-    let {positive, negative} = params;
+    let {generalized, positive, negative} = params;
 
-    // turn into arrays (singles are not put in arrays in bodyparser)
+    if ( positive ) {
       if ( !Array.isArray(positive) ) {
         positive = [positive]; 
       }
-      if ( !Array.isArray(negative) ) {
-        negative = [negative]; 
-      }
-
-    // remove emptys
       positive = positive.filter( s => s.trim().length > 0 );
-      negative = negative.filter( s => s.trim().length > 0 );
-
-    // mutate
-      let {positive_delete,negative_delete} = params;
-      // turn into sets
+      let {positive_delete} = params;
+      if ( positive_delete ) {
         if ( !Array.isArray(positive_delete) ) {
           positive_delete = [positive_delete]; 
         }
+        positive_delete = new Set(positive_delete.map( idx => parseInt(idx)));
+        positive = positive.filter( (sel,idx) => !positive_delete.has(idx) );
+      }
+      Object.assign( db.examples, { positive } );
+    }
+    if ( negative ) {
+      if ( !Array.isArray(negative) ) {
+        negative = [negative]; 
+      }
+      negative = negative.filter( s => s.trim().length > 0 );
+      let {negative_delete} = params;
+      if ( negative_delete ) {
         if ( !Array.isArray(negative_delete) ) {
           negative_delete = [negative_delete]; 
         }
-        positive_delete = new Set(positive_delete.map( idx => parseInt(idx)));
         negative_delete = new Set(negative_delete.map( idx => parseInt(idx)));
-
-      // mutate 
-        positive = positive.filter( (sel,idx) => !positive_delete.has(idx) );
         negative = negative.filter( (sel,idx) => !negative_delete.has(idx) );
-
-    db.examples = { positive, negative };
+      }
+      Object.assign( db.examples, { negative } );
+    }
+    if ( generalized ) {
+      db.generalized = generalized;
+    }
   }
 }
