@@ -48,8 +48,7 @@
 
 /* button */
 
-form fieldset button {
-  padding: 0;
-  background: none;
-  font-size: 1rem !important;
-}
+  form fieldset button {
+    background: none;
+    font-size: 1rem !important;
+  }
