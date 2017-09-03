@@ -5,7 +5,7 @@
   const negative_example = def`negative_example_widget ${0}
     <li>
       <p style=display:inline;>
-        <input type=text size=${T.sel.length} name=negative value="${T.sel.replace(/>/g,'&gt;')}">
+        <input type=text size=${T.len} name=negative value="${T.sel.replace(/>/g,'&gt;')}">
         <button name=negative_delete value=${T.idx}>Delete</button>
     </li>
   `;
@@ -13,7 +13,7 @@
   const positive_example = def`positive_example_widget ${0}
     <li>
       <p style=display:inline;>
-        <input type=text size=${T.sel.length} name=positive value="${T.sel.replace(/>/g,'&gt')}">
+        <input type=text size=${T.len} name=positive value="${T.sel.replace(/>/g,'&gt')}">
         <button name=positive_delete value=${T.idx}>Delete</button>
     </li>
   `;
@@ -51,7 +51,7 @@
                       <input type=text name=positive placeholder="Add new" autofocus>
                       <button value=save>Save</button>
                   </li>
-                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({sel,idx})).join('') }
+                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                 </ul>
               </fieldset>
             </form>
@@ -64,7 +64,7 @@
                       <input type=text name=negative placeholder="Add new">
                       <button value=save>Save</button>
                   </li>
-                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({sel,idx})).join('') }
+                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                 </ul>
               </fieldset>
             </form>
