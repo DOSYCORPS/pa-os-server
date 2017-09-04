@@ -48,7 +48,7 @@
                 <ul>
                   <li>
                     <p style=display:inline;>
-                      <input type=text name=positive placeholder="Add new" autofocus>
+                      <input type=text class=new name=positive placeholder="Add new" autofocus>
                       <button value=save>Save</button>
                   </li>
                   ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
@@ -61,7 +61,7 @@
                 <ul>
                   <li>
                     <p style=display:inline;>
-                      <input type=text name=negative placeholder="Add new">
+                      <input type=text class=new name=negative placeholder="Add new">
                       <button value=save>Save</button>
                   </li>
                   ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
@@ -156,6 +156,9 @@
         </li>
       </ul>
     </nav>
+    <script>
+      console.log("Search.");
+    </script>
   `;
 
   // helpers
