@@ -6,14 +6,11 @@
   const path = require('path');
   const views = require('./views.js');
   const db = {
-    generalized: 'asdasd',
+    generalized: '',
     examples : {
       positive : [
-        'body#hot > main.cris > div > span.hello',
-        'body#hot.stuff > main.cris.ting > span.hello',
       ],
       negative : [
-        'body#hot > main > div.spicy'
       ]
     }
   };
