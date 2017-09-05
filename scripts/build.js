@@ -21,9 +21,11 @@
     e.preventDefault();
     console.log("Recalculating...");
     const generalized = document.querySelector('#generalized'); 
+    const ngeneralized = document.querySelector('#ngeneralized'); 
     const db = JSON.parse(await rp('http://localhost:8080/db'));
     const result = sg.generalize( db.examples.positive, db.examples.negative, true );
-    generalized.value = `${result.positive} !(${result.negative})`;
+    generalized.value = `${result.positive}`;
+    ngeneralized.value = `${result.negative}`;
     console.log("Generalization recomputed", generalized.value);
   }
 }

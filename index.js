@@ -7,6 +7,7 @@
   const views = require('./views.js');
   const db = {
     generalized: '',
+    ngeneralized: '',
     examples : {
       positive : [
       ],

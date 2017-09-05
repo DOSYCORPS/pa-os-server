@@ -39,6 +39,9 @@
                 <h1>Generalized</h1>
                 <p>
                   <input id=generalized type=text value="${T.generalized}" name=generalized>
+                <p>
+                  <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                <p>
                   <input id=generalize type=submit value=Recalculate>
               </fieldset>
             </form>
