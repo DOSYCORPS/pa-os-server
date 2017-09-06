@@ -31,36 +31,7 @@
           <article class=tab>
             <h1>Edit Place</h1>
             <p>Here is where you can edit your place.
-            <details open>
-              <summary>Specific Location Examples</summary>
-              <p>Here are the specific location examples of your place. You can delete examples you want to remove.
-              <form method=POST action=/build>
-                <fieldset class=include>
-                  <legend>Include Examples</legend>
-                  <ul>
-                    <li>
-                      <p style=display:inline;>
-                        <input type=text class=new name=positive placeholder="Add new" autofocus>
-                        <button value=save>Save</button>
-                    </li>
-                    ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                  </ul>
-                </fieldset>
-              </form>
-              <form method=POST action=/build>
-                <fieldset class=exclude>
-                  <legend>Exclude Examples</legend>
-                  <ul>
-                    <li>
-                      <p style=display:inline;>
-                        <input type=text class=new name=negative placeholder="Add new">
-                        <button value=save>Save</button>
-                    </li>
-                    ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                  </ul>
-                </fieldset>
-              </form>
-            </details>
+         
             <details open>
               <summary>Place Profile</summary>
               <form method=POST action=/build>
@@ -87,9 +58,43 @@
                   <p class=include>
                     <label for=generalized>Include</label>
                     <input id=generalized type=text value="${T.generalized}" name=generalized>
+   <details>
+              <summary>Specific Location Examples</summary>
+              <p>Here are the specific location examples of your place. You can delete examples you want to remove.
+              <form method=POST action=/build>
+                <fieldset class=include>
+                  <legend>Include Examples</legend>
+                  <ul>
+                    <li>
+                      <p style=display:inline;>
+                        <input type=text class=new name=positive placeholder="Add new" autofocus>
+                        <button value=save>Save</button>
+                    </li>
+                    ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                  </ul>
+                </fieldset>
+              </form>
+            </details>
                   <p class=exclude>
                     <label for=generalized>Exclude</label>
                     <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+   <details>
+              <summary>Specific Location Examples</summary>
+              <p>Here are the specific location examples of your place. You can delete examples you want to remove.
+              <form method=POST action=/build>
+                <fieldset class=exclude>
+                  <legend>Exclude Examples</legend>
+                  <ul>
+                    <li>
+                      <p style=display:inline;>
+                        <input type=text class=new name=negative placeholder="Add new">
+                        <button value=save>Save</button>
+                    </li>
+                    ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                  </ul>
+                </fieldset>
+              </form>
+            </details>
                   <p>
                     <label></label>
                     <input id=savegeneralized type=submit value=Save>
