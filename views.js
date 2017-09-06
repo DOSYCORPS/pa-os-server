@@ -30,16 +30,17 @@
           <input id=bt1 type=radio name=btabs value=t1 checked> 
           <label for=bt1>Build Maps</label>
           <article class=tab>
+            <h1>Build Maps</h1>
             <form method=POST action=/build>
               <fieldset>
-                <legend>Build Maps</legend>
+                <legend>Generalized</legend>
                 <p>
-                  This is where you build for maps
-                </p>
-                <h1>Generalized</h1>
+                  This is the generalized selector
                 <p>
+                  <label for=generalized>Positive Set</label>
                   <input id=generalized type=text value="${T.generalized}" name=generalized>
                 <p>
+                  <label for=generalized>Negative Set</label>
                   <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
                 <p>
                   <input id=generalize type=submit value=Recalculate>
@@ -47,7 +48,7 @@
             </form>
             <form method=POST action=/build>
               <fieldset>
-                <h1>Positive</h1>
+                <legend>Positive Examples</legend>
                 <ul>
                   <li>
                     <p style=display:inline;>
@@ -60,7 +61,7 @@
             </form>
             <form method=POST action=/build>
               <fieldset>
-                <h1>Negative</h1>
+                <legend>Negative Examples</legend>
                 <ul>
                   <li>
                     <p style=display:inline;>
