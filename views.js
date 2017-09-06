@@ -27,7 +27,77 @@
     <nav class=tabs>
       <ul class="horizontal tabs">
         <li>
-          <input id=bt1 type=radio name=btabs value=t1 checked> 
+          <input id=bt0 type=radio name=btabs value=t0 checked> 
+          <label for=bt0>Build Places</label>
+          <article class=tab>
+            <h1>Build Place</h1>
+            <p>We could also call this build landmarks, build signposts, build locators, build locations
+            <form method=POST action=/build>
+              <fieldset>
+                <legend>Description</legend>
+                <p>
+                  Describe the place
+                <p>
+                  <label for=setname>Name</label>
+                  <input id=setname type=text value name=setname>
+                <p>
+                  <label for=conceptlabels>Concept Labels</label>
+                  <input id=conceptlabels type=text value name=conceptlabels>
+                <p>
+                  <label for=setdesc>Description</label>
+                  <textarea id=setdesc name=setdesc></textarea>
+                <p>
+                  <label></label>
+                  <input id=savemetadata type=submit value=Save>
+              </fieldset>
+            </form>
+            <form method=POST action=/build>
+              <fieldset>
+                <legend>Locations</legend>
+                <p>
+                  These are the locations of the place
+                <p class=include>
+                  <label for=generalized>Include</label>
+                  <input id=generalized type=text value="${T.generalized}" name=generalized>
+                <p class=exclude>
+                  <label for=generalized>Exclude</label>
+                  <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                <p>
+                  <label></label>
+                  <input id=savegeneralized type=submit value=Save>
+                  <input id=generalize type=submit value=Recalculate>
+              </fieldset>
+            </form>
+            <form method=POST action=/build>
+              <fieldset class=include>
+                <legend>Include Examples</legend>
+                <ul>
+                  <li>
+                    <p style=display:inline;>
+                      <input type=text class=new name=positive placeholder="Add new" autofocus>
+                      <button value=save>Save</button>
+                  </li>
+                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                </ul>
+              </fieldset>
+            </form>
+            <form method=POST action=/build>
+              <fieldset class=exclude>
+                <legend>Exclude Examples</legend>
+                <ul>
+                  <li>
+                    <p style=display:inline;>
+                      <input type=text class=new name=negative placeholder="Add new">
+                      <button value=save>Save</button>
+                  </li>
+                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                </ul>
+              </fieldset>
+            </form>
+          </article>
+        </li>
+        <li>
+          <input id=bt1 type=radio name=btabs value=t1> 
           <label for=bt1>Build Maps</label>
           <article class=tab>
             <h1>Build Maps</h1>
