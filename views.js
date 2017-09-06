@@ -31,7 +31,7 @@
           <article class=tab>
             <h1>Edit Place</h1>
             <p>Here is where you can edit your place.
-            <details>
+            <details open>
               <summary>Specific Location Examples</summary>
               <p>Here are the specific location examples of your place. You can delete examples you want to remove.
               <form method=POST action=/build>
