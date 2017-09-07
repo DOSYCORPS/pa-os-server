@@ -39,6 +39,9 @@
     "dosyhil": "^1.0.2",
     "dosylook": "^1.0.8",
     "express": "^4.15.4",
+    "mongodb": "^2.2.31",
+    "mysql": "^2.14.1",
+    "neo4j-driver": "^1.4.0",
     "npm-watch": "^0.2.0",
     "request-promise": "^4.2.1",
     "selector-generalization": "^1.1.4"
