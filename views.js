@@ -31,77 +31,80 @@
           <article class=tab>
             <h1>Edit Place</h1>
             <p>Here is where you can edit your place.
-         
-            <details open>
-              <summary>Place Profile</summary>
-              <form method=POST action=/build>
-                <fieldset>
+            <form method=POST action=/build>
+              <fieldset>
+                <legend>Place Locations</legend>
+                <hr>
+                <details>
+                  <summary>How do I add examples locations for my place?</summary>
                   <p>
-                    Describe the place
+                    We use the examples you provide to work out all locations of your place. Here is where you add examples of locations to include and locations to exclude.
                   <p>
-                    <label for=setname>Place Name</label>
+                    To add an example location of your place, just select it with your mouse in the browser tab using <kbd>Shift</kbd>+click. You can select examples of locations to <em>exclude</em> using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
+                </details>
+                <p>
+                <p class=include>
+                  <label for=generalized>Include</label>
+                  <input id=generalized type=text value="${T.generalized}" name=generalized>
+                </p>
+                <details>
+                  <summary>Locations to Include</summary>
+                  <fieldset class=include>
+                    <legend>Include Places Like These</legend>
+                    <ul>
+                      <li>
+                        <p style=display:inline;>
+                          <input type=text class=new name=positive placeholder="Add new" autofocus>
+                          <button value=save>Save</button>
+                      </li>
+                      ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                    </ul>
+                  </fieldset>
+                </details>
+                <p>
+                <p class=exclude>
+                  <label for=generalized>Exclude</label>
+                  <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                </p>
+                <details>
+                  <summary>Locations to Exclude</summary>
+                  <fieldset class=exclude>
+                    <legend>Exclude Places Like These</legend>
+                    <ul>
+                      <li>
+                        <p style=display:inline;>
+                          <input type=text class=new name=negative placeholder="Add new">
+                          <button value=save>Save</button>
+                      </li>
+                      ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                    </ul>
+                  </fieldset>
+                </details>
+                <p>
+                <p>
+                  <label></label>
+                  <input id=savegeneralized type=submit value=Save>
+                  <input id=generalize type=submit value=Recalculate>
+                <hr>
+                <details>
+                  <summary>How do I describe my place?</summary>
+                  <p>
+                    Describe your place
+                  <p>
+                    <label for=setname>Name</label>
                     <input id=setname type=text value name=setname>
                   <p>
-                    <label for=conceptlabels>Place Concepts</label>
+                    <label for=conceptlabels>Concepts</label>
                     <input id=conceptlabels type=text value name=conceptlabels>
                   <p>
-                    <label for=setdesc>Place Description</label>
+                    <label for=setdesc>Description</label>
                     <textarea id=setdesc name=setdesc></textarea>
                   <p>
                     <label></label>
                     <input id=savemetadata type=submit value=Save>
-                </fieldset>
-                <fieldset>
-                  <legend>Locations</legend>
-                  <p>
-                    Here are the generalized locations of your place, calculated from your examples. Select some locations in the browser tab using <kbd>Shift</kbd>+click, and we will automcatically generalize to all locations of your place. You can select negative example locations using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
-                  <p class=include>
-                    <label for=generalized>Include</label>
-                    <input id=generalized type=text value="${T.generalized}" name=generalized>
-   <details>
-              <summary>Specific Location Examples</summary>
-              <p>Here are the specific location examples of your place. You can delete examples you want to remove.
-              <form method=POST action=/build>
-                <fieldset class=include>
-                  <legend>Include Examples</legend>
-                  <ul>
-                    <li>
-                      <p style=display:inline;>
-                        <input type=text class=new name=positive placeholder="Add new" autofocus>
-                        <button value=save>Save</button>
-                    </li>
-                    ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                  </ul>
-                </fieldset>
-              </form>
-            </details>
-                  <p class=exclude>
-                    <label for=generalized>Exclude</label>
-                    <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
-   <details>
-              <summary>Specific Location Examples</summary>
-              <p>Here are the specific location examples of your place. You can delete examples you want to remove.
-              <form method=POST action=/build>
-                <fieldset class=exclude>
-                  <legend>Exclude Examples</legend>
-                  <ul>
-                    <li>
-                      <p style=display:inline;>
-                        <input type=text class=new name=negative placeholder="Add new">
-                        <button value=save>Save</button>
-                    </li>
-                    ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                  </ul>
-                </fieldset>
-              </form>
-            </details>
-                  <p>
-                    <label></label>
-                    <input id=savegeneralized type=submit value=Save>
-                    <input id=generalize type=submit value=Recalculate>
-                </fieldset>
-              </form>
-            </details>
+                </details>
+              </fieldset>
+            </form>
           </article>
         </li>
         <li>
@@ -133,7 +136,6 @@
                       <input type=text class=new name=positive placeholder="Add new" autofocus>
                       <button value=save>Save</button>
                   </li>
-                  ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                 </ul>
               </fieldset>
             </form>
@@ -146,7 +148,6 @@
                       <input type=text class=new name=negative placeholder="Add new">
                       <button value=save>Save</button>
                   </li>
-                  ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                 </ul>
               </fieldset>
             </form>
