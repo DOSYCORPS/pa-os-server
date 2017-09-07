@@ -6,6 +6,9 @@
   const path = require('path');
   const views = require('./views.js');
   const db = {
+    placename: '',
+    placeconcepts: '',
+    placedesc: '',
     generalized: '',
     ngeneralized: '',
     examples : {
@@ -62,8 +65,7 @@
 
   // TODO: might want to factor this out to separate file
   function update_db(db, params) {
-    console.log(params);
-    let {generalized, positive, negative} = params;
+    let {ngeneralized, generalized, positive, negative} = params;
 
     if ( positive ) {
       if ( !Array.isArray(positive) ) {
@@ -97,6 +99,23 @@
     }
     if ( generalized ) {
       db.generalized = generalized;
+    }
+    if ( ngeneralized ) {
+      db.ngeneralized = ngeneralized;
+    }
+
+    let {placename, placeconcepts, placedesc} = params;
+
+    if ( placename ) {
+      db.placename = placename;
+    }
+
+    if ( placeconcepts ) {
+      db.placeconcepts = placeconcepts;
+    }
+
+    if ( placedesc ) {
+      db.placedesc = placedesc;
     }
   }
 }

@@ -5,7 +5,7 @@
   const negative_example = def`negative_example_widget ${0}
     <li>
       <p style=display:inline;>
-        <input type=text size=${T.len} name=negative value="${T.sel.replace(/>/g,'&gt;')}">
+        <input type=text size=${T.len} name=negative value="${T.sel}">
         <button name=negative_delete value=${T.idx}>Delete</button>
     </li>
   `;
@@ -13,7 +13,7 @@
   const positive_example = def`positive_example_widget ${0}
     <li>
       <p style=display:inline;>
-        <input type=text size=${T.len} name=positive value="${T.sel.replace(/>/g,'&gt')}">
+        <input type=text size=${T.len} name=positive value="${T.sel}">
         <button name=positive_delete value=${T.idx}>Delete</button>
     </li>
   `;
@@ -91,14 +91,14 @@
                   <p>
                     Describe your place
                   <p>
-                    <label for=setname>Name</label>
-                    <input id=setname type=text value name=setname>
+                    <label for=placename>Name</label>
+                    <input id=placename type=text value="${T.placename}" name=placename>
                   <p>
-                    <label for=conceptlabels>Concepts</label>
-                    <input id=conceptlabels type=text value name=conceptlabels>
+                    <label for=placeconcepts>Concepts</label>
+                    <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts>
                   <p>
-                    <label for=setdesc>Description</label>
-                    <textarea id=setdesc name=setdesc></textarea>
+                    <label for=placedesc>Description</label>
+                    <textarea id=placedesc name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
                   <p>
                     <label></label>
                     <input id=savemetadata type=submit value=Save>
