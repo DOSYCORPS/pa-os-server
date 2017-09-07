@@ -97,24 +97,24 @@
       }
       Object.assign( db.examples, { negative } );
     }
-    if ( generalized ) {
+    if ( generalized !== undefined ) {
       db.generalized = generalized;
     }
-    if ( ngeneralized ) {
+    if ( ngeneralized !== undefined ) {
       db.ngeneralized = ngeneralized;
     }
 
     let {placename, placeconcepts, placedesc} = params;
 
-    if ( placename ) {
+    if ( placename !== undefined ) {
       db.placename = placename;
     }
 
-    if ( placeconcepts ) {
+    if ( placeconcepts !== undefined ) {
       db.placeconcepts = placeconcepts;
     }
 
-    if ( placedesc ) {
+    if ( placedesc !== undefined ) {
       db.placedesc = placedesc;
     }
   }
