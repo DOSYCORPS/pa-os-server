@@ -1,3 +1,7 @@
+sql-data
+doc-data
+graph-data
+
 # Logs
 logs
 *.log
