@@ -2,6 +2,15 @@
 {
   const {def,T,I} = require('dosyhil');
 
+  const PLACE_TYPES = [
+    'location',
+    'signpost'
+  ];
+
+  def`placetype ${0}
+    ${ T.hasOwnProperty('placetype') } 
+  `;
+    
   const negative_example = def`negative_example_widget ${0}
     <li>
       <p style=display:inline;>
@@ -90,6 +99,18 @@
                   <summary>How do I describe my place?</summary>
                   <p>
                     Describe your place
+                  <p>
+                    <label for=placetype>Type</label>
+                    <select id=placetype name=placetype multiple>
+                        ${(async function () { 
+                            const ops = [];
+                            for( const type of PLACE_TYPES ) { 
+                              const selected = await I.placetype( { type, placetype : T.placetype } );
+                              ops.push( `<option value=${type} ${ selected }>${type}</option>` );
+                            }
+                            return ops.join('\n');
+                          }())}
+                    </select>
                   <p>
                     <label for=placename>Name</label>
                     <input id=placename type=text value="${T.placename}" name=placename>

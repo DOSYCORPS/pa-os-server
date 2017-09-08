@@ -7,6 +7,7 @@
   const views = require('./views.js');
   const {connect} = require('./db.js');
   const db = {
+    placetype: '',
     placename: '',
     placeconcepts: '',
     placedesc: '',
@@ -67,6 +68,7 @@
 
   // TODO: might want to factor this out to separate file
   function update_db(db, params) {
+    console.log(params);
     let {ngeneralized, generalized, positive, negative} = params;
 
     if ( positive ) {
@@ -106,8 +108,11 @@
       db.ngeneralized = ngeneralized;
     }
 
-    let {placename, placeconcepts, placedesc} = params;
+    let {placename, placeconcepts, placedesc, placetype} = params;
 
+    if ( placetype !== undefined ) {
+      db.placetype = placetype;
+    }
     if ( placename !== undefined ) {
       db.placename = placename;
     }
