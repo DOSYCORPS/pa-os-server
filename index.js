@@ -5,6 +5,7 @@
   const sg = require('selector-generalization');
   const path = require('path');
   const views = require('./views.js');
+  const {connect} = require('./db.js');
   const db = {
     placename: '',
     placeconcepts: '',
@@ -33,6 +34,7 @@
     app.use('/scripts', browserify((path.join(__dirname, './scripts'))));
     define_handlers();
     app.listen(8080, () => {
+      connect();
       console.log("Server started...");
     });
   }

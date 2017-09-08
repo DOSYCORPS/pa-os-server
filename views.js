@@ -119,10 +119,10 @@
                   This is the generalized selector
                 <p>
                   <label for=generalized>Positive Set</label>
-                  <input id=generalized type=text value="${T.generalized}" name=generalized>
+                  <input id=generalized type=text value name=generalized>
                 <p>
                   <label for=generalized>Negative Set</label>
-                  <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                  <input id=ngeneralized type=text value name=ngeneralized>
                 <p>
                   <input id=generalize type=submit value=Recalculate>
               </fieldset>
