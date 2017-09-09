@@ -43,15 +43,15 @@
             <form method=POST action=/build>
               <fieldset>
                 <legend>Place Locations</legend>
-                <fieldset class=include>
-                  <legend>Include Places Like These</legend>
+                <fieldset class=include style="border:0; box-shadow:none !important; margin-top:0 !important;">
+                  <legend>Included</legend>
                   <p>
                   <p>
-                    <label for=generalized>Include All</label>
+                    <label for=generalized>Include all</label>
                     <input id=generalized type=text value="${T.generalized}" name=generalized>
-                    <input id=generalize type=submit value=R>
+                    <input id=generalize type=submit value=&#8635;>
                   <details>
-                    <summary>Example Locations</summary>
+                    <summary>Include locations like these...</summary>
                     <ul>
                       <li>
                         <p style=display:inline;>
@@ -62,15 +62,15 @@
                     </ul>
                   </details>
                 </fieldset>
-                <fieldset class=exclude style=margin-top:0;>
-                  <legend>Exclude Places Like These</legend>
+                <fieldset class=exclude style="border:0; box-shadow:none !important; margin-top:0 !important;">
+                  <legend>Excluded</legend>
                   <p>
                   <p>
-                    <label for=generalized>Exclude All</label>
+                    <label for=ngeneralized>Exclude all</label>
                     <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
-                    <input id=generalize type=submit value=R>
+                    <input id=generalize type=submit value=&#8635;>
                   <details>
-                    <summary>Example Locations</summary>
+                    <summary>Exclude locations like these...</summary>
                     <ul>
                       <li>
                         <p style=display:inline;>
@@ -95,7 +95,6 @@
                           join('\n');
                       }}
                     </select>
-                    <input id=savemetadata type=submit value=Save>
                   <details>
                     <summary>Name, Concepts and Description</summary>
                     <p>
@@ -111,6 +110,16 @@
                   </details>
                 </fieldset>
               </fieldset>
+              <fieldset>
+                <legend>Save</legend>
+                <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
+                  <p>
+                  <p>
+                    <input id=savemetadata type=submit value=Save>
+                    <input id=clearall type=reset value="Clear All">
+                </fieldset>
+              </fieldset>
+              <p>
               <fieldset>
                 <legend>Help</legend>
                 <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
@@ -131,71 +140,39 @@
           <label for=bt1>Build Maps</label>
           <article class=tab>
             <h1>Edit Map</h1>
-            <form method=POST action=/build>
-              <fieldset>
-                <legend>Generalized</legend>
-                <p>
-                  This is the generalized selector
-                <p>
-                  <label for=generalized>Positive Set</label>
-                  <input id=generalized type=text value name=generalized>
-                <p>
-                  <label for=generalized>Negative Set</label>
-                  <input id=ngeneralized type=text value name=ngeneralized>
-                <p>
-                  <input id=generalize type=submit value=Recalculate>
-              </fieldset>
-            </form>
-            <form method=POST action=/build>
-              <fieldset>
-                <legend>Positive Examples</legend>
-                <ul>
-                  <li>
-                    <p style=display:inline;>
-                      <input type=text class=new name=positive placeholder="Add new" autofocus>
-                      <button value=save>Save</button>
-                  </li>
-                </ul>
-              </fieldset>
-            </form>
-            <form method=POST action=/build>
-              <fieldset>
-                <legend>Negative Examples</legend>
-                <ul>
-                  <li>
-                    <p style=display:inline;>
-                      <input type=text class=new name=negative placeholder="Add new">
-                      <button value=save>Save</button>
-                  </li>
-                </ul>
-              </fieldset>
-            </form>
           </article>
         </li>
         <li>
           <input id=bt2 type=radio name=btabs value=t2> 
           <label for=bt2>Build Journeys</label>
           <article class=tab>
-            <form method=GET action=#build>
-              <fieldset>
-                <legend>Edit Journey</legend>
-                <p>
-                  This is where you build for journeys
-                </p>
-                <p>
-                  <label for=bbuild_journeys>Build</label>
-                  <input id=bbuild_journeys type=build spellcheck=off>
-                  <input type=submit value=Build>
-                </p>
-              </fieldset>
-            </form>
           </article>
         </li>
       </ul>
     </nav>
     <script src=/scripts/build.js></script>
     <script>
-      build.setup();
+      //build.setup();
+      document.querySelector('#clearall').addEventListener('click', e => {
+        e.preventDefault();
+        const form = e.target.form;
+        Array.from(form.elements).forEach( el => {
+          switch( el.tagName ) {
+            case "INPUT":
+              if ( el.type !== 'reset' && el.type !== 'submit' ) {
+                el.value = '';
+                el.checked = false;
+              }
+              break;
+            case "SELECT":
+              Array.from(el.options).forEach( opel => opel.selected = false );
+              break;
+            case "TEXTAREA":
+              el.innerHTML = '';
+              break;
+          }
+        });
+      });
     </script>
   `;
 

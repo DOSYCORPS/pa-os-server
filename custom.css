@@ -64,3 +64,10 @@
     .exclude {
       background: rgba( 200, 0, 100, 0.5 );
     }
+
+/* layout */
+  details summary:focus,
+  details[open] summary {
+    outline: none;
+  }
+  
