@@ -43,23 +43,15 @@
             <form method=POST action=/build>
               <fieldset>
                 <legend>Place Locations</legend>
-                <hr>
-                <details>
-                  <summary>How do I add examples locations for my place?</summary>
+                <fieldset class=include>
+                  <legend>Include Places Like These</legend>
                   <p>
-                    We use the examples you provide to work out all locations of your place. Here is where you add examples of locations to include and locations to exclude.
                   <p>
-                    To add an example location of your place, just select it with your mouse in the browser tab using <kbd>Shift</kbd>+click. You can select examples of locations to <em>exclude</em> using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
-                </details>
-                <p>
-                <p class=include>
-                  <label for=generalized>Include</label>
-                  <input id=generalized type=text value="${T.generalized}" name=generalized>
-                </p>
-                <details>
-                  <summary>Locations to Include</summary>
-                  <fieldset class=include>
-                    <legend>Include Places Like These</legend>
+                    <label for=generalized>Include All</label>
+                    <input id=generalized type=text value="${T.generalized}" name=generalized>
+                    <input id=generalize type=submit value=R>
+                  <details>
+                    <summary>Example Locations</summary>
                     <ul>
                       <li>
                         <p style=display:inline;>
@@ -68,17 +60,17 @@
                       </li>
                       ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                     </ul>
-                  </fieldset>
-                </details>
-                <p>
-                <p class=exclude>
-                  <label for=generalized>Exclude</label>
-                  <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
-                </p>
-                <details>
-                  <summary>Locations to Exclude</summary>
-                  <fieldset class=exclude>
-                    <legend>Exclude Places Like These</legend>
+                  </details>
+                </fieldset>
+                <fieldset class=exclude style=margin-top:0;>
+                  <legend>Exclude Places Like These</legend>
+                  <p>
+                  <p>
+                    <label for=generalized>Exclude All</label>
+                    <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                    <input id=generalize type=submit value=R>
+                  <details>
+                    <summary>Example Locations</summary>
                     <ul>
                       <li>
                         <p style=display:inline;>
@@ -87,40 +79,49 @@
                       </li>
                       ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
                     </ul>
-                  </fieldset>
-                </details>
-                <p>
-                <p>
-                  <label></label>
-                  <input id=savegeneralized type=submit value=Save>
-                  <input id=generalize type=submit value=Recalculate>
-                <hr>
-                <details>
-                  <summary>How do I describe my place?</summary>
+                  </details>
+                </fieldset>
+              </fieldset>
+              <fieldset>
+                <legend>Describe Your Place</legend>
+                <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
                   <p>
-                    Describe your place
                   <p>
                     <label for=placetype>Type</label>
-                    <select id=placetype name=placetype multiple>
+                    <select id=placetype name=placetype >
                       ${ d => {
                         return PLACE_TYPES.
                           map( type => `<option value=${type} ${d.placetype==type ? 'selected':''}>${type}</option>` ).
                           join('\n');
                       }}
                     </select>
-                  <p>
-                    <label for=placename>Name</label>
-                    <input id=placename type=text value="${T.placename}" name=placename>
-                  <p>
-                    <label for=placeconcepts>Concepts</label>
-                    <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts>
-                  <p>
-                    <label for=placedesc>Description</label>
-                    <textarea id=placedesc name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
-                  <p>
-                    <label></label>
                     <input id=savemetadata type=submit value=Save>
-                </details>
+                  <details>
+                    <summary>Name, Concepts and Description</summary>
+                    <p>
+                    <p>
+                      <label for=placename>Name</label>
+                      <input id=placename type=text value="${T.placename}" name=placename>
+                    <p>
+                      <label for=placeconcepts>Concepts</label>
+                      <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts>
+                    <p>
+                      <label for=placedesc>Description</label>
+                      <textarea id=placedesc name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
+                  </details>
+                </fieldset>
+              </fieldset>
+              <fieldset>
+                <legend>Help</legend>
+                <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
+                  <details>
+                    <summary>How do I add example locations for my place?</summary>
+                    <p>
+                      We use the examples you provide to work out all locations of your place. Here is where you add examples of locations to include and locations to exclude.
+                    <p>
+                      To add an example location of your place, just select it with your mouse in the browser tab using <kbd>Shift</kbd>+click. You can select examples of locations to <em>exclude</em> using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
+                  </details>
+                </fieldset>
               </fieldset>
             </form>
           </article>
