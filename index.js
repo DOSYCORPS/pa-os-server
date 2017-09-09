@@ -7,6 +7,7 @@
   const views = require('./views.js');
   const {connect} = require('./db.js');
   const db = {
+    u: [''],
     placetype: '',
     placename: '',
     placeconcepts: '',

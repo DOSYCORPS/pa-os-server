@@ -8,7 +8,7 @@
   ];
 
   def`placetype ${0}
-    ${ T.hasOwnProperty('placetype') } 
+    ${ d => ( console.log(d), d.placetype == d.type ) ? 'selected' : '' } 
   `;
     
   const negative_example = def`negative_example_widget ${0}
@@ -102,14 +102,11 @@
                   <p>
                     <label for=placetype>Type</label>
                     <select id=placetype name=placetype multiple>
-                        ${(async function () { 
-                            const ops = [];
-                            for( const type of PLACE_TYPES ) { 
-                              const selected = await I.placetype( { type, placetype : T.placetype } );
-                              ops.push( `<option value=${type} ${ selected }>${type}</option>` );
-                            }
-                            return ops.join('\n');
-                          }())}
+                      ${ d => {
+                        return PLACE_TYPES.
+                          map( type => `<option value=${type} ${d.placetype==type ? 'selected':''}>${type}</option>` ).
+                          join('\n');
+                      }}
                     </select>
                   <p>
                     <label for=placename>Name</label>
