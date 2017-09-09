@@ -3,7 +3,9 @@
   const {def,T,I} = require('dosyhil');
 
   const PLACE_TYPES = [
-    'location',
+    'column',
+    'button',
+    'input',
     'signpost'
   ];
 
@@ -12,19 +14,17 @@
   `;
     
   const negative_example = def`negative_example_widget ${0}
-    <li>
-      <p style=display:inline;>
-        <input type=text size=${T.len} name=negative value="${T.sel}">
-        <button name=negative_delete value=${T.idx}>Delete</button>
-    </li>
+    <p>
+      <label></label>
+      <input type=text size=${T.len} name=negative value="${T.sel}">
+      <button name=negative_delete value=${T.idx}>Delete</button>
   `;
 
   const positive_example = def`positive_example_widget ${0}
-    <li>
-      <p style=display:inline;>
-        <input type=text size=${T.len} name=positive value="${T.sel}">
-        <button name=positive_delete value=${T.idx}>Delete</button>
-    </li>
+    <p>
+      <label></label>
+      <input type=text size=${T.len} name=positive value="${T.sel}">
+      <button name=positive_delete value=${T.idx}>Delete</button>
   `;
 
   const build = def`build ${0}
@@ -42,53 +42,44 @@
             <p>Here is where you can edit your place.
             <form method=POST action=/build>
               <fieldset>
-                <legend>Place Locations</legend>
+                <legend>Locations</legend>
                 <fieldset class=include style="border:0; box-shadow:none !important; margin-top:0 !important;">
-                  <legend>Included</legend>
                   <p>
                   <p>
-                    <label for=generalized>Include all</label>
+                    <label for=generalized>All locations</label>
                     <input id=generalized type=text value="${T.generalized}" name=generalized>
                     <input id=generalize type=submit value=&#8635;>
                   <details>
-                    <summary>Include locations like these...</summary>
-                    <ul>
-                      <li>
-                        <p style=display:inline;>
-                          <input type=text class=new name=positive placeholder="Add new" autofocus>
-                          <button value=save>Save</button>
-                      </li>
-                      ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                    </ul>
-                  </details>
-                </fieldset>
-                <fieldset class=exclude style="border:0; box-shadow:none !important; margin-top:0 !important;">
-                  <legend>Excluded</legend>
-                  <p>
-                  <p>
-                    <label for=ngeneralized>Exclude all</label>
-                    <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
-                    <input id=generalize type=submit value=&#8635;>
-                  <details>
-                    <summary>Exclude locations like these...</summary>
-                    <ul>
-                      <li>
-                        <p style=display:inline;>
-                          <input type=text class=new name=negative placeholder="Add new">
-                          <button value=save>Save</button>
-                      </li>
+                    <summary>Location examples and excluded locations</summary>
+                    <p>
+                    <p>
+                      <label></label>
+                      <input type=text class=new name=positive placeholder="An example of this place" autofocus>
+                      <button value=save>Save</button>
+                    ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+                    <details class=exclude>
+                      <summary>Exclude</summary>
+                      <p>
+                      <p>
+                        <label for=ngeneralized>Excluding these</label>
+                        <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+                        <input id=generalize type=submit value=&#8635;>
+                      <p>
+                        <label></label>
+                        <input type=text class=new name=negative placeholder="An excluded location">
+                        <button value=save>Save</button>
                       ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                    </ul>
+                    </details>
                   </details>
                 </fieldset>
               </fieldset>
               <fieldset>
-                <legend>Describe Your Place</legend>
+                <legend>Meaning</legend>
                 <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
                   <p>
                   <p>
-                    <label for=placetype>Type</label>
-                    <select id=placetype name=placetype >
+                    <label for=placetype>Place type</label>
+                    <select id=placetype name=placetype>
                       ${ d => {
                         return PLACE_TYPES.
                           map( type => `<option value=${type} ${d.placetype==type ? 'selected':''}>${type}</option>` ).
@@ -96,17 +87,17 @@
                       }}
                     </select>
                   <details>
-                    <summary>Name, Concepts and Description</summary>
+                    <summary>Meaning tags, description and name</summary>
                     <p>
                     <p>
-                      <label for=placename>Name</label>
-                      <input id=placename type=text value="${T.placename}" name=placename>
-                    <p>
-                      <label for=placeconcepts>Concepts</label>
-                      <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts>
+                      <label for=placeconcepts>Meaning tags</label>
+                      <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts placeholder="Comma separated tags">
                     <p>
                       <label for=placedesc>Description</label>
-                      <textarea id=placedesc name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
+                      <textarea id=placedesc placeholder="What is this place, in 1 or 2 sentences." name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
+                    <p>
+                      <label for=placename>Name</label>
+                      <input id=placename type=text value="${T.placename}" name=placename placeholder="Short, descriptive name">
                   </details>
                 </fieldset>
               </fieldset>
