@@ -143,7 +143,7 @@
     </nav>
     <script src=/scripts/build.js></script>
     <script>
-      //build.setup();
+      build.setup();
       document.querySelector('#clearall').addEventListener('click', e => {
         e.preventDefault();
         const form = e.target.form;
