@@ -17,14 +17,14 @@
     <p>
       <label></label>
       <input type=text size=${T.len} name=negative value="${T.sel}">
-      <button name=negative_delete value=${T.idx}>Delete</button>
+      <button name=negative_delete value=${T.idx}>Del</button>
   `;
 
   const positive_example = def`positive_example_widget ${0}
     <p>
       <label></label>
       <input type=text size=${T.len} name=positive value="${T.sel}">
-      <button name=positive_delete value=${T.idx}>Delete</button>
+      <button name=positive_delete value=${T.idx}>Del</button>
   `;
 
   const build = def`build ${0}
@@ -61,7 +61,7 @@
                       <summary>Exclude</summary>
                       <p>
                       <p>
-                        <label for=ngeneralized>Excluding these</label>
+                        <label for=ngeneralized>Excluding all</label>
                         <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
                         <input id=generalize type=submit value=&#8635;>
                       <p>
