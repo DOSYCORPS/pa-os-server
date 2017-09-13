@@ -24,14 +24,19 @@
   nav.tabs article.tab form,
   nav.tabs article.tab form {
     margin: 0;
-    width: 87.5vw;
+    width: 100%;
   }
 
-  nav.tabs ul.horizontal.tabs > li > article.tab {
-    width: auto; 
+  nav.tabs ul.horizontal.tabs {
+    padding-left:0;
   }
+
+  nav.tabs article.tab {
+    box-sizing: border-box;
+  }
+
   nav.tabs article.tab p {
-    width: auto;
+    width: 100%;
   }
 
   nav.workspace article footer {
@@ -69,10 +74,6 @@
     }
 
 /* layout */
-  p + p {
-    text-indent: 1rem;
-  }
-
   details summary:focus,
   details[open] summary {
     outline: none;
