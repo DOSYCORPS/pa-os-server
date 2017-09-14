@@ -7,7 +7,8 @@
   const views = require('./views.js');
   const {connect} = require('./db.js');
   const db = {
-    u: [''],
+    includeopen: 'false',
+    excludeopen: 'false',
     placetype: '',
     placename: '',
     placeconcepts: '',
@@ -124,6 +125,20 @@
 
     if ( placedesc !== undefined ) {
       db.placedesc = placedesc;
+    }
+
+    let {includeopen, excludeopen} = params;
+
+    if ( includeopen == 'false' ) {
+      db.includeopen = false;
+    } else if ( includeopen == 'true' ) {
+      db.includeopen = true;
+    }
+
+    if ( excludeopen == 'false' ) {
+      db.excludeopen = false;
+    } else if ( excludeopen == 'true' ) {
+      db.excludeopen = true;
     }
   }
 }

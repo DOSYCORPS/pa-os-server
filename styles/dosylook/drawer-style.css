@@ -26,3 +26,17 @@
     top: 0;
     z-index: 4;
   }
+
+/* details */
+
+  ul.vertical.drawer.summary {
+    list-style-type: none;
+  }
+
+  ul.vertical.drawer.summary {
+    padding: 0;
+  }
+
+  ul.vertical.drawer.summary ul.panel.details {
+    padding: 0.5rem 1rem;
+  }

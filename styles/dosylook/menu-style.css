@@ -52,7 +52,7 @@
 
 /* panel and dropdown */
 
-  ul.panel,
+  ul.panel:not(.clear),
   ul.dropdown {
     background: var(--main-bg);
   }
