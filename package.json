@@ -34,10 +34,10 @@
   },
   "homepage": "https://github.com/dosyago-corp/pa-os-server#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.1",
     "browserify-middleware": "^7.1.0",
     "dosyhil": "^1.0.3",
-    "dosylook": "^1.0.8",
+    "dosylook": "^1.1.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
     "mysql": "^2.14.1",

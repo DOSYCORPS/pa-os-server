@@ -42,7 +42,7 @@
   }
 
   nav.tabs ul.horizontal.tabs > li > input[type="radio"]:not(:checked) ~ label {
-    color: var(--main-2nd);
+    color: var(--main-neutral);
   }
 
   nav.tabs ul.horizontal.tabs > li > input[type="radio"]:checked ~ label {
