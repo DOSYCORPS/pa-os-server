@@ -17,4 +17,5 @@
 
   nav.details > ul > li > label:hover {
     background: transparent;
+    color: var(--main-text);
   }
