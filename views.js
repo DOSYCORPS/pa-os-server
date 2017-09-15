@@ -17,12 +17,12 @@
       <nav class="details ${classes.join(' ')}">
         <ul class="summary accordion vertical">
           <li>
-            <input ${ d => !d[open] ? 'checked' : '' } 
+            <input ${ d => d[open] != true ? 'checked' : '' } 
               type=radio name=${open} value=false id=${close} role=menuitemradio aria-haspopup=false>
-            <input ${ d => !!d[open] ? 'checked' : '' } 
+            <input ${ d => d[open] == true ? 'checked' : '' } 
               type=radio name=${open} value=true id=${open} role=menuitemradio aria-haspopup=true>
-            <label for=${close}>${ctitle}</label>
-            <label for=${open}>${otitle}</label>
+            <label for=${open}>${ctitle}</label>
+            <label for=${close}>${otitle}</label>
             <ul class="details clear panel" role=menu aria-label="About">
               ${ d => detf(d) }
             </ul>
