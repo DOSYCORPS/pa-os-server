@@ -7,6 +7,8 @@
   const views = require('./views.js');
   const {connect} = require('./db.js');
   const db = {
+    descriptionopen: 'false',
+    howdoiaddopen: 'false',
     includeopen: 'false',
     excludeopen: 'false',
     placetype: '',
@@ -128,6 +130,7 @@
     }
 
     let {includeopen, excludeopen} = params;
+    let {descriptionopen, howdoiaddopen} = params;
 
     if ( includeopen == 'false' ) {
       db.includeopen = false;
@@ -139,6 +142,18 @@
       db.excludeopen = false;
     } else if ( excludeopen == 'true' ) {
       db.excludeopen = true;
+    }
+
+    if ( descriptionopen == 'false' ) {
+      db.descriptionopen = false;
+    } else if ( descriptionopen == 'true' ) {
+      db.descriptionopen = true;
+    }
+
+    if ( howdoiaddopen == 'false' ) {
+      db.howdoiaddopen = false;
+    } else if ( howdoiaddopen == 'true' ) {
+      db.howdoiaddopen = true;
     }
   }
 }

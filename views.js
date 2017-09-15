@@ -17,9 +17,9 @@
       <nav class="details ${classes.join(' ')}">
         <ul class="summary accordion vertical">
           <li>
-            <input ${ d => !!d[open] ? 'checked' : '' } 
-              type=radio name=${open} value=false id=${close} role=menuitemradio aria-haspopup=false>
             <input ${ d => !d[open] ? 'checked' : '' } 
+              type=radio name=${open} value=false id=${close} role=menuitemradio aria-haspopup=false>
+            <input ${ d => !!d[open] ? 'checked' : '' } 
               type=radio name=${open} value=true id=${open} role=menuitemradio aria-haspopup=true>
             <label for=${close}>${ctitle}</label>
             <label for=${open}>${otitle}</label>
@@ -82,6 +82,34 @@
     `
   });
 
+  const description = details( 'description', {
+    otitle: 'Meaning tags, description and name',
+    ctitle: 'Meaning tags, description and name',
+    detf: def`${0}
+      <p>
+      <p>
+        <label for=placeconcepts>Meaning tags</label>
+        <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts placeholder="Comma separated tags">
+      <p>
+        <label for=placedesc>Description</label>
+        <textarea id=placedesc placeholder="What is this place, in 1 or 2 sentences." name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
+      <p>
+        <label for=placename>Name</label>
+        <input id=placename type=text value="${T.placename}" name=placename placeholder="Short, descriptive name">
+    `
+  });
+
+  const howdoiadd = details( 'howdoiadd', {
+    otitle: 'How do I add examples?',
+    ctitle: 'How do I add examples?',
+    detf:def`${0}
+      <p>
+        We use the examples you provide to work out all locations of your place. Here is where you add examples of locations to include and locations to exclude.
+      <p>
+        To add an example location of your place, just select it with your mouse in the browser tab using <kbd>Shift</kbd>+click. You can select examples of locations to <em>exclude</em> using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
+    `
+  });
+
   const build = def`build ${0}
     <meta charset="UTF-8">
     <meta name=viewport content="width=device-width, initial-scale=1, user-scalable=no">
@@ -120,19 +148,7 @@
                           join('\n');
                       }}
                     </select>
-                  <details>
-                    <summary>Meaning tags, description and name</summary>
-                    <p>
-                    <p>
-                      <label for=placeconcepts>Meaning tags</label>
-                      <input id=placeconcepts type=text value="${T.placeconcepts}" name=placeconcepts placeholder="Comma separated tags">
-                    <p>
-                      <label for=placedesc>Description</label>
-                      <textarea id=placedesc placeholder="What is this place, in 1 or 2 sentences." name=placedesc>${T.placedesc.replace(/>/g,'&gt;')}</textarea>
-                    <p>
-                      <label for=placename>Name</label>
-                      <input id=placename type=text value="${T.placename}" name=placename placeholder="Short, descriptive name">
-                  </details>
+                  ${d => I.description(d)} 
                 </fieldset>
               </fieldset>
               <fieldset>
@@ -148,13 +164,7 @@
               <fieldset>
                 <legend>Help</legend>
                 <fieldset style="border:0; box-shadow:none !important; margin-top:0 !important;">
-                  <details>
-                    <summary>How do I add example locations for my place?</summary>
-                    <p>
-                      We use the examples you provide to work out all locations of your place. Here is where you add examples of locations to include and locations to exclude.
-                    <p>
-                      To add an example location of your place, just select it with your mouse in the browser tab using <kbd>Shift</kbd>+click. You can select examples of locations to <em>exclude</em> using <kbd>Alt</kdb>+<kbd>Shift</kbd>+click.
-                  </details>
+                  ${d => I.howdoiadd(d)}
                 </fieldset>
               </fieldset>
             </form>
