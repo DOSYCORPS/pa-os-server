@@ -278,7 +278,7 @@
   // helpers
 
   const views = {
-    build, search, include, exclude
+    build, search, details
   };
 
   module.exports = views;
