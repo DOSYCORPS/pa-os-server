@@ -2,9 +2,8 @@
 {
   const sg = require('selector-generalization');
   const rp = require('request-promise');
-  const build = { setup };
 
-  Object.assign( self, { build });
+  setup();
 
   function setup() {
     self.addEventListener('load', () => install() );    
