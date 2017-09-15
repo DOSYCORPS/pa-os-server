@@ -22,17 +22,17 @@
   ul > li > input[type="checkbox"],
   ul > li > input[type="radio"],
   ul > li > input[type="radio"] ~ ul,
-  ul > li > input[type="radio"]:not(:checked) ~ label[for$="_close"],
-  ul > li > input[type="radio"]:not([id$="_close"]):checked ~ label:not([for$="_close"]),
+  ul > li > input[type="radio"]:not(:checked) ~ label[for$="close"],
+  ul > li > input[type="radio"]:not([id$="close"]):checked ~ label:not([for$="close"]),
   ul > li > input[type="checkbox"]:not(:checked) ~ ul {
     display: none;
   }
 
-  ul > li > input[type="radio"]:not([id$="_close"]):checked ~ ul {
+  ul > li > input[type="radio"]:not([id$="close"]):checked ~ ul {
     display: block;
   }
 
-  ul > li > input[type="radio"]:not([id$="_close"]):checked ~ label[for$="_close"] {
+  ul > li > input[type="radio"]:not([id$="close"]):checked ~ label[for$="close"] {
     display: inline-block;
   }
 

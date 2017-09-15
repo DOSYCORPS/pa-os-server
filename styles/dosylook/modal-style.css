@@ -3,12 +3,12 @@
   .modal > input[type="radio"] {
     display: none;
   }
-  .modal > input[type="radio"][id$="_close"]:checked ~ label[for$="_close"],
-  .modal > input[type="radio"][id$="_close"]:not(:checked) ~ label:not([for$="_close"]), 
-  .modal > input[type="radio"][id$="_close"]:checked ~ article {
+  .modal > input[type="radio"][id$="close"]:checked ~ label[for$="close"],
+  .modal > input[type="radio"][id$="close"]:not(:checked) ~ label:not([for$="close"]), 
+  .modal > input[type="radio"][id$="close"]:checked ~ article {
     display: none;
   }
-  .modal > input[type="radio"][id$="_close"]:not(:checked) ~ article {
+  .modal > input[type="radio"][id$="close"]:not(:checked) ~ article {
     display: block;
   }
   .modal > article {

@@ -9,6 +9,29 @@
     'signpost'
   ];
 
+  function details( name, { 
+      classes: classes = [], otitle: otitle = 'Open', ctitle: ctitle = 'Close', detf: detf = def`` } = {} ) {
+    const open = `${name}open`;
+    const close = `${name}close`;
+    return def`${{name}}
+      <nav class="details ${classes.join(' ')}">
+        <ul class="summary accordion vertical">
+          <li>
+            <input ${ d => !!d[open] ? 'checked' : '' } 
+              type=radio name=${open} value=false id=${close} role=menuitemradio aria-haspopup=false>
+            <input ${ d => !d[open] ? 'checked' : '' } 
+              type=radio name=${open} value=true id=${open} role=menuitemradio aria-haspopup=true>
+            <label for=${close}>${ctitle}</label>
+            <label for=${open}>${otitle}</label>
+            <ul class="details clear panel" role=menu aria-label="About">
+              ${ d => detf(d) }
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    `;
+  }
+
   def`placetype ${0}
     ${ d => ( console.log(d), d.placetype == d.type ) ? 'selected' : '' } 
   `;
@@ -26,6 +49,38 @@
       <input type=text size=${T.len} name=positive value="${T.sel}">
       <button name=positive_delete value=${T.idx}>Del</button>
   `;
+
+  const exclude = details( 'exclude', {
+    otitle: 'Exclude',
+    ctitle: 'Exclude',
+    classes: ['exclude'],
+    detf:def`${0}
+      <p>
+      <p>
+        <label for=ngeneralized>Excluding all</label>
+        <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
+        <input id=generalize type=submit value=&#8635;>
+      <p>
+        <label></label>
+        <input type=text class=new name=negative placeholder="An excluded location">
+        <button value=save>Save</button>
+      ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+    `
+  });
+
+  const include = details( 'include', { 
+    otitle: 'Location examples',
+    ctitle: 'Location examples',
+    detf: def`${0}
+      <p>
+      <p>
+        <label></label>
+        <input type=text class=new name=positive placeholder="An example of this place" autofocus>
+        <button value=save>Save</button>
+        ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
+        ${ d => I.exclude(d) }
+    `
+  });
 
   const build = def`build ${0}
     <meta charset="UTF-8">
@@ -49,51 +104,7 @@
                     <label for=generalized>All locations</label>
                     <input id=generalized type=text value="${T.generalized}" name=generalized>
                     <input id=generalize type=submit value=&#8635;>
-
-                  <nav class=details>
-                    <ul class="summary accordion vertical">
-                      <li>
-                        <input ${ d => !d.includeopen ? 'checked' : '' } 
-                          type=radio name=includeopen value=false id=include_close role=menuitemradio aria-haspopup=false>
-                        <input ${ d => !!d.includeopen ? 'checked' : '' } 
-                          type=radio name=includeopen value=true id=include_open role=menuitemradio aria-haspopup=true>
-                        <label for=include_close>Location examples and excluded locations</label>
-                        <label for=include_open>Location examples and excluded locations</label>
-                        <ul class="details clear panel" role=menu aria-label="About">
-                          <p>
-                          <p>
-                            <label></label>
-                            <input type=text class=new name=positive placeholder="An example of this place" autofocus>
-                            <button value=save>Save</button>
-                            ${ T.examples.positive.map((sel,idx) => I.positive_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                            <nav class="exclude details">
-                              <ul class="summary accordion vertical">
-                                <li>
-                                  <input ${ d => !d.excludeopen ? 'checked' : '' }
-                                    type=radio name=excludeopen value=false id=exclude_close role=menuitemradio aria-haspopup=false>
-                                  <input ${ d => !!d.excludeopen ? 'checked' : '' } 
-                                    type=radio name=excludeopen value=true id=exclude_open role=menuitemradio aria-haspopup=true>
-                                  <label for=exclude_close>Exclude</label>
-                                  <label for=exclude_open>Exclude</label>
-                                  <ul class="details clear panel" role=menu aria-label="About">
-                                    <p>
-                                    <p>
-                                      <label for=ngeneralized>Excluding all</label>
-                                      <input id=ngeneralized type=text value="${T.ngeneralized}" name=ngeneralized>
-                                      <input id=generalize type=submit value=&#8635;>
-                                    <p>
-                                      <label></label>
-                                      <input type=text class=new name=negative placeholder="An excluded location">
-                                      <button value=save>Save</button>
-                                    ${ T.examples.negative.map((sel,idx) => I.negative_example_widget({len:Math.min(25,sel.length),sel,idx})).join('') }
-                                  </ul>
-                                </li>
-                              </ul>
-                            </nav>
-                        </ul>
-                      </li>
-                    </ul>
-                  </nav>
+                  ${d => I.include(d)}
                 </fieldset>
               </fieldset>
               <fieldset>
@@ -257,7 +268,7 @@
   // helpers
 
   const views = {
-    build, search
+    build, search, include, exclude
   };
 
   module.exports = views;

@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "node index.js",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "test": "npm run watch"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,7 @@
   "dependencies": {
     "body-parser": "^1.18.1",
     "browserify-middleware": "^7.1.0",
-    "dosyhil": "^1.0.3",
+    "dosyhil": "^1.0.5",
     "dosylook": "^1.1.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",

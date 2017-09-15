@@ -16,7 +16,7 @@
     z-index: 3;
   }
 
-  ul.vertical.drawer input:not([id$="_close"]):not(:checked) ~ label {
+  ul.vertical.drawer input:not([id$="close"]):not(:checked) ~ label {
     position: initial;
     top: initial;
   }
