@@ -52,5 +52,6 @@
     const g = await neo4j();
     const doc = await mongodb();
     //console.log("Clients started.", { sql, g, doc } );
+    console.log("Add JENA");
   }
 }
