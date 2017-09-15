@@ -32,10 +32,6 @@
     `;
   }
 
-  def`placetype ${0}
-    ${ d => ( console.log(d), d.placetype == d.type ) ? 'selected' : '' } 
-  `;
-    
   const negative_example = def`negative_example_widget ${0}
     <p>
       <label></label>

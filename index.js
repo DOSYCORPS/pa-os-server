@@ -72,7 +72,6 @@
 
   // TODO: might want to factor this out to separate file
   function update_db(db, params) {
-    console.log(params);
     let {ngeneralized, generalized, positive, negative} = params;
 
     if ( positive ) {
