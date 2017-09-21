@@ -87,7 +87,7 @@
     box-sizing: border-box;
   }
 
-  textarea, .textarea, .input, input, select {
+  textarea, .textarea, .input, input, select, button {
     padding: 2px;
     user-select: text;
     border-style: solid;
@@ -118,8 +118,9 @@
   }
 
   button {
-    background: var(--main-hl); 
+    background: var(--main-hl);
   }
+
 
 /* contenteditable styles & pseudo-forms */
 

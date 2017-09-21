@@ -7,10 +7,12 @@
   const views = require('./views.js');
   const {connect} = require('./db.js');
   const db = {
-    descriptionopen: 'false',
-    howdoiaddopen: 'false',
-    includeopen: 'false',
-    excludeopen: 'false',
+    descriptionopen: false,
+    howdoiaddopen: false,
+    includeopen: false,
+    excludeopen: false,
+    add_placesopen: true,
+    add_mapsopen: true,
     placetype: '',
     placename: '',
     placeconcepts: '',
@@ -22,6 +24,21 @@
       ],
       negative : [
       ]
+    },
+    map_type: '',
+    map_desc: '',
+    mapconcepts: '',
+    mapname: '',
+    map : {
+      places : ['person_name'],
+    },
+    jrn_type: '',
+    journey_desc: '',
+    jrn_concepts: '',
+    jrn_name: '',
+    journey : {
+      maps : ['person map'],
+      steps : ['login']
     }
   };
   const express = require('express');
