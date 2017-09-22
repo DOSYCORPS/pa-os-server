@@ -23,12 +23,31 @@
     'on-demand'
   ];
 
-  const build = def`build ${{file:'mm.html'}}`;
+  def`searchresult ${{file:'searchresult.html'}}`;
+  def`searchplaces ${{file:'searchplaces.html'}}`;
+  def`maplist ${{file:'maplist.html'}}`;
+  def`editmap ${{file:'editmap.html'}}`;
+  def`mapeditor ${{file:'mapeditor.html'}}`;
+  def`build ${{file:'maplist.html'}}`;
 
-  // helpers
+  function serveTo({app,db,update_db}) {
+    for( const view in I ) {
+      app.get(`/${view}`, async (req,res,next) => {
+        res.type('html');
+        const html = await I[view](db);
+        res.end(html);
+      });
+      app.post(`/${view}`, async (req,res,next) => {
+        res.type('html');
+        update_db(db,req.body);
+        const html = await I[view](db);
+        res.end(html);
+      });
+    }
+  }
 
   const views = {
-    build
+    serveTo
   };
 
   module.exports = views;
