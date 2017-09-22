@@ -2,19 +2,20 @@
 <a target=_parent href=maplist>Back to maps</a>
 <form action=mapeditor>
   <p>
-    <input name=name placeholder=name>
+    <input name=name placeholder=name value="${T.map.name}">
   <p>
-    <input name=concepts placeholder=concepts>
+    <input name=concepts placeholder=concepts value="${T.map.concepts}">
   <p>
-    <textarea name=description placeholder=description></textarea>
-  <h2>Places</h2>
+    <textarea name=description placeholder=description>${T.map.desc}</textarea>
+  <h2>Property Locations</h2>
   <p>
     <a target=_parent href=editmap#search-places>Search more places to add</a>
   <dl>
-    <dt><input name=place1name placeholder=place1name>
-    <dd><a href=#edit-place>View Place 1</a> <button name=removeplace value=placeA>Remove from map</button>
-    <dt><input name=place2name placeholder=place2name>
-    <dd><a href=#edit-place>View Place 2</a> <button name=removeplace value=placeB>Remove from map</button>
+  ${ d => d.map.places.map( p => `
+    <dt><input name=map.places placeholder=placename>
+    <dd><a href="#edit-place-${p}">View Place ${p}</a> <button name=removeplace value="${p}">Remove from map</button>
+    ` ).join('')
+  }
   </dl>
   <p>
     <button name=save value=map>Save map</button>

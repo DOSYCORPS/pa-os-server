@@ -1,5 +1,44 @@
 "use strict";
 {
+  /** old db 
+
+    const db = {
+      descriptionopen: false,
+      howdoiaddopen: false,
+      includeopen: false,
+      excludeopen: false,
+      add_placesopen: true,
+      add_mapsopen: true,
+      placetype: '',
+      placename: '',
+      placeconcepts: '',
+      placedesc: '',
+      generalized: '',
+      ngeneralized: '',
+      examples : {
+        positive : [
+        ],
+        negative : [
+        ]
+      },
+      map_type: '',
+      map_desc: '',
+      mapconcepts: '',
+      mapname: '',
+      map : {
+        places : ['person_name'],
+      },
+      jrn_type: '',
+      journey_desc: '',
+      jrn_concepts: '',
+      jrn_name: '',
+      journey : {
+        maps : ['person map'],
+        steps : ['login']
+      }
+    };
+
+  **/
   const {def,T,I} = require('dosyhil');
 
   const PLACE_TYPES = [

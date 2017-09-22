@@ -8,38 +8,37 @@
   const {I} = require('dosyhil');
   const {connect} = require('./db.js');
   const db = {
-    descriptionopen: false,
-    howdoiaddopen: false,
-    includeopen: false,
-    excludeopen: false,
-    add_placesopen: true,
-    add_mapsopen: true,
-    placetype: '',
-    placename: '',
-    placeconcepts: '',
-    placedesc: '',
-    generalized: '',
-    ngeneralized: '',
-    examples : {
-      positive : [
-      ],
-      negative : [
-      ]
-    },
-    map_type: '',
-    map_desc: '',
-    mapconcepts: '',
-    mapname: '',
+    maps: [
+      'friends list map',
+      'recent posts map',
+      'profile map'
+    ],
+    places: [
+      'friend name',
+      'post title',
+      'post date',
+      'profile name',
+      'profile picture [src link]',
+      'freind profile [link]'
+    ],
     map : {
-      places : ['person_name'],
-    },
-    jrn_type: '',
-    journey_desc: '',
-    jrn_concepts: '',
-    jrn_name: '',
-    journey : {
-      maps : ['person map'],
-      steps : ['login']
+      places: [
+        'post like',
+        'login',
+        'logout',
+        'open settings [link]',
+        'post',
+        'attach photo to post'
+      ],
+      name : 'app controls',
+      desc: 'controls for this social media app, such as login, logout, post, like, etc',
+      concepts: [
+        'social media',
+        'app',
+        'control',
+        'automation',
+        'control surface map'
+      ]
     }
   };
   const express = require('express');

@@ -1,8 +1,7 @@
 <form action=mapeditor target=map-editor>
   <ul>
-    <li>Place result 1 <button name=addplace value=place1>Add to map</button>
-    <li>Place result 2 <button name=addplace value=place2>Add to map</button>
-    <li>Place result 3 <button name=addplace value=place3>Add to map</button>
-    <li>Place result 4 <button name=addplace value=place4>Add to map</button>
+  ${ d => d.places.map( p => `
+    <li>Place result ${p} <button name=addplace value="${p}">Add to map</button>` ).join('')
+  }
   </ul>
 </form>
