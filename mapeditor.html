@@ -9,7 +9,7 @@
     <textarea name=description placeholder=description>${T.map.desc}</textarea>
   <h2>Property Locations</h2>
   <p>
-    <a target=_parent href=editmap#search-places>Search more places to add</a>
+    <a rel=search target=_parent href=editmap#search-places>Search more places to add</a>
   <dl>
   ${ d => d.map.places.map( p => `
     <dt><input name=map.places placeholder=placename>
