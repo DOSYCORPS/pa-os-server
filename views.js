@@ -26,7 +26,7 @@
   def`searchresult ${{file:'searchresult.html'}}`;
   def`searchplaces ${{file:'searchplaces.html'}}`;
   def`maplist ${{file:'maplist.html'}}`;
-  def`editmap ${{file:'editmap.html'}}`;
+  def`editmap ${{file:'mapper.html'}}`;
   def`mapeditor ${{file:'mapeditor.html'}}`;
   def`propview ${{file:'propview.html'}}`;
   def`build ${{file:'maplist.html'}}`;
