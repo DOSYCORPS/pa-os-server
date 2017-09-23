@@ -6,7 +6,7 @@
     <input name=concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
     <textarea name=description placeholder=description>${T.prop.desc}</textarea>
-  <h2>Property Locations</h2>
+  <h2 id=prop-locations>Property Locations</h2>
   <p>
     <label for=generalized>Generalized location selector</label>
     <input type=text id=generalized value="${T.prop.generalized}">
@@ -14,7 +14,7 @@
     <a rel=search target=_parent href=editmap#add-location-view>Add more locations</a>
   <dl>
   ${ d => d.prop.locations.map( (p,idx) => `
-    <dd><input type=text value="${p}" name=prop.locations><button name=dellocation value="${idx}">Del</button>
+    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#prop-locations name=dellocation value="${idx}">Del</button>
     ` ).join('')
   }
   </dl>

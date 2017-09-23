@@ -15,7 +15,10 @@
   ${ d => d.map.places.map( ({prop,slot}) => `
     <dd><input size=10 name=map.slots placeholder=placename value="${slot}">
     <input type=hidden name=map.props value="${prop}">
-    <a target=propview href=propview?p=${prop}>${prop}</a> <button name=removeplace value="${prop}" formaction=mapeditor#prop-list>Del</button>
+    <span class=fixedwidth>
+      <a target=propview href=propview?p=${prop}>${prop}</a> 
+    </span>
+    <button name=removeplace value="${prop}" formaction=mapeditor#prop-list>Del</button>
     ` ).join('')
   }
   </dl>

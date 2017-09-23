@@ -6,10 +6,32 @@
   border-radius: 3px;
 }
 body {
+  margin: 0;
   font-family: Arial;
   font-size: 0.851rem;
 }
 
-h1 {
+h1, h2 {
   font-weight: 300;
+}
+
+dd {
+  margin-left: 1rem;
+}
+ul {
+  padding-left: 1rem;
+  list-style-position: outside;
+}
+
+span.fixedwidth {
+  display: inline-block;
+  width: 15ch;
+  max-width: 15ch;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+  background: rgba(150,150,150,0.2);
+  height: 1.3rem;
+  line-height: 1.3rem;
 }

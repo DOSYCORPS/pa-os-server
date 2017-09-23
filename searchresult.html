@@ -1,7 +1,7 @@
 <form action=mapeditor target=map-editor>
   <ul>
   ${ d => d.places.map( p => `
-    <li><a target=propview href=propview?p=${p}>${p}</a> <button name=addplace value="${p}">Add to map</button>` ).join('')
+    <li><span class="fixedwidth"><a target=propview href=propview?p=${p}>${p}</a></span> <button name=addplace value="${p}">Add to map</button>` ).join('')
   }
   </ul>
 </form>
