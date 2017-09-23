@@ -1,0 +1,23 @@
+<h1 id=edit-prop>Edit prop</h1>
+<form action=propview>
+  <p>
+    <input name=name placeholder=name value="${T.prop.name}">
+  <p>
+    <input name=concepts placeholder=concepts value="${T.prop.concepts}">
+  <p>
+    <textarea name=description placeholder=description>${T.prop.desc}</textarea>
+  <h2>Property Locations</h2>
+  <p>
+    <label for=generalized>Generalized location selector</label>
+    <input type=text id=generalized value="${T.prop.generalized}">
+  <p>
+    <a rel=search target=_parent href=editmap#add-location-view>Add more locations</a>
+  <dl>
+  ${ d => d.prop.locations.map( (p,idx) => `
+    <dd><input type=text value="${p}" name=prop.locations><button name=dellocation value="${idx}">Del</button>
+    ` ).join('')
+  }
+  </dl>
+  <p>
+    <button name=save value=prop>Save prop</button>
+</form>

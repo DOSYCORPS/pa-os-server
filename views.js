@@ -28,6 +28,7 @@
   def`maplist ${{file:'maplist.html'}}`;
   def`editmap ${{file:'editmap.html'}}`;
   def`mapeditor ${{file:'mapeditor.html'}}`;
+  def`propview ${{file:'propview.html'}}`;
   def`build ${{file:'maplist.html'}}`;
 
   function serveTo({app,db,update_db}) {

@@ -23,12 +23,12 @@
     ],
     map : {
       places: [
-        'post like',
-        'login',
-        'logout',
-        'open settings [link]',
-        'post',
-        'attach photo to post'
+        { prop: 'post like', slot: 'likebutton' },
+        { prop: 'login', slot: 'login' },
+        { prop: 'logout', slot: 'logout' },
+        { prop: 'open settings [link]', slot: 'settings' },
+        { prop: 'post', slot: 'publish post' },
+        { prop: 'attach photo to post', slot: 'add photo' }
       ],
       name : 'app controls',
       desc: 'controls for this social media app, such as login, logout, post, like, etc',
@@ -38,6 +38,20 @@
         'control',
         'automation',
         'control surface map'
+      ]
+    },
+    prop : {
+      generalized: 'body --webkit-any(span, p)',
+      locations: [
+        'body > div > span',
+        'body > article p'
+      ],
+      name : 'article text',
+      desc: 'paragraphs containing article text',
+      concepts: [
+        'article',
+        'text',
+        'paragraphs'
       ]
     }
   };

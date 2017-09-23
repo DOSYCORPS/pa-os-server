@@ -4,16 +4,18 @@
   <p>
     <input name=name placeholder=name value="${T.map.name}">
   <p>
-    <input name=concepts placeholder=concepts value="${T.map.concepts}">
+    <input size=28 name=concepts placeholder=concepts value="${T.map.concepts}">
   <p>
-    <textarea name=description placeholder=description>${T.map.desc}</textarea>
-  <h2>Property Locations</h2>
+    <textarea rows=5 cols=28 name=description placeholder=description>${T.map.desc}</textarea>
+  <h2 id=prop-list>Property Locations</h2>
   <p>
     <a rel=search target=_parent href=editmap#search-places>Search more places to add</a>
   <dl>
-  ${ d => d.map.places.map( p => `
-    <dt><input name=map.places placeholder=placename>
-    <dd><a href="#edit-place-${p}">View Place ${p}</a> <button name=removeplace value="${p}">Remove from map</button>
+    <dt>${T.map.name} properties
+  ${ d => d.map.places.map( ({prop,slot}) => `
+    <dd><input name=map.slots placeholder=placename value="${slot}">
+    <input type=hidden name=map.props value="${prop}">
+    <a target=propview href=propview?p=${prop}>${prop}</a> <button name=removeplace value="${prop}" formaction=mapeditor#prop-list>Del</button>
     ` ).join('')
   }
   </dl>
