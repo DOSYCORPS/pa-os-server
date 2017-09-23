@@ -13,7 +13,7 @@
   <dl>
     <dt>${T.map.name} properties
   ${ d => d.map.places.map( ({prop,slot}) => `
-    <dd><input name=map.slots placeholder=placename value="${slot}">
+    <dd><input size=10 name=map.slots placeholder=placename value="${slot}">
     <input type=hidden name=map.props value="${prop}">
     <a target=propview href=propview?p=${prop}>${prop}</a> <button name=removeplace value="${prop}" formaction=mapeditor#prop-list>Del</button>
     ` ).join('')

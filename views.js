@@ -23,13 +23,15 @@
     'on-demand'
   ];
 
-  def`searchresult ${{file:'searchresult.html'}}`;
-  def`searchplaces ${{file:'searchplaces.html'}}`;
-  def`maplist ${{file:'maplist.html'}}`;
-  def`editmap ${{file:'mapper.html'}}`;
-  def`mapeditor ${{file:'mapeditor.html'}}`;
-  def`propview ${{file:'propview.html'}}`;
-  def`build ${{file:'maplist.html'}}`;
+  const stylesheet = 'xyz.css';
+
+  def`searchresult ${{file:'searchresult.html', stylesheet}}`;
+  def`searchplaces ${{file:'searchplaces.html', stylesheet}}`;
+  def`maplist ${{file:'maplist.html', stylesheet}}`;
+  def`editmap ${{file:'mapper.html', stylesheet}}`;
+  def`mapeditor ${{file:'mapeditor.html', stylesheet}}`;
+  def`propview ${{file:'propview.html', stylesheet}}`;
+  def`build ${{file:'maplist.html', stylesheet}}`;
 
   function serveTo({app,db,update_db}) {
     for( const view in I ) {

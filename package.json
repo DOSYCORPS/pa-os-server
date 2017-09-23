@@ -35,15 +35,15 @@
   },
   "homepage": "https://github.com/dosyago-corp/pa-os-server#readme",
   "dependencies": {
-    "body-parser": "^1.18.1",
+    "body-parser": "^1.18.2",
     "browserify-middleware": "^7.1.0",
-    "dosyhil": "^1.0.5",
+    "dosyhil": "^1.2.2",
     "dosylook": "^1.1.1",
     "express": "^4.15.4",
     "mongodb": "^2.2.31",
     "mysql": "^2.14.1",
     "neo4j-driver": "^1.4.0",
-    "request-promise": "^4.2.1",
+    "request-promise": "^4.2.2",
     "selector-generalization": "^1.1.6"
   },
   "devDependencies": {

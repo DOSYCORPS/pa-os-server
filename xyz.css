@@ -1,0 +1,11 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: silver;
+  border-radius: 3px;
+}
+body {
+  font-family: Arial;
+  font-size: 0.9rem;
+}
