@@ -75,92 +75,36 @@
     });
   }
 
-  // TODO: might want to factor this out to separate file
   function update_db(db, params) {
-    console.log(params);
-    return;
-
-    let {ngeneralized, generalized, positive, negative} = params;
-
-    if ( positive ) {
-      if ( !Array.isArray(positive) ) {
-        positive = [positive]; 
-      }
-      positive = positive.filter( s => s.trim().length > 0 );
-      let {positive_delete} = params;
-      if ( positive_delete ) {
-        if ( !Array.isArray(positive_delete) ) {
-          positive_delete = [positive_delete]; 
-        }
-        positive_delete = new Set(positive_delete.map( idx => parseInt(idx)));
-        positive = positive.filter( (sel,idx) => !positive_delete.has(idx) );
-      }
-      Object.assign( db.examples, { positive } );
-    }
-    if ( negative ) {
-      if ( !Array.isArray(negative) ) {
-        negative = [negative]; 
-      }
-      negative = negative.filter( s => s.trim().length > 0 );
-      let {negative_delete} = params;
-      if ( negative_delete ) {
-        if ( !Array.isArray(negative_delete) ) {
-          negative_delete = [negative_delete]; 
-        }
-        negative_delete = new Set(negative_delete.map( idx => parseInt(idx)));
-        negative = negative.filter( (sel,idx) => !negative_delete.has(idx) );
-      }
-      Object.assign( db.examples, { negative } );
-    }
-    if ( generalized !== undefined ) {
-      db.generalized = generalized;
-    }
-    if ( ngeneralized !== undefined ) {
-      db.ngeneralized = ngeneralized;
-    }
-
-    let {placename, placeconcepts, placedesc, placetype} = params;
-
-    if ( placetype !== undefined ) {
-      db.placetype = placetype;
-    }
-    if ( placename !== undefined ) {
-      db.placename = placename;
-    }
-
-    if ( placeconcepts !== undefined ) {
-      db.placeconcepts = placeconcepts;
-    }
-
-    if ( placedesc !== undefined ) {
-      db.placedesc = placedesc;
-    }
-
-    let {includeopen, excludeopen} = params;
-    let {descriptionopen, howdoiaddopen} = params;
-
-    if ( includeopen == 'false' ) {
-      db.includeopen = false;
-    } else if ( includeopen == 'true' ) {
-      db.includeopen = true;
-    }
-
-    if ( excludeopen == 'false' ) {
-      db.excludeopen = false;
-    } else if ( excludeopen == 'true' ) {
-      db.excludeopen = true;
-    }
-
-    if ( descriptionopen == 'false' ) {
-      db.descriptionopen = false;
-    } else if ( descriptionopen == 'true' ) {
-      db.descriptionopen = true;
-    }
-
-    if ( howdoiaddopen == 'false' ) {
-      db.howdoiaddopen = false;
-    } else if ( howdoiaddopen == 'true' ) {
-      db.howdoiaddopen = true;
+    for ( const slot in params ) {
+      try {
+        resolve_slot(db,slot);
+      } catch(e) {
+        console.warn(e);
+        continue;
+      } 
+      set_slot(db,slot,params[slot]);
     }
   }
+
+  // helpers
+    function resolve_slot(o,s) {
+      const keys = s.split(/\./g);
+      while( o !== undefined && keys.length > 1 ) {
+        o = o[keys.shift()]; 
+      }
+      const lastKey = keys[0];
+      const object = o;
+      if ( object == undefined || ! object.hasOwnProperty(lastKey) ) {
+        throw new TypeError("db object has not such slot given by key path:" + s);
+      }
+      return { object, lastKey };
+    }
+
+    function set_slot(o,s,v) {
+      const {object,lastKey} = resolve_slot(o,s); 
+      if ( object[lastKey] != v ) {
+        object[lastKey] = v;
+      }
+    }
 }
