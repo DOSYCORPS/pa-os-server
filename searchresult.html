@@ -1,4 +1,4 @@
-<form action=mapeditor target=map-editor>
+<form method=POST action=mapeditor target=map-editor>
   <ul>
   ${ d => d.places.map( p => `
     <li><span class="fixedwidth"><a target=propview href=propview?p=${p}>${p}</a></span> <button name=addplace value="${p}">Add to map</button>` ).join('')
