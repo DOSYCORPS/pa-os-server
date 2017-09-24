@@ -1,28 +1,29 @@
 <h1 id=edit-prop>Edit prop</h1>
 <form method=POST action=propview>
   <p>
-    <input name=name placeholder=name value="${T.prop.name}">
+    <input name=prop.name placeholder=name value="${T.prop.name}">
   <p>
-    <input name=concepts placeholder=concepts value="${T.prop.concepts}">
+    <input name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
-    <textarea name=description placeholder=description>${T.prop.desc}</textarea>
+    <textarea name=prop.description placeholder=description>${T.prop.desc}</textarea>
   <h2 id=prop-locations>Property Locations</h2>
   <p>
     <label for=generalized>Generalized location selector</label>
-    <input type=text id=generalized name=generalized value="${T.prop.generalized}">
-    <input type=hidden id=ngeneralized name=ngeneralized value="${T.prop.ngeneralized}">
+    <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
+    <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
     <button id=generalize>G</button>
   <p>
     <a rel=search target=_parent href=editmap#add-location-view>Add more locations</a>
   <dl>
+    <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#prop-locations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
-    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#prop-locations name=dellocation value="${idx}">Del</button>
+    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#prop-locations name=prop.dellocation value="${idx}">Del</button>
     ` ).join('')
   }
   </dl>
   <p>
-    <button name=save value=prop>Save prop</button>
-    <button id=clearall type=reset name=reset value=prop>Clear all</button>
+    <button name=prop.save value=prop>Save prop</button>
+    <button id=clearall type=reset name=prop.reset value=prop>Clear all</button>
 </form>
 <script src=/scripts/build.js></script>
 <script>

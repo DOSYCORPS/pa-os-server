@@ -77,7 +77,7 @@
 
   // TODO: might want to factor this out to separate file
   function update_db(db, params) {
-    //FIXME: implement new version
+    console.log(params);
     return;
 
     let {ngeneralized, generalized, positive, negative} = params;
