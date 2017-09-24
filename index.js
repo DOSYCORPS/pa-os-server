@@ -42,6 +42,7 @@
     },
     prop : {
       generalized: 'body --webkit-any(span, p)',
+      ngeneralized: 'a',
       locations: [
         'body > div > span',
         'body > article p'

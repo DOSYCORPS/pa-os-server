@@ -1,7 +1,7 @@
 "use strict";
 {
-  const sg = require('selector-generalization');
-  const rp = require('request-promise');
+  const sg = top.require('selector-generalization');
+  const rp = top.require('request-promise');
 
   setup();
 
