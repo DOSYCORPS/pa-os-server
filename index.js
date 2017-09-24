@@ -41,12 +41,12 @@
       ]
     },
     prop : {
+      savelocation: '',
       generalized: 'body --webkit-any(span, p)',
       ngeneralized: 'a',
       locations: [
-        'body > div > span',
-        'body > article p'
       ],
+      nlocations: [],
       name : 'article text',
       desc: 'paragraphs containing article text',
       concepts: [
@@ -103,8 +103,14 @@
 
     function set_slot(o,s,v) {
       const {object,lastKey} = resolve_slot(o,s); 
+      //FIXME: this equality check can be more efficient for arrays
+      // to avoid setting an array that didn't change
       if ( object[lastKey] != v ) {
-        object[lastKey] = v;
+        if ( Array.isArray( object[lastKey] ) && ! Array.isArray( v ) ) {
+          object[lastKey].push(v);
+        } else {
+          object[lastKey] = v;
+        }
       }
     }
 }

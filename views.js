@@ -32,6 +32,9 @@
   def`mapeditor ${{file:'mapeditor.html', stylesheet}}`;
   def`propview ${{file:'propview.html', stylesheet}}`;
   def`build ${{file:'maplist.html', stylesheet}}`;
+  def`db ${0}
+    ${ d => JSON.stringify(d) } 
+  `;
 
   function serveTo({app,db,update_db}) {
     for( const view in I ) {

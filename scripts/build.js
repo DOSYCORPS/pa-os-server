@@ -19,7 +19,8 @@
     const generalized = document.querySelector('#generalized'); 
     const ngeneralized = document.querySelector('#ngeneralized'); 
     const db = JSON.parse(await rp('http://localhost:8080/db'));
-    const result = sg.generalize( db.examples.positive, db.examples.negative, true );
+    console.log(db);
+    const result = sg.generalize( db.prop.locations, db.prop.nlocations, true );
     generalized.value = `${result.positive}`;
     ngeneralized.value = `${result.negative}`;
   }
