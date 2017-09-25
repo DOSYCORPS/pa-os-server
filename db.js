@@ -1,6 +1,11 @@
 "use strict";
 {
   const db = {
+    query: {
+      place: '',
+      map: '',
+      journey: ''
+    },
     maps: [
       'friends list map',
       'recent posts map',
