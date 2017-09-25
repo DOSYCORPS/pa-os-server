@@ -5,28 +5,31 @@
 <a target=_parent href=mapper#mapeditor>Back to map</a>
 ${
   d => {
-    if ( !! d.query_params && d.query_params.p ) {
-      console.log("Query exists", d.query_params );
-      d.prop = Object.assign( {}, d.empty_prop, d.places.find( ({name}) => name == d.query_params.p ) || {} );
-    } else {
-      console.log("Query does not exist");
+    if ( d.req_method == 'GET' ) {
+      if ( !! d.query_params && d.query_params.p ) {
+        console.log("Query exists", d.query_params );
+        d.prop = Object.assign( {}, d.empty_prop, d.places.find( ({name}) => name == d.query_params.p ) || {} );
+      } else {
+        console.log("Query does not exist");
+        d.prop = Object.assign( {}, d.empty_prop );
+      }
     }
     return '';
   }
 }
 <form id=propview method=POST action=propview>
   <p>
-    <input name=prop.name placeholder=name value="${T.prop.name}">
+    <input required name=prop.name placeholder=name value="${T.prop.name}">
   <p>
-    <input name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
+    <input required name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
-    <textarea rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
+    <textarea required rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property Locations</h2>
   <p>
   <dl>
     <dt><label for=generalized>Generalized location</label>
     <dd>
-      <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
+      <input required type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
       <button id=generalize>G</button>
     </dd>
     <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">

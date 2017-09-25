@@ -24,6 +24,7 @@
     for( const view in I ) {
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
+        db.req_method = req.method;
         db.route_params = req.params;
         db.query_params = req.query; 
         db.body_params = req.body;
@@ -32,6 +33,7 @@
       });
       app.post(`/${view}`, async (req,res,next) => {
         res.type('html');
+        db.req_method = req.method;
         db.route_params = req.params;
         db.query_params = req.query; 
         db.body_params = req.body;

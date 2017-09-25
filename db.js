@@ -14,9 +14,6 @@
       journey: ''
     },
     maps: [
-      'friends list map',
-      'recent posts map',
-      'profile map'
     ],
     places: [
       { name: 'links', slot: '',
@@ -25,6 +22,16 @@
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     map: {
+      removeplace: '',
+      save: '',
+      places: [
+      ],
+      name : '',
+      desc: '',
+      concepts: [
+      ]
+    },
+    empty_map: {
       removeplace: '',
       save: '',
       places: [
@@ -44,6 +51,7 @@
       ],
       nlocations: [],
       name : '',
+      slot: '',
       desc: '',
       concepts: [
       ]
@@ -58,24 +66,35 @@
       ],
       nlocations: [],
       name : '',
+      slot: '',
       desc: '',
       concepts: [
       ]
     }
   };
   const actions = {
+    'map.save': val => {
+      const map_exists = db.maps.find( ({name}) => name == db.map.name );
+      if ( !! map_exists ) {
+        console.log("map exists", db.map.name, map_exists );
+        Object.assign( map_exists, db.map );
+      } else if ( /* validates */ !! db.map.name ) {
+        console.log("map new", db.map.name );
+        db.maps.push( Object.assign( {}, db.map ) );
+      }
+    },
     'prop.save': val => {
       const prop_exists = db.places.find( ({name}) => name == db.prop.name );
       if ( !! prop_exists ) {
-        console.log("prop exists", db.prop.name );
+        console.log("prop exists", db.prop.name, prop_exists );
         Object.assign( prop_exists, db.prop );
       } else if ( /* validates */ !! db.prop.name ) {
         console.log("prop new", db.prop.name );
-        db.places.push( db.prop );
+        db.places.push( Object.assign( {}, db.prop ) );
       }
     },
     'map.removeplace': val => {
-      db.map.places = db.map.places.filter( ({prop}) => val !== prop );
+      db.map.places = db.map.places.filter( ({name}) => val !== name );
     },
     'prop.dellocation': val => {
       db.prop.locations.splice( val, 1 );

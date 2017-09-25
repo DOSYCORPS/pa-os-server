@@ -3,13 +3,27 @@
    <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </h1>
 <a target=_parent href=maplist>Back to map search</a>
+${
+  d => {
+    if ( d.req_method == 'GET' ) {
+      if ( !! d.query_params && !! d.query_params.m ) {
+        console.log("Query exists", d.query_params );
+        d.map = Object.assign( {}, d.empty_map, d.maps.find( ({name}) => name == d.query_params.m ) || {} );
+      } else {
+        console.log("Query does not exist");
+        d.map = Object.assign( {}, d.empty_map );
+      }
+    }
+    return '';
+  }
+}
 <form id=mapeditor method=POST action=mapeditor>
   <p>
-    <input name=map.name placeholder=name value="${T.map.name}">
+    <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
-    <textarea rows=3 cols=28 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
+    <textarea required rows=3 cols=28 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
-    <textarea rows=5 cols=28 name=map.desc placeholder=description>${T.map.desc}</textarea>
+    <textarea required rows=5 cols=28 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
   <p>
     <a rel=search target=_parent href=mapper#searchplaces>Search more properties to add</a>
