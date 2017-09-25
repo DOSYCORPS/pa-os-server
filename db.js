@@ -7,12 +7,12 @@
       'profile map'
     ],
     places: [
-      'friend name',
-      'post title',
-      'post date',
-      'profile name',
-      'profile picture [src link]',
-      'freind profile [link]'
+      { prop: 'friend name', slot: '' },
+      { prop: 'post title', slot: ''},
+      { prop: 'post date', slot: ''},
+      { prop: 'profile name', slot: ''},
+      { prop: 'profile picture [src link]', slot: ''},
+      { prop: 'freind profile [link]', slot: ''}
     ],
     map : {
       places: [
@@ -106,14 +106,25 @@
   }
 
   function update_db(db, params) {
-    for ( const slot in params ) {
+    for ( const name in params ) {
+      const [slot,type] = name.split(';'); 
       try {
         resolve_slot(db,slot);
       } catch(e) {
         console.warn(e);
         continue;
       } 
-      set_slot(db,slot,params[slot]);
+      let val = params[name];
+      if ( type == 'json' ) {
+        try {
+          console.log("Trying json", val);
+          val = JSON.parse(val);
+        } catch(e) {
+          console.warn(e);
+          continue;
+        }
+      }
+      set_slot(db,slot,val);
     }
   }
 
