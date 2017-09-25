@@ -41,6 +41,7 @@
       ]
     },
     prop : {
+      save: '',
       savelocation: '',
       generalized: 'body --webkit-any(span, p)',
       ngeneralized: 'a',
@@ -101,15 +102,25 @@
       return { object, lastKey };
     }
 
+    function not_empty( v ) {
+      return  v !== undefined && v !== null && v != '';
+    }
     function set_slot(o,s,v) {
       const {object,lastKey} = resolve_slot(o,s); 
       //FIXME: this equality check can be more efficient for arrays
       // to avoid setting an array that didn't change
       if ( object[lastKey] != v ) {
         if ( Array.isArray( object[lastKey] ) && ! Array.isArray( v ) ) {
-          object[lastKey].push(v);
+          if ( not_empty(v) ) {
+            object[lastKey].push(v);
+          }
         } else {
-          object[lastKey] = v;
+          if ( Array.isArray( v ) ) {
+            const val = v.filter( not_empty );
+            object[lastKey] = val;
+          } else {
+            object[lastKey] = v;
+          }
         }
       }
     }
