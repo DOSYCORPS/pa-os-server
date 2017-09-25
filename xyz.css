@@ -35,3 +35,11 @@ span.fixedwidth {
   height: 1.3rem;
   line-height: 1.3rem;
 }
+
+.middle {
+  vertical-align: middle;
+}
+
+textarea {
+  resize: vertical;
+}

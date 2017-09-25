@@ -1,6 +1,13 @@
 "use strict";
 {
   const db = {
+    /**
+      things like query.<thing>
+      and <thing>.remove ought to trigger an action when they update.
+      I could standardise things like remove...maybe? 
+      Prefer to just have some way to add actions
+      This really ought to be here.
+    **/
     query: {
       place: '',
       map: '',
@@ -19,7 +26,9 @@
       { prop: 'profile picture [src link]', slot: ''},
       { prop: 'freind profile [link]', slot: ''}
     ],
-    map : {
+    map: {
+      removeplace: '',
+      save: '',
       places: [
         { prop: 'post like', slot: 'likebutton' },
         { prop: 'login', slot: 'login' },
@@ -38,7 +47,7 @@
         'control surface map'
       ]
     },
-    prop : {
+    prop: {
       save: '',
       savelocation: '',
       generalized: 'body --webkit-any(span, p)',
@@ -55,6 +64,14 @@
       ]
     }
   };
+  const actions = {
+    'map.removeplace': val => {
+      db.map.places = db.map.places.filter( ({prop}) => val !== prop );
+    },
+    'prop.dellocation': val => {
+      db.prop.locations.splice( val, 1 );
+    }
+  }
   const mysql = function () {
       return new Promise( (res,rej) => {
       const db = require('mysql');
@@ -111,6 +128,7 @@
   }
 
   function update_db(db, params) {
+    const todo = [];
     for ( const name in params ) {
       const [slot,type] = name.split(';'); 
       try {
@@ -122,15 +140,21 @@
       let val = params[name];
       if ( type == 'json' ) {
         try {
-          console.log("Trying json", val);
           val = JSON.parse(val);
         } catch(e) {
           console.warn(e);
           continue;
         }
+      } else if ( type == 'array' ) {
+        val = val.split(/,/g);
       }
       set_slot(db,slot,val);
+      if ( actions[name] && not_empty( val ) ) {
+        console.log("Adding action", name, val );
+        todo.push( () => (actions[name](val), set_slot(db,slot,'')) );
+      }
     }
+    todo.forEach( act => act() );
   }
 
   // helpers
@@ -142,6 +166,7 @@
       const lastKey = keys[0];
       const object = o;
       if ( object == undefined || ! object.hasOwnProperty(lastKey) ) {
+        console.log(object,lastKey);
         throw new TypeError("db object has not such slot given by key path:" + s);
       }
       return { object, lastKey };
