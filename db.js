@@ -19,32 +19,19 @@
       'profile map'
     ],
     places: [
-      { prop: 'friend name', slot: '' },
-      { prop: 'post title', slot: ''},
-      { prop: 'post date', slot: ''},
-      { prop: 'profile name', slot: ''},
-      { prop: 'profile picture [src link]', slot: ''},
-      { prop: 'freind profile [link]', slot: ''}
+      { name: 'links', slot: '',
+        desc: 'all links', generalized: 'a', locations: []},
+      { name: 'paragraphs', slot: '',
+        desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     map: {
       removeplace: '',
       save: '',
       places: [
-        { prop: 'post like', slot: 'likebutton' },
-        { prop: 'login', slot: 'login' },
-        { prop: 'logout', slot: 'logout' },
-        { prop: 'open settings [link]', slot: 'settings' },
-        { prop: 'post', slot: 'publish post' },
-        { prop: 'attach photo to post', slot: 'add photo' }
       ],
-      name : 'app controls',
-      desc: 'controls for this social media app, such as login, logout, post, like, etc',
+      name : '',
+      desc: '',
       concepts: [
-        'social media',
-        'app',
-        'control',
-        'automation',
-        'control surface map'
       ]
     },
     prop: {
@@ -56,16 +43,37 @@
       locations: [
       ],
       nlocations: [],
-      name : 'article text',
-      desc: 'paragraphs containing article text',
+      name : '',
+      desc: '',
       concepts: [
-        'article',
-        'text',
-        'paragraphs'
+      ]
+    },
+    empty_prop: {
+      dellocation: '',
+      save: '',
+      savelocation: '',
+      generalized: '',
+      ngeneralized: '',
+      locations: [
+      ],
+      nlocations: [],
+      name : '',
+      desc: '',
+      concepts: [
       ]
     }
   };
   const actions = {
+    'prop.save': val => {
+      const prop_exists = db.places.find( ({name}) => name == db.prop.name );
+      if ( !! prop_exists ) {
+        console.log("prop exists", db.prop.name );
+        Object.assign( prop_exists, db.prop );
+      } else if ( /* validates */ !! db.prop.name ) {
+        console.log("prop new", db.prop.name );
+        db.places.push( db.prop );
+      }
+    },
     'map.removeplace': val => {
       db.map.places = db.map.places.filter( ({prop}) => val !== prop );
     },

@@ -24,11 +24,17 @@
     for( const view in I ) {
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
+        db.route_params = req.params;
+        db.query_params = req.query; 
+        db.body_params = req.body;
         const html = await I[view](db);
         res.end(html);
       });
       app.post(`/${view}`, async (req,res,next) => {
         res.type('html');
+        db.route_params = req.params;
+        db.query_params = req.query; 
+        db.body_params = req.body;
         update_db(db,req.body);
         const html = await I[view](db);
         res.end(html);

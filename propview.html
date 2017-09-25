@@ -1,6 +1,20 @@
-<h1 id=edit-prop>Edit prop</h1>
+<h1 id=edit-prop>
+  Edit prop
+  <button form=propview class=middle name=prop.save value=prop>Save prop</button>
+</h1>
 <a target=_parent href=mapper#mapeditor>Back to map</a>
-<form method=POST action=propview>
+${
+  d => {
+    if ( !! d.query_params && d.query_params.p ) {
+      console.log("Query exists", d.query_params );
+      d.prop = Object.assign( {}, d.empty_prop, d.places.find( ({name}) => name == d.query_params.p ) || {} );
+    } else {
+      console.log("Query does not exist");
+    }
+    return '';
+  }
+}
+<form id=propview method=POST action=propview>
   <p>
     <input name=prop.name placeholder=name value="${T.prop.name}">
   <p>
@@ -9,15 +23,16 @@
     <textarea rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property Locations</h2>
   <p>
-    <label for=generalized>Generalized location</label>
-    <br>
-    <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
+  <dl>
+    <dt><label for=generalized>Generalized location</label>
+    <dd>
+      <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
+      <button id=generalize>G</button>
+    </dd>
     <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
-    <button id=generalize>G</button>
-  <p>
-    <a rel=search target=_parent href=mapper#add-location-view>Add more examples</a>
   <dl>
     <dt>Location examples
+    <dd><a rel=search target=_parent href=mapper#add-location-view>Add more examples</a>
     <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
     <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
@@ -25,7 +40,7 @@
   }
   </dl>
   <p>
-    <button name=prop.save value=prop>Save prop</button>
+    <button class=middle name=prop.save value=prop>Save prop</button>
     <button id=clearall type=reset name=prop.reset value=prop>Clear all</button>
 </form>
 <script src=/scripts/build.js></script>

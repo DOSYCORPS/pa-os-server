@@ -12,17 +12,19 @@
     <textarea rows=5 cols=28 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
   <p>
-    <a rel=search target=_parent href=mapper#searchplaces>Search more places to add</a>
+    <a rel=search target=_parent href=mapper#searchplaces>Search more properties to add</a>
   <dl>
     <dt>${T.map.name} properties
-  ${ d => d.map.places.map( ({prop,slot},idx) => `
+  ${ d => d.map.places.map( ({name,slot},idx) => `
     <dd><input size=10 placeholder=placename name=map.places.${idx}.slot value="${slot}">
-    <input type=hidden placeholder=placename name=map.places.${idx}.prop value="${prop}">
+    <input type=hidden placeholder=placename name=map.places.${idx}.name value="${name}">
     <span class=fixedwidth>
-      <a target=propview href=propview?p=${prop}>${prop}</a> 
+      <a target=propview href=propview?p=${name}>${name}</a> 
     </span>
-    <button name=map.removeplace value="${prop}">Del</button>
+    <button name=map.removeplace value="${name}">Del</button>
     ` ).join('')
   }
   </dl>
+  <p>
+    <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </form>
