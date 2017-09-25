@@ -1,29 +1,11 @@
 "use strict";
 {
   const {def,T,I} = require('dosyhil');
-
-  const PLACE_TYPES = [
-    'column',
-    'button',
-    'input',
-    'signpost'
-  ];
-
-  const MAP_TYPES = [
-    'person',
-    'product',
-    'stock_price',
-    'social_post'
-  ];
-
-  const JOURNEY_TYPES = [
-    'one-off',
-    'regular',
-    'triggered',
-    'on-demand'
-  ];
-
+  const {PLACE_TYPES,MAP_TYPES,JOURNEY_TYPES} = require('./data.js');
   const stylesheet = 'xyz.css';
+  const views = {
+    serveTo
+  };
 
   def`searchresult ${{file:'searchresult.html', stylesheet}}`;
   def`searchplaces ${{file:'searchplaces.html', stylesheet}}`;
@@ -35,6 +17,8 @@
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;
+
+  module.exports = views;
 
   function serveTo({app,db,update_db}) {
     for( const view in I ) {
@@ -51,10 +35,4 @@
       });
     }
   }
-
-  const views = {
-    serveTo
-  };
-
-  module.exports = views;
 }
