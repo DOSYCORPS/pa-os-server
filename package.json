@@ -1,6 +1,6 @@
 {
   "name": "pa-os-server",
-  "version": "1.4.2",
+  "version": "1.5.0",
   "description": "open source projectant server",
   "main": "index.js",
   "watch": {
