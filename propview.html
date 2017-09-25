@@ -1,4 +1,5 @@
 <h1 id=edit-prop>Edit prop</h1>
+<a target=_parent href=mapper#mapeditor>Back to map</a>
 <form method=POST action=propview>
   <p>
     <input name=prop.name placeholder=name value="${T.prop.name}">
@@ -6,18 +7,20 @@
     <input name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
     <textarea rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
-  <h2 id=prop-locations>Property Locations</h2>
+  <h2 id=proplocations>Property Locations</h2>
   <p>
-    <label for=generalized>Generalized location selector</label>
+    <label for=generalized>Generalized location</label>
+    <br>
     <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
     <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
     <button id=generalize>G</button>
   <p>
-    <a rel=search target=_parent href=editmap#add-location-view>Add more locations</a>
+    <a rel=search target=_parent href=mapper#add-location-view>Add more examples</a>
   <dl>
-    <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#prop-locations name=prop.savelocation value=new>Save</button>
+    <dt>Location examples
+    <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
-    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#prop-locations name=prop.dellocation value="${idx}">Del</button>
+    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
     ` ).join('')
   }
   </dl>

@@ -2,7 +2,7 @@
    Edit map&nbsp;
    <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </h1>
-<a target=_parent href=maplist>Back to maps</a>
+<a target=_parent href=maplist>Back to map search</a>
 <form id=mapeditor method=POST action=mapeditor>
   <p>
     <input name=map.name placeholder=name value="${T.map.name}">
@@ -10,9 +10,9 @@
     <textarea rows=3 cols=28 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
     <textarea rows=5 cols=28 name=map.desc placeholder=description>${T.map.desc}</textarea>
-  <h2 id=proplist>Property Locations</h2>
+  <h2 id=proplist>Properties</h2>
   <p>
-    <a rel=search target=_parent href=editmap#searchplaces>Search more places to add</a>
+    <a rel=search target=_parent href=mapper#searchplaces>Search more places to add</a>
   <dl>
     <dt>${T.map.name} properties
   ${ d => d.map.places.map( ({prop,slot},idx) => `

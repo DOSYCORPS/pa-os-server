@@ -50,8 +50,8 @@
     prop: {
       save: '',
       savelocation: '',
-      generalized: 'body --webkit-any(span, p)',
-      ngeneralized: 'a',
+      generalized: '',
+      ngeneralized: '',
       locations: [
       ],
       nlocations: [],
