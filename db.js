@@ -48,6 +48,7 @@
       ]
     },
     prop: {
+      dellocation: '',
       save: '',
       savelocation: '',
       generalized: '',
