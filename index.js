@@ -21,7 +21,7 @@
     app = express();
     app.use(bodyParser.json()); 
     app.use(bodyParser.urlencoded({ extended: true })); 
-    app.use('/', express.static(path.join(__dirname, './')));
+    app.use('/styles', express.static(path.join(__dirname, './styles')));
     app.use('/scripts', browserify((path.join(__dirname, './scripts'))));
     views.serveTo({app,db,update_db});
     app.listen(8080, () => {

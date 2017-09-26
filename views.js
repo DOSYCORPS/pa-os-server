@@ -2,7 +2,7 @@
 {
   const {def,T,I} = require('dosyhil');
   const {PLACE_TYPES,MAP_TYPES,JOURNEY_TYPES} = require('./data.js');
-  const stylesheet = 'xyz.css';
+  const stylesheet = 'styles/xyz.css';
   const views = {
     serveTo
   };
@@ -15,7 +15,7 @@
   def`propview ${{file:'propview.html', stylesheet}}`;
   def`maplist ${{file:'maplist.html', stylesheet}}`;
   def`db ${0}
-    ${ d => JSON.stringify(d) } 
+    ${ d => (console.log(d),JSON.stringify(d)) } 
   `;
 
   module.exports = views;

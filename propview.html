@@ -8,10 +8,10 @@ ${
     if ( d.req_method == 'GET' ) {
       if ( !! d.query_params && d.query_params.p ) {
         console.log("Query exists", d.query_params );
-        d.prop = Object.assign( {}, d.empty_prop, d.places.find( ({name}) => name == d.query_params.p ) || {} );
+        d.prop = Object.assign( d.deep_clone( d.empty_prop ), d.places.find( ({name}) => name == d.query_params.p ) || {} );
       } else {
         console.log("Query does not exist");
-        d.prop = Object.assign( {}, d.empty_prop );
+        d.prop = d.deep_clone( d.empty_prop );
       }
     }
     return '';
@@ -39,9 +39,11 @@ ${
     <dd><a rel=search target=_parent href=mapper#add-location-view>Add more examples</a>
     <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
-    <dd><input type=text value="${p}" name=prop.locations><button formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
-    ` ).join('')
-  }
+    <dd>
+      <input type=text value="${p}" name=prop.locations>
+      <button formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
+    ` 
+  )}
   </dl>
   <p>
     <button class=middle name=prop.save value=prop>Save prop</button>

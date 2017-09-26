@@ -1,6 +1,8 @@
 "use strict";
 {
   const db = {
+    // functions
+    deep_clone,
     /**
       things like query.<thing>
       and <thing>.remove ought to trigger an action when they update.
@@ -36,9 +38,10 @@
       save: '',
       places: [
       ],
-      name : '',
-      desc: '',
+      name : 'test map',
+      desc: 'test',
       concepts: [
+        'test'
       ]
     },
     prop: {
@@ -80,20 +83,20 @@
       const map_exists = db.maps.find( ({name}) => name == db.map.name );
       if ( !! map_exists ) {
         console.log("map exists", db.map.name, map_exists );
-        Object.assign( map_exists, db.map );
+        Object.assign( map_exists, deep_clone( db.map ) );
       } else if ( /* validates */ !! db.map.name ) {
         console.log("map new", db.map.name );
-        db.maps.push( Object.assign( {}, db.map ) );
+        db.maps.push( deep_clone( db.map ) );
       }
     },
     'prop.save': val => {
       const prop_exists = db.places.find( ({name}) => name == db.prop.name );
       if ( !! prop_exists ) {
         console.log("prop exists", db.prop.name, prop_exists );
-        Object.assign( prop_exists, db.prop );
+        Object.assign( prop_exists, deep_clone( db.prop ) );
       } else if ( /* validates */ !! db.prop.name ) {
         console.log("prop new", db.prop.name );
-        db.places.push( Object.assign( {}, db.prop ) );
+        db.places.push( deep_clone( db.prop ) );
       }
     },
     'map.removeplace': val => {
@@ -186,6 +189,10 @@
       }
     }
     todo.forEach( act => act() );
+  }
+
+  function deep_clone( o ) {
+    return JSON.parse( JSON.stringify( o ) );
   }
 
   // helpers

@@ -8,10 +8,10 @@ ${
     if ( d.req_method == 'GET' ) {
       if ( !! d.query_params && !! d.query_params.m ) {
         console.log("Query exists", d.query_params );
-        d.map = Object.assign( {}, d.empty_map, d.maps.find( ({name}) => name == d.query_params.m ) || {} );
+        d.map = Object.assign( d.deep_clone( d.empty_map ), d.maps.find( ({name}) => name == d.query_params.m ) || {} );
       } else {
         console.log("Query does not exist");
-        d.map = Object.assign( {}, d.empty_map );
+        d.map = d.deep_clone( d.empty_map );
       }
     }
     return '';
@@ -36,8 +36,8 @@ ${
       <a target=propview href=propview?p=${name}>${name}</a> 
     </span>
     <button name=map.removeplace value="${name}">Del</button>
-    ` ).join('')
-  }
+    ` 
+  )}
   </dl>
   <p>
     <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
