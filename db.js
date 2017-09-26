@@ -65,10 +65,11 @@
       locations: [
       ],
       nlocations: [],
-      name : '',
-      slot: '',
-      desc: '',
+      name : 'test prop',
+      slot: 'test',
+      desc: 'test prop',
       concepts: [
+        'test'
       ]
     }
   };
