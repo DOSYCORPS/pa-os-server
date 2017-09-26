@@ -7,10 +7,8 @@ ${
   d => {
     if ( d.req_method == 'GET' ) {
       if ( !! d.query_params && !! d.query_params.m ) {
-        console.log("Query exists", d.query_params );
         d.map = Object.assign( d.deep_clone( d.empty_map ), d.maps.find( ({name}) => name == d.query_params.m ) || {} );
       } else {
-        console.log("Query does not exist");
         d.map = d.deep_clone( d.empty_map );
       }
     }

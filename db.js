@@ -82,20 +82,16 @@
     'map.save': val => {
       const map_exists = db.maps.find( ({name}) => name == db.map.name );
       if ( !! map_exists ) {
-        console.log("map exists", db.map.name, map_exists );
         Object.assign( map_exists, deep_clone( db.map ) );
       } else if ( /* validates */ !! db.map.name ) {
-        console.log("map new", db.map.name );
         db.maps.push( deep_clone( db.map ) );
       }
     },
     'prop.save': val => {
       const prop_exists = db.places.find( ({name}) => name == db.prop.name );
       if ( !! prop_exists ) {
-        console.log("prop exists", db.prop.name, prop_exists );
         Object.assign( prop_exists, deep_clone( db.prop ) );
       } else if ( /* validates */ !! db.prop.name ) {
-        console.log("prop new", db.prop.name );
         db.places.push( deep_clone( db.prop ) );
       }
     },
@@ -157,8 +153,6 @@
     const sql = await mysql();
     const g = await neo4j();
     const doc = await mongodb();
-    //console.log("Clients started.", { sql, g, doc } );
-    console.log("Add JENA");
   }
 
   function update_db(db, params) {
@@ -184,7 +178,6 @@
       }
       set_slot(db,slot,val);
       if ( actions[name] && not_empty( val ) ) {
-        console.log("Adding action", name, val );
         todo.push( () => (actions[name](val), set_slot(db,slot,'')) );
       }
     }
@@ -204,7 +197,6 @@
       const lastKey = keys[0];
       const object = o;
       if ( object == undefined || ! object.hasOwnProperty(lastKey) ) {
-        console.log(object,lastKey);
         throw new TypeError("db object has not such slot given by key path:" + s);
       }
       return { object, lastKey };
