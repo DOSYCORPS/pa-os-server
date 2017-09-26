@@ -42,6 +42,7 @@
       ]
     },
     prop: {
+      size: 0,
       dellocation: '',
       save: '',
       savelocation: '',
@@ -57,6 +58,7 @@
       ]
     },
     empty_prop: {
+      size: 0,
       dellocation: '',
       save: '',
       savelocation: '',

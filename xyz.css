@@ -43,3 +43,8 @@ span.fixedwidth {
 textarea {
   resize: vertical;
 }
+
+.shortinput {
+  width: 4rem;
+  text-align:right;
+}
