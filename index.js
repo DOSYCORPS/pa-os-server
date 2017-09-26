@@ -2,7 +2,6 @@
 {
   const bodyParser = require('body-parser');
   const browserify = require('browserify-middleware');
-  const sg = require('selector-generalization');
   const path = require('path');
   const views = require('./views.js');
   const {I} = require('dosyhil');
