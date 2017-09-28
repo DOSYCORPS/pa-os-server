@@ -15,7 +15,7 @@
   def`propview ${{file:'propview.html', stylesheet}}`;
   def`maplist ${{file:'maplist.html', stylesheet}}`;
   def`db ${0}
-    ${ d => ( JSON.stringify(d) } 
+    ${ d => JSON.stringify(d) } 
   `;
 
   module.exports = views;
