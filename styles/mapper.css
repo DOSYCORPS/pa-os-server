@@ -1,11 +1,13 @@
   main {
+    margin: 0 auto;
     width: max-content; 
     display: flex;
     flex-direction: column;
+    padding: 0.125rem;
+    padding-bottom: 2.5rem;
   }
   iframe {
     margin: 0.25rem;
-    margin-left:0.5rem;
     padding: 0.25rem;
     border: 1px solid silver;
     border-radius: 5px;
