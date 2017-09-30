@@ -1,7 +1,23 @@
 "use strict"; 
 {
-  const me = Array.from(parent.document.querySelectorAll('iframe')).find( el => el.contentWindow == self );
-  addEventListener('load', () => {
-    me.height = document.scrollingElement.scrollHeight + 10;
-  });
+  addEventListener('load', size );
+
+  if ( frames.length ) {
+    const subframes = Array.from( frames ).map( windowContext => windowContext.frameElement );
+    subframes.forEach( f => f.addEventListener('load', size ) );
+  }
+  
+  function size() {
+    const me = frameElement;
+    if ( !!me ) {
+      const myheight = parseInt(me.height);
+      const scrollHeight = Math.ceil(document.scrollingElement.scrollHeight);
+      const offsetHeight = Math.ceil(document.scrollingElement.offsetHeight);
+      if ( myheight < scrollHeight ) {
+        me.height = scrollHeight;
+      } else if ( myheight > offsetHeight ) {
+        me.height = offsetHeight; 
+      }
+    }
+  }
 }

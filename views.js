@@ -11,7 +11,7 @@
   def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
   def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
   def`maplist ${{file:'maplist.html', script, stylesheet}}`;
-  def`mapper ${{file:'mapper.html'}}`;
+  def`mapper ${{file:'mapper.html', stylesheet, script}}`;
   def`mapeditor ${{file:'mapeditor.html', script, stylesheet}}`;
   def`propview ${{file:'propview.html', script, stylesheet}}`;
   def`maplist ${{file:'maplist.html', script, stylesheet}}`;

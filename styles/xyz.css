@@ -6,6 +6,9 @@
     border-radius: 3px;
     background-color: grey;
   }
+  body {
+    display: table;
+  }
   body, input, textarea {
     margin: 0;
     font-family: Arial;

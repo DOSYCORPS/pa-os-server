@@ -45,25 +45,3 @@ ${
     <button class=middle name=prop.save value=prop>Save prop</button>
 </form>
 <script src=/scripts/build.js></script>
-<script>
-  document.querySelector('#clearall').addEventListener('click', e => {
-    e.preventDefault();
-    const form = e.target.form;
-    Array.from(form.elements).forEach( el => {
-      switch( el.tagName ) {
-        case "INPUT":
-          if ( el.type !== 'reset' && el.type !== 'submit' ) {
-            el.value = '';
-            el.checked = false;
-          }
-          break;
-        case "SELECT":
-          Array.from(el.options).forEach( opel => opel.selected = false );
-          break;
-        case "TEXTAREA":
-          el.innerHTML = '';
-          break;
-      }
-    });
-  });
-</script>
