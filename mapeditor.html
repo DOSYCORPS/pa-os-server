@@ -1,6 +1,5 @@
-<h1 id=edit-map>
-   Edit map&nbsp;
-   <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
+<h1 class=sticky id=edit-map>
+   Edit map <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </h1>
 <a target=_parent href=maplist>Back to map search</a>
 ${
@@ -19,17 +18,14 @@ ${
   <p>
     <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
-    <textarea required rows=3 cols=28 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
+    <textarea required rows=3 cols=25 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
-    <textarea required rows=5 cols=28 name=map.desc placeholder=description>${T.map.desc}</textarea>
+    <textarea required rows=5 cols=25 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
-  <p>
-    <a rel=search target=_parent href=mapper#searchplaces>Search more properties to add</a>
   <dl>
-    <dt>${T.map.name} properties
   ${ d => d.map.places.map( ({name,slot},idx) => `
-    <dd><input size=10 placeholder=placename name=map.places.${idx}.slot value="${slot}">
-    <input type=hidden placeholder=placename name=map.places.${idx}.name value="${name}">
+    <dd><input size=7 placeholder=name name=map.places.${idx}.slot value="${slot}">
+    <input type=hidden name=map.places.${idx}.name value="${name}">
     <span class=fixedwidth>
       <a target=propview href=propview?p=${name}>${name}</a> 
     </span>
@@ -37,6 +33,8 @@ ${
     ` 
   )}
   </dl>
+  <p>
+    <a rel=search target=_parent href=mapper#searchplaces>Search more properties to add</a>
   <p>
     <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </form>

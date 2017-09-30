@@ -10,7 +10,7 @@
   def`searchresult ${{file:'searchresult.html', stylesheet}}`;
   def`searchplaces ${{file:'searchplaces.html', stylesheet}}`;
   def`maplist ${{file:'maplist.html', stylesheet}}`;
-  def`mapper ${{file:'mapper.html', stylesheet}}`;
+  def`mapper ${{file:'mapper.html'}}`;
   def`mapeditor ${{file:'mapeditor.html', stylesheet}}`;
   def`propview ${{file:'propview.html', stylesheet}}`;
   def`maplist ${{file:'maplist.html', stylesheet}}`;

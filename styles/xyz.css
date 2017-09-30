@@ -1,4 +1,11 @@
 /* styles for components */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: grey;
+  }
   body, input, textarea {
     margin: 0;
     font-family: Arial;
@@ -19,8 +26,8 @@
 
   span.fixedwidth {
     display: inline-block;
-    width: 15ch;
-    max-width: 15ch;
+    width: 10ch;
+    max-width: 10ch;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -30,6 +37,11 @@
     line-height: 1.3rem;
   }
 
+  .sticky {
+    position: sticky;
+    top: 0;
+    background: white;
+  }
   .middle {
     vertical-align: middle;
   }

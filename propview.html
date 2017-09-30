@@ -1,6 +1,5 @@
-<h1 id=edit-prop>
-  Edit prop
-  <button form=propview class=middle name=prop.save value=prop>Save prop</button>
+<h1 class=sticky id=edit-prop>
+  Edit prop <button form=propview class=middle name=prop.save value=prop>Save prop</button>
 </h1>
 <a target=_parent href=mapper#mapeditor>Back to map</a>
 ${
@@ -21,24 +20,24 @@ ${
   <p>
     <input required name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
-    <textarea required rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
+    <textarea required rows=3 cols=25 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property places</h2>
   <p>
   <dl>
-    <dt><label for=generalized>All places</label>
+    <dt><label for=generalized>All places</label><input style="width: ${d => (d.prop.size+'').length+1}ch" placeholder=0
+        id=size class="txcent report" readonly type=number name=prop.size value="${T.prop.size}"><span class=report>found</span>
     <dd>
       <input type=text size=10 id=generalized name=prop.generalized value="${T.prop.generalized}"><button 
-        id=generalize>Get all</button><input style="width: ${d => (d.prop.size+'').length+1}ch" placeholder=0
-        id=size class="txcent report" readonly type=number name=prop.size value="${T.prop.size}"><span class=report>found</span>
-    </dd>
+        id=generalize>Get all</button>    </dd>
     <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
   <dl>
     <dt>Place examples
-    <dd><input class=new type=text value="" size=10 name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
+    <dd><input class=new type=text value="" size=10 name=prop.locations><button 
+      formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
     <dd>
-      <input type=text value="${p}" name=prop.locations>
-      <button formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
+      <input type=text size=10 value="${p}" name=prop.locations><button 
+        formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
     ` 
   )}
   </dl>
