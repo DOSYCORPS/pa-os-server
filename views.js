@@ -3,17 +3,18 @@
   const {def,T,I} = require('dosyhil');
   const {PLACE_TYPES,MAP_TYPES,JOURNEY_TYPES} = require('./data.js');
   const stylesheet = 'styles/xyz.css';
+  const script = 'scripts/size.js';
   const views = {
     serveTo
   };
 
-  def`searchresult ${{file:'searchresult.html', stylesheet}}`;
-  def`searchplaces ${{file:'searchplaces.html', stylesheet}}`;
-  def`maplist ${{file:'maplist.html', stylesheet}}`;
+  def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
+  def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
+  def`maplist ${{file:'maplist.html', script, stylesheet}}`;
   def`mapper ${{file:'mapper.html'}}`;
-  def`mapeditor ${{file:'mapeditor.html', stylesheet}}`;
-  def`propview ${{file:'propview.html', stylesheet}}`;
-  def`maplist ${{file:'maplist.html', stylesheet}}`;
+  def`mapeditor ${{file:'mapeditor.html', script, stylesheet}}`;
+  def`propview ${{file:'propview.html', script, stylesheet}}`;
+  def`maplist ${{file:'maplist.html', script, stylesheet}}`;
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;
