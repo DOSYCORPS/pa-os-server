@@ -1,7 +1,10 @@
-<h1 id=mymaps>My Maps</h1>
-<a href=mapper>Create new map</a>
-<ul>
-  ${ d => d.maps.map( m => `
-  <li>map ${m.name} <a href="mapper?m=${m.name}">Edit</a>` 
-  )}
-</ul>
+<link rel=stylesheet href=styles/mapper.css>
+<main>
+  <h1 id=mymaps>My Maps</h1>
+  <a href=mapper>Create new map</a>
+  <ul>
+    ${ d => d.maps.map( m => `
+    <li>map ${m.name} <a href="mapper?m=${m.name}">Edit</a>` 
+    )}
+  </ul>
+</main>

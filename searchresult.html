@@ -1,11 +1,12 @@
 <form method=POST action=mapeditor#proplist target=mapeditor>
+  <input type=hidden name=map.save value=map></button>
   <ul>
   ${ d => d.places.map( p => `
     <li>
       <span class="fixedwidth">
         <a target=propview href="propview?p=${p.name}">${p.name}</a>
       </span> 
-      <button name=map.places;json value="${JSON.stringify(p).replace(/"/g,'&quot;')}">Add</button>
+      <button name=map.addprop value="${JSON.stringify(p).replace(/"/g,'&quot;')}">Add</button>
     </li>`
   )}
   </ul>

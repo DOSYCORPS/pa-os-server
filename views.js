@@ -8,13 +8,12 @@
     serveTo
   };
 
-  def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
-  def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
-  def`maplist ${{file:'maplist.html', script, stylesheet}}`;
-  def`mapper ${{file:'mapper.html', stylesheet, script}}`;
+  def`maplist ${{file:'maplist.html', script }}`;
+  def`mapper ${{file:'mapper.html', script}}`;
   def`mapeditor ${{file:'mapeditor.html', script, stylesheet}}`;
+  def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
+  def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
   def`propview ${{file:'propview.html', script, stylesheet}}`;
-  def`maplist ${{file:'maplist.html', script, stylesheet}}`;
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;

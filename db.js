@@ -24,7 +24,8 @@
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     map: {
-      removeplace: '',
+      addprop: '',
+      removeprop: '',
       save: '',
       places: [
       ],
@@ -34,7 +35,8 @@
       ]
     },
     empty_map: {
-      removeplace: '',
+      addprop: '',
+      removeprop: '',
       save: '',
       places: [
       ],
@@ -95,11 +97,24 @@
         db.places.push( deep_clone( db.prop ) );
       }
     },
-    'map.removeplace': val => {
+    'map.removeprop': val => {
       db.map.places = db.map.places.filter( ({name}) => val !== name );
+      actions['map.save'](db.map.name);
+    },
+    'map.addprop': val => {
+      let prop;
+      try {
+        prop = JSON.parse(val);
+      } catch(e) {
+        console.warn("Incoming map.addprop value failed JSON parse", val+'');
+        return;
+      }
+      db.map.places.push( prop );
+      actions['map.save'](db.map.name);
     },
     'prop.dellocation': val => {
       db.prop.locations.splice( val, 1 );
+      actions['prop.save'](db.prop.name);
     }
   }
   const mysql = function () {

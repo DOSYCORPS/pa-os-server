@@ -1,20 +1,20 @@
-<h1 class=sticky id=edit-prop>
-  Edit prop <button form=propview class=middle name=prop.save value=prop>Save prop</button>
-</h1>
-<a target=_parent href=mapper#mapeditor>Back to map</a>
-${
-  d => {
-    if ( d.req_method == 'GET' ) {
-      if ( !! d.query_params && d.query_params.p ) {
-        d.prop = Object.assign( d.deep_clone( d.empty_prop ), d.places.find( ({name}) => name == d.query_params.p ) || {} );
-      } else {
-        d.prop = d.deep_clone( d.empty_prop );
-      }
-    }
-    return '';
-  }
-}
 <form id=propview method=POST action=propview>
+  <h1 id=edit-prop>
+    Edit prop <button form=propview class=middle name=prop.save value=prop>Save prop</button>
+  </h1>
+  <a target=_parent href=mapper#mapeditor>Back to map</a>
+  ${
+    d => {
+      if ( d.req_method == 'GET' ) {
+        if ( !! d.query_params && d.query_params.p ) {
+          d.prop = Object.assign( d.deep_clone( d.empty_prop ), d.places.find( ({name}) => name == d.query_params.p ) || {} );
+        } else {
+          d.prop = d.deep_clone( d.empty_prop );
+        }
+      }
+      return '';
+    }
+  }
   <p>
     <input required name=prop.name placeholder=name value="${T.prop.name}">
   <p>

@@ -1,12 +1,28 @@
+  body, input, textarea {
+    margin: 0;
+    font-family: Arial;
+    font-size: 0.851rem;
+  }
+
+  h1, h2 {
+    font-weight: 300;
+  }
+
+  dd {
+    margin-left: 1rem;
+  }
+  ul {
+    padding-left: 1rem;
+    list-style-position: outside;
+  }
   main {
     margin: 0 auto;
-    width: max-content; 
-    display: flex;
-    flex-direction: column;
+    display: table;
     padding: 0.125rem;
     padding-bottom: 2.5rem;
   }
   iframe {
+    display: block;
     margin: 0.25rem;
     padding: 0.25rem;
     border: 1px solid silver;
