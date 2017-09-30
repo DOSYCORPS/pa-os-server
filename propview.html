@@ -22,20 +22,19 @@ ${
     <input required name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
     <textarea required rows=3 cols=28 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
-  <h2 id=proplocations>Property Locations</h2>
+  <h2 id=proplocations>Property places</h2>
   <p>
   <dl>
-    <dt><label for=generalized>Generalized location</label>
-    <dd><label for=size>Size</label> <input id=size class=shortinput type=number name=prop.size value="${T.prop.size}"></dd>
+    <dt><label for=generalized>All places</label>
     <dd>
-      <input type=text id=generalized name=prop.generalized value="${T.prop.generalized}">
-      <button id=generalize>G</button>
+      <input type=text size=10 id=generalized name=prop.generalized value="${T.prop.generalized}"><button 
+        id=generalize>Get all</button><input style="width: ${d => (d.prop.size+'').length+1}ch" placeholder=0
+        id=size class="txcent report" readonly type=number name=prop.size value="${T.prop.size}"><span class=report>found</span>
     </dd>
     <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
   <dl>
-    <dt>Location examples
-    <dd><a rel=search target=_parent href=mapper#add-location-view>Add more examples</a>
-    <dd><input class=new type=text value="" name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
+    <dt>Place examples
+    <dd><input class=new type=text value="" size=10 name=prop.locations><button formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
     <dd>
       <input type=text value="${p}" name=prop.locations>
@@ -45,7 +44,6 @@ ${
   </dl>
   <p>
     <button class=middle name=prop.save value=prop>Save prop</button>
-    <button id=clearall type=reset name=prop.reset value=prop>Clear all</button>
 </form>
 <script src=/scripts/build.js></script>
 <script>

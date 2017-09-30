@@ -1,50 +1,54 @@
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-thumb {
-  background: transparent;
-  border-radius: 3px;
-}
-body {
-  margin: 0;
-  font-family: Arial;
-  font-size: 0.851rem;
-}
+/* styles for components */
+  body, input, textarea {
+    margin: 0;
+    font-family: Arial;
+    font-size: 0.851rem;
+  }
 
-h1, h2 {
-  font-weight: 300;
-}
+  h1, h2 {
+    font-weight: 300;
+  }
 
-dd {
-  margin-left: 1rem;
-}
-ul {
-  padding-left: 1rem;
-  list-style-position: outside;
-}
+  dd {
+    margin-left: 1rem;
+  }
+  ul {
+    padding-left: 1rem;
+    list-style-position: outside;
+  }
 
-span.fixedwidth {
-  display: inline-block;
-  width: 15ch;
-  max-width: 15ch;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  vertical-align: middle;
-  background: rgba(150,150,150,0.2);
-  height: 1.3rem;
-  line-height: 1.3rem;
-}
+  span.fixedwidth {
+    display: inline-block;
+    width: 15ch;
+    max-width: 15ch;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+    background: rgba(150,150,150,0.2);
+    height: 1.3rem;
+    line-height: 1.3rem;
+  }
 
-.middle {
-  vertical-align: middle;
-}
+  .middle {
+    vertical-align: middle;
+  }
 
-textarea {
-  resize: vertical;
-}
-
-.shortinput {
-  width: 4rem;
-  text-align:right;
-}
+  .txleft {
+    text-align: left;
+  }
+  .txright {
+    text-align: right;
+  }
+  .txcent {
+    text-align: center;
+  }
+  .report {
+    border-color: transparent;
+    color: grey;
+  }
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
