@@ -10,6 +10,7 @@
       Prefer to just have some way to add actions
       This really ought to be here.
     **/
+    journeys: [],
     query: {
       place: '',
       map: '',
@@ -23,6 +24,33 @@
       { name: 'paragraphs', slot: '',
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
+    journey: {
+      addprop: '',
+      removeprop: '',
+      save: '',
+      maps: [
+      ],
+      steps: [
+      ],
+      name : '',
+      desc: '',
+      concepts: [
+      ]
+    },
+    empty_journey: {
+      addprop: '',
+      removeprop: '',
+      save: '',
+      maps: [
+      ],
+      steps: [
+      ],
+      name : 'test journey',
+      desc: 'test',
+      concepts: [
+        'test'
+      ]
+    },
     map: {
       addprop: '',
       removeprop: '',

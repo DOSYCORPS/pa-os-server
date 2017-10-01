@@ -1,0 +1,29 @@
+<link rel=stylesheet href=styles/mapper.css>
+<main>
+  <iframe id=journeyeditor name=mapeditor test:12 width=230 height=335 src="journeyeditor${ d => {
+      if ( !! d.query_params && !! d.query_params.j ) {
+        return `?j=${d.query_params.j}`;
+      } else {
+        return '';
+      }
+    }
+  }"></iframe>
+  <iframe id=searchmaps name=searchmaps test:12 width=230 height=230 src=searchmaps></iframe>
+  <iframe id=mapeditor name=mapeditor test:12 width=230 height=335 src="mapeditor${ d => {
+      if ( !! d.query_params && !! d.query_params.m ) {
+        return `?m=${d.query_params.m}`;
+      } else {
+        return '';
+      }
+    }
+  }"></iframe>
+  <iframe id=searchplaces name=searchplaces test:12 width=230 height=230 src=searchplaces></iframe>
+  <iframe id=propview name=propview test:12 width=230 height=400 src="propview${ d => {
+      if ( !! d.query_params && !! d.query_params.p ) {
+        return `?p=${d.query_params.p}`;
+      } else {
+        return '';
+      }
+    }
+  }"></iframe>
+</main>

@@ -9,9 +9,14 @@
   };
 
   def`maplist ${{file:'maplist.html', script }}`;
+  def`journeylist ${{file:'journeylist.html', script }}`;
+  def`journeyeditor ${{file:'journeyeditor.html', script, stylesheet}}`;
   def`mapper ${{file:'mapper.html', script}}`;
+  def`journeyer ${{file:'journeyer.html', script}}`;
   def`mapeditor ${{file:'mapeditor.html', script, stylesheet}}`;
   def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
+  def`searchmaps ${{file:'searchmaps.html', script, stylesheet}}`;
+  def`mapsearchresult ${{file:'mapsearchresult.html', script, stylesheet}}`;
   def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
   def`propview ${{file:'propview.html', script, stylesheet}}`;
   def`db ${0}

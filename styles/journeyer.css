@@ -1,0 +1,41 @@
+  body, input, textarea {
+    margin: 0;
+    font-family: Arial;
+    font-size: 0.851rem;
+  }
+
+  .txcent {
+    text-align: center;
+  }
+  .sticky {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: #ddd;
+  }
+
+  h1, h2 {
+    font-weight: 300;
+  }
+
+  dd {
+    margin-left: 1rem;
+  }
+  ul {
+    padding-left: 1rem;
+    list-style-position: outside;
+  }
+  main {
+    margin: 0 auto;
+    display: table;
+    padding: 0.125rem;
+    padding-bottom: 2.5rem;
+  }
+  iframe {
+    display: block;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px silver;
+  }

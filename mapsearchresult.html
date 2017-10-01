@@ -1,0 +1,12 @@
+<form method=POST action=journeyeditor target=journeyeditor>
+  <ul>
+  ${ d => d.maps.map( m => `
+    <li>
+      <span class="fixedwidth">
+        <a target=propview href="mapeditor?m=${m.name}">${m.name}</a>
+      </span> 
+      <button name=map.addprop value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
+    </li>`
+  )}
+  </ul>
+</form>

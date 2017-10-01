@@ -1,0 +1,13 @@
+<link rel=stylesheet href=styles/journeyer.css>
+<main>
+  <h1 id=myjourneys>My Journeys</h1>
+  <a href=journeyer>Create new journey</a>
+  <ul>
+    ${ d => d.journeys.map( j => `
+    <li>journey ${j.name} <a href="journeyer?j=${j.name}">Edit</a>` 
+    )}
+  </ul>
+</main>
+<footer>
+  <a href=maplist>My maps</a>
+</footer>

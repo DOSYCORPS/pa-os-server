@@ -1,0 +1,53 @@
+<form id=journeyeditor method=POST action=journeyeditor>
+  <h1 class=sticky id=edit-journey>
+     Edit journey <button class=middle form=journeyeditor name=journey.save value=prop>Save</button>
+  </h1>
+  <a target=_parent href=journeylist>Back to my journeys</a>
+  ${
+    d => {
+      if ( d.req_method == 'GET' ) {
+        if ( !! d.query_params && !! d.query_params.j ) {
+          d.journey = Object.assign( d.deep_clone( d.empty_journey ), d.journeys.find( ({name}) => name == d.query_params.j ) || {} );
+        } else {
+          d.journey = d.deep_clone( d.empty_journey );
+        }
+      }
+      return '';
+    }
+  }
+  <h2 id=about>About</h2>
+  <p>
+    <input required name=journey.name placeholder=name value="${T.journey.name}">
+  <p>
+    <textarea required rows=2 name=journey.concepts;array placeholder="journey concepts" >${T.journey.concepts}</textarea>
+  <p>
+    <textarea required rows=3 name=journey.desc placeholder="about this journey">${T.journey.desc}</textarea>
+  <h2 id=maplist>Maps</h2>
+  <dl>
+  ${ d => d.journey.maps.map( ({name,slot},idx) => `
+    <dd><input size=7 placeholder=name name=journey.places.${idx}.slot value="${slot}">
+    <input type=hidden name=journey.places.${idx}.name value="${name}">
+    <span class=fixedwidth>
+      <a target=propview href="propview?p=${name}">${name}</a> 
+    </span>
+    <button name=journey.removeprop value="${name}">Del</button>
+    ` 
+  )}
+  </dl>
+  <h2 id=steplist>Steps</h2>
+  <dl>
+  ${ d => d.journey.steps.map( ({name,slot},idx) => `
+    <dd><input size=7 placeholder=name name=journey.places.${idx}.slot value="${slot}">
+    <input type=hidden name=journey.places.${idx}.name value="${name}">
+    <span class=fixedwidth>
+      <a target=propview href="propview?p=${name}">${name}</a> 
+    </span>
+    <button name=journey.removeprop value="${name}">Del</button>
+    ` 
+  )}
+  </dl>
+  <p>
+    <a rel=search target=_parent href=journeyper#searchplaces>Search more maps to add</a>
+  <p>
+    <button class=middle form=journeyeditor name=journey.save value=prop>Save journey</button>
+</form>
