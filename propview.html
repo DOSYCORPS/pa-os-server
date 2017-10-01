@@ -1,5 +1,5 @@
 <form id=propview method=POST action=propview>
-  <h1 id=edit-prop>
+  <h1 class=sticky id=edit-prop>
     Edit prop <button form=propview class=middle name=prop.save value=prop>Save prop</button>
   </h1>
   <a target=_parent href=mapper#mapeditor>Back to map</a>
@@ -20,7 +20,7 @@
   <p>
     <input required name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
   <p>
-    <textarea required rows=3 cols=25 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
+    <textarea required rows=2 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property places</h2>
   <p>
   <dl>

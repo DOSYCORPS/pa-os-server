@@ -8,6 +8,7 @@
   }
   body {
     display: table;
+    width:100%;
   }
   body, input, textarea {
     margin: 0;
@@ -41,10 +42,12 @@
   }
 
   .sticky {
+    width: 100%;
     position: sticky;
     top: 0;
-    background: white;
+    background: #ddd;
   }
+
   .middle {
     vertical-align: middle;
   }

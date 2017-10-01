@@ -1,5 +1,5 @@
 <form id=mapeditor method=POST action=mapeditor>
-  <h1 id=edit-map>
+  <h1 class=sticky id=edit-map>
      Edit map <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
   </h1>
   <a target=_parent href=maplist>Back to map search</a>
@@ -18,9 +18,9 @@
   <p>
     <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
-    <textarea required rows=3 cols=25 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
+    <textarea required rows=2 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
-    <textarea required rows=5 cols=25 name=map.desc placeholder=description>${T.map.desc}</textarea>
+    <textarea required rows=3 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
   <dl>
   ${ d => d.map.places.map( ({name,slot},idx) => `

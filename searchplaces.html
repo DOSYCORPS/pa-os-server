@@ -1,10 +1,11 @@
-<h1 id=search-places>Search properties</h1>
-<a target=_parent href=mapper#mapeditor>Back to map</a>
 <form method=POST action=searchresult target=results>
+  <h1 class=sticky id=search-places>Search props</h1>
+  <a target=_parent href=mapper#mapeditor>Back to map</a>
   <p>
-    <input name=query.place placeholder=search size=18>
+    <input name=query.place placeholder=search size=15>
     <button>Search</button>
   <p>
     <a target=propview href=propview>Create new property</a>
+  <p>
+    <iframe name=results test:12 width=95% height=70 frameborder=0 src=searchresult></iframe>
 </form>
-<iframe name=results test:12 width=95% height=60 frameborder=0 src=searchresult></iframe>
