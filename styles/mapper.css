@@ -4,6 +4,16 @@
     font-size: 0.851rem;
   }
 
+  .txcent {
+    text-align: center;
+  }
+  .sticky {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: #ddd;
+  }
+
   h1, h2 {
     font-weight: 300;
   }

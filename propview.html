@@ -29,15 +29,14 @@
     <dd>
       <input type=text size=10 id=generalized name=prop.generalized value="${T.prop.generalized}"><button 
         id=generalize>Get all</button>    </dd>
-    <input type=hidden id=ngeneralized name=prop.ngeneralized value="${T.prop.ngeneralized}">
   <dl>
     <dt>Place examples
     <dd><input class=new type=text value="" size=10 name=prop.locations><button 
-      formaction=propview#proplocations name=prop.savelocation value=new>Save</button>
+      formaction=propview name=prop.savelocation value=new>Save</button>
   ${ d => d.prop.locations.map( (p,idx) => `
     <dd>
       <input type=text size=10 value="${p}" name=prop.locations><button 
-        formaction=propview#proplocations name=prop.dellocation value="${idx}">Del</button>
+        formaction=propview name=prop.dellocation value="${idx}">Del</button>
     ` 
   )}
   </dl>
