@@ -1,9 +1,11 @@
 <link rel=stylesheet href=styles/mapper.css>
+<!--
 <header class="sticky txcent">
   <a href=mapper#mapeditor>Edit map</a>
   <a href=mapper#searchplaces>Search props</a>
   <a href=mapper#propview>Edit prop</a>
 </header>
+!-->
 <main>
   <iframe id=mapeditor name=mapeditor test:12 width=230 height=335 src="mapeditor${ d => {
       if ( !! d.query_params && !! d.query_params.m ) {
@@ -14,7 +16,7 @@
     }
   }"></iframe>
   <iframe id=searchplaces name=searchplaces test:12 width=230 height=230 src=searchplaces></iframe>
-  <iframe id=propview name=propview test:12 width=230 height=385 src="propview${ d => {
+  <iframe id=propview name=propview test:12 width=230 height=400 src="propview${ d => {
       if ( !! d.query_params && !! d.query_params.p ) {
         return `?p=${d.query_params.p}`;
       } else {

@@ -8,11 +8,14 @@
   }
   
   function size() {
-    const me = frameElement;
-    if ( !!me ) {
+    if ( !!document.scrollingElement ) {
+      document.scrollingElement.classList.add('noscroll');
+    }
+    if ( !!frameElement ) {
+      const me = frameElement;
       const myheight = parseInt(me.height);
-      const scrollHeight = Math.ceil(document.scrollingElement.scrollHeight);
-      const offsetHeight = Math.ceil(document.scrollingElement.offsetHeight);
+      const scrollHeight = Math.round(document.scrollingElement.scrollHeight);
+      const offsetHeight = Math.round(document.scrollingElement.offsetHeight);
       if ( myheight < scrollHeight ) {
         me.height = scrollHeight;
       } else if ( myheight > offsetHeight ) {

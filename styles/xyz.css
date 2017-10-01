@@ -41,6 +41,13 @@
     line-height: 1.3rem;
   }
 
+  .noscroll::-webkit-scrollbar {
+    width: 5px;
+  }
+  .noscroll::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: transparent;
+  }
   .sticky {
     width: 100%;
     position: sticky;
