@@ -36,10 +36,14 @@
   </dl>
   <h2 id=steplist>Steps</h2>
   <ol>
-  ${ d => d.journey.steps.map( ({prop,action},idx) => `
+  ${ d => d.journey.steps.map( ({structure,action},idx) => `
     <li>
       <span class=fixedwidth>
-        <a target=propview href="propview?p=${prop.name}">${prop.name}</a> 
+        ${ structure.type == 'prop' ? 
+          `<a target=propview href="propview?p=${structure.name}">${structure.name}</a>` :
+           structure.type == 'map' ?
+          `<a target=mapeditor href="mapeditor?m=${structure.name}">${structure.name}</a>` : 'unknown type'
+        }
       </span>
       <select name=action>
         <option ${ action == 'report' ? 'selected' : '' } value=report>report</option>
@@ -48,7 +52,7 @@
         <option ${ action == 'scrollto' ? 'selected' : '' }  value=scrollto>scrollto</option>
         <option ${ action == 'type' ? 'selected' : '' }  value=type>type</option>
       </select>
-      <button name=journey.removeprop value="${prop.name}">Del</button>
+      <button name=journey.removestep value="${structure.name}">Del</button>
     </li>
     ` 
   )}

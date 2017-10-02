@@ -4,7 +4,7 @@
     'get', 'do'
   ]);
   const ACTION = new Set([
-    'press', 'scroll', 'hover', 'type'
+    'record', 'press', 'scroll', 'hover', 'type'
   ]);
   const db = {
     // functions
@@ -51,9 +51,10 @@
         { name : 'login form' }
       ],
       steps: [
-        { prop: { name: 'login' }, action: 'type' },
-        { prop: { name: 'password' }, action: 'type' },
-        { prop: { name: 'button' }, action: 'click' },
+        { structure: { name: 'login', type : 'prop' }, action: 'type' },
+        { structure: { name: 'password', type : 'prop' }, action: 'type' },
+        { structure: { name: 'button', type: 'prop' }, action: 'click' },
+        { structure: { name: 'post', type: 'map' }, action: 'record' },
       ],
       name : 'test journey',
       desc: 'test',
