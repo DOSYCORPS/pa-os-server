@@ -24,28 +24,31 @@
     <textarea required rows=3 name=journey.desc placeholder="about this journey">${T.journey.desc}</textarea>
   <h2 id=maplist>Maps</h2>
   <dl>
-  ${ d => d.journey.maps.map( ({name,slot},idx) => `
-    <dd><input size=7 placeholder=name name=journey.places.${idx}.slot value="${slot}">
-    <input type=hidden name=journey.places.${idx}.name value="${name}">
-    <span class=fixedwidth>
-      <a target=propview href="propview?p=${name}">${name}</a> 
-    </span>
-    <button name=journey.removeprop value="${name}">Del</button>
+  ${ d => d.journey.maps.map( (map,idx) => `
+    <dd>
+      <input type=hidden name=journey.maps.${idx}.name value="${map.name}">
+      <span class=fixedwidth>
+        <a target=propview href="mapeditor?m=${map.name}">${map.name}</a> 
+      </span>
+      <button name=journey.removemap value="${map.name}">Del</button>
     ` 
   )}
   </dl>
   <h2 id=steplist>Steps</h2>
-  <dl>
-  ${ d => d.journey.steps.map( ({name,slot},idx) => `
-    <dd><input size=7 placeholder=name name=journey.places.${idx}.slot value="${slot}">
-    <input type=hidden name=journey.places.${idx}.name value="${name}">
-    <span class=fixedwidth>
-      <a target=propview href="propview?p=${name}">${name}</a> 
-    </span>
-    <button name=journey.removeprop value="${name}">Del</button>
+  <ol>
+  ${ d => d.journey.steps.map( ({prop,action},idx) => `
+    <li>
+      <input size=7 placeholder=name name=journey.steps.${idx}.prop.name value="${prop.name}">
+      <span class=fixedwidth>
+        <a target=propview href="propview?p=${prop.name}">${prop.name}</a> 
+      </span>
+      <select name=action>
+      </select>
+      <button name=journey.removeprop value="${name}">Del</button>
+    </li>
     ` 
   )}
-  </dl>
+  </ol>
   <p>
     <a rel=search target=_parent href=journeyper#searchplaces>Search more maps to add</a>
   <p>
