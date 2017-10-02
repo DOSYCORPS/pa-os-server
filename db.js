@@ -1,5 +1,11 @@
 "use strict";
 {
+  const STEP = new Set([
+    'get', 'do'
+  ]);
+  const ACTION = new Set([
+    'press', 'scroll', 'hover', 'type'
+  ]);
   const db = {
     // functions
     deep_clone,
