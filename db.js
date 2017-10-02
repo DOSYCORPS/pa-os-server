@@ -42,8 +42,12 @@
       removeprop: '',
       save: '',
       maps: [
+        { name : 'login form' }
       ],
       steps: [
+        { prop: { name: 'login' }, action: 'type' },
+        { prop: { name: 'password' }, action: 'type' },
+        { prop: { name: 'button' }, action: 'click' },
       ],
       name : 'test journey',
       desc: 'test',

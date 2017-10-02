@@ -38,13 +38,17 @@
   <ol>
   ${ d => d.journey.steps.map( ({prop,action},idx) => `
     <li>
-      <input size=7 placeholder=name name=journey.steps.${idx}.prop.name value="${prop.name}">
       <span class=fixedwidth>
         <a target=propview href="propview?p=${prop.name}">${prop.name}</a> 
       </span>
       <select name=action>
+        <option ${ action == 'report' ? 'selected' : '' } value=report>report</option>
+        <option ${ action == 'click' ? 'selected' : '' } value=click>click</option>
+        <option ${ action == 'hover' ? 'selected' : '' }  value=hover>hover</option>
+        <option ${ action == 'scrollto' ? 'selected' : '' }  value=scrollto>scrollto</option>
+        <option ${ action == 'type' ? 'selected' : '' }  value=type>type</option>
       </select>
-      <button name=journey.removeprop value="${name}">Del</button>
+      <button name=journey.removeprop value="${prop.name}">Del</button>
     </li>
     ` 
   )}
