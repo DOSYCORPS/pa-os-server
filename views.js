@@ -5,6 +5,9 @@
   const TYPES = ['map', 'prop', 'journey'];
   const stylesheet = 'styles/xyz.css';
   const script = 'scripts/size.js';
+  const states = {
+
+  };
   const views = {
     serveTo
   };
@@ -39,26 +42,33 @@
       }
     }
   }
+
   function serveTo({app,db,update_db}) {
     for( const view in I ) {
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
-        db.req_method = req.method;
-        db.route_params = req.params;
-        db.query_params = req.query; 
-        db.body_params = req.body;
-        update_working_memory(db,req);
-        const html = await I[view](I.deep_clone(db));
+        const dbc = I.deep_clone(db);
+        dbc.dbckey = Math.random()+'';
+        dbc.req_method = req.method;
+        dbc.route_params = req.params;
+        dbc.query_params = req.query; 
+        dbc.body_params = req.body;
+        update_working_memory(dbc,req);
+        states[dbc.dbckey] = dbc;
+        const html = await I[view](dbc);
         res.end(html);
       });
       app.post(`/${view}`, async (req,res,next) => {
         res.type('html');
-        db.req_method = req.method;
-        db.route_params = req.params;
-        db.query_params = req.query; 
-        db.body_params = req.body;
-        update_db(db,req.body);
-        const html = await I[view](I.deep_clone(db));
+        const dbc = states[req.body.dbckey];
+        console.log(states, req.body.dbckey);
+        dbc.req_method = req.method;
+        dbc.route_params = req.params;
+        dbc.query_params = req.query; 
+        dbc.body_params = req.body;
+        update_db(dbc,req.body);
+        Object.assign(db,I.deep_clone(dbc));
+        const html = await I[view](dbc);
         res.end(html);
       });
     }

@@ -30,6 +30,7 @@
     display: table;
     padding: 0.125rem;
     padding-bottom: 2.5rem;
+    min-width: 200px;
   }
   iframe {
     display: block;

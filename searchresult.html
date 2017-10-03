@@ -1,4 +1,5 @@
 <form method=POST action=mapeditor target=mapeditor>
+  <input type=hidden name=dbckey value="${T.dbckey}">
   <ul>
   ${ d => d.props.map( p => `
     <li>

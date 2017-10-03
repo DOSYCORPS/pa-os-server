@@ -15,6 +15,7 @@
       Prefer to just have some way to add actions
       This really ought to be here.
     **/
+    dbckey: '',
     journeys: [
       {
         addstep: '',
@@ -31,7 +32,7 @@
           { structure: { name: 'button', type: 'prop' }, action: 'click' },
           { structure: { name: 'post', type: 'map' }, action: 'record' },
         ],
-        name : 'test journey',
+        name : 'test journey2',
         desc: 'test',
         concepts: [
           'test'
@@ -44,6 +45,20 @@
       journey: ''
     },
     maps: [
+      {
+        addprop: '',
+        removeprop: '',
+        save: '',
+        props: [
+          { slot: 'abc', name : 'xyz' }
+        ],
+        name : 'hello',
+        desc: 'hiya',
+        concepts: [
+          'oorah'
+        ]
+      },
+
     ],
     props: [
       { name: 'links', slot: '',
@@ -238,6 +253,7 @@
   }
 
   function update_db(db, params) {
+    console.log(params);
     const todo = [];
     for ( const name in params ) {
       const [slot,type] = name.split(';'); 
@@ -264,14 +280,11 @@
       }
     }
     todo.forEach( act => act() );
+    console.log(todo);
   }
 
   function deep_clone( o ) {
     return JSON.parse( JSON.stringify( o ) );
-  }
-
-  function clone_self() {
-     
   }
 
   // helpers

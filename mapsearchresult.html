@@ -1,11 +1,12 @@
 <form method=POST action=journeyeditor target=journeyeditor>
+  <input type=hidden name=dbckey value="${T.dbckey}">
   <ul>
   ${ d => d.maps.map( m => `
     <li>
       <span class="fixedwidth">
         <a target=mapeditor href="mapeditor?map=${m.name}">${m.name}</a>
       </span> 
-      <button name=map.addprop value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
+      <button name=journey.addmap value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
     </li>`
   )}
   </ul>
