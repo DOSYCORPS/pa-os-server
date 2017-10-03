@@ -14,17 +14,17 @@
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
 
-  def`maplist ${{file:'maplist.html', script }}`;
-  def`journeylist ${{file:'journeylist.html', script }}`;
-  def`journeyeditor ${{file:'journeyeditor.html', script, stylesheet}}`;
-  def`mapper ${{file:'mapper.html', script}}`;
-  def`journeyer ${{file:'journeyer.html', script}}`;
-  def`mapeditor ${{file:'mapeditor.html', script, stylesheet}}`;
-  def`searchplaces ${{file:'searchplaces.html', script, stylesheet}}`;
-  def`searchmaps ${{file:'searchmaps.html', script, stylesheet}}`;
-  def`mapsearchresult ${{file:'mapsearchresult.html', script, stylesheet}}`;
-  def`searchresult ${{file:'searchresult.html', script, stylesheet}}`;
-  def`propview ${{file:'propview.html', script, stylesheet}}`;
+  def`maplist ${{file:'markup/maplist.html', script }}`;
+  def`journeylist ${{file:'markup/journeylist.html', script }}`;
+  def`journeyeditor ${{file:'markup/journeyeditor.html', script, stylesheet}}`;
+  def`mapper ${{file:'markup/mapper.html', script}}`;
+  def`journeyer ${{file:'markup/journeyer.html', script}}`;
+  def`mapeditor ${{file:'markup/mapeditor.html', script, stylesheet}}`;
+  def`searchplaces ${{file:'markup/searchplaces.html', script, stylesheet}}`;
+  def`searchmaps ${{file:'markup/searchmaps.html', script, stylesheet}}`;
+  def`mapsearchresult ${{file:'markup/mapsearchresult.html', script, stylesheet}}`;
+  def`searchresult ${{file:'markup/searchresult.html', script, stylesheet}}`;
+  def`propview ${{file:'markup/propview.html', script, stylesheet}}`;
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;
