@@ -2,6 +2,7 @@
 {
   const {def,T,I} = require('dosyhil');
   const {PLACE_TYPES,MAP_TYPES,JOURNEY_TYPES} = require('./data.js');
+  const TYPES = ['map', 'prop', 'journey'];
   const stylesheet = 'styles/xyz.css';
   const script = 'scripts/size.js';
   const views = {
@@ -28,9 +29,9 @@
   module.exports = views;
 
   function update_working_memory(db,req) {
-    for( const type in req.query ) {
+    for( const type of TYPES ) {
       const target_name = req.query[type];
-      const target = db[type+'s'].find( ({name}) => name == target_name );
+      const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
       if ( !! target ) {
         Object.assign( db[type], I.deep_clone( target ) );
       } else {
