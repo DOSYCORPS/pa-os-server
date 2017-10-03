@@ -1,9 +1,9 @@
-<form method=POST action=journeyeditor target=journeyeditor>
+<form method=POST action=journey target=journey>
   <ul>
   ${ d => d.maps.map( m => `
     <li>
       <span class="fixedwidth">
-        <a target=mapeditor href="mapeditor?map=${m.name}">${m.name}</a>
+        <a target=map href="map?map=${m.name}">${m.name}</a>
       </span> 
       <button name=journey.addmap value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
     </li>`

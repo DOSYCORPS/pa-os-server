@@ -1,8 +1,8 @@
-<form id=mapeditor method=POST action=mapeditor>
-  <h1 class=sticky id=edit-map>
+<form method=POST action=map>
+  <h1 class=sticky id=map>
      Edit map <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
   </h1>
-  <a target=_parent href=maplist>Back to my maps</a>
+  <a target=_parent href=mymaps>Back to my maps</a>
   <p>
     <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
@@ -15,14 +15,14 @@
     <dd><input size=7 placeholder=name name=map.props.${idx}.slot value="${slot}">
     <input type=hidden name=map.props.${idx}.name value="${name}">
     <span class=fixedwidth>
-      <a target=propview href="propview?p=${name}">${name}</a> 
+      <a target=prop href="prop?p=${name}">${name}</a> 
     </span>
     <button name=map.removeprop value="${name}">Del</button>
     ` 
   )}
   </dl>
   <p>
-    <a rel=search target=_parent href=mapper#searchplaces>Search more properties to add</a>
+    <a rel=search target=searchprops href=searchprops#searchprops>Search more properties to add</a>
   <p>
     <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
 </form>

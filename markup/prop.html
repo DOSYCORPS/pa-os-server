@@ -1,8 +1,8 @@
-<form id=propview method=POST action=propview>
-  <h1 class=sticky id=edit-prop>
-    Edit prop <button form=propview class=middle name=prop.save value=prop>Save prop</button>
+<form method=POST action=prop>
+  <h1 class=sticky id=prop>
+    Edit prop <button form=prop class=middle name=prop.save value=prop>Save prop</button>
   </h1>
-  <a target=_parent href=mapper#mapeditor>Back to map</a>
+  <a target=map href=map#map>Back to map</a>
   <p>
     <input required name=prop.name placeholder=name value="${T.prop.name}">
   <p>

@@ -1,6 +1,6 @@
 <link rel=stylesheet href=styles/mapper.css>
 <main>
-  <iframe id=mapeditor name=mapeditor test:12 width=230 height=335 src="mapeditor${ d => {
+  <iframe id=map name=map test:12 width=230 height=335 src="map${ d => {
       if ( !! d.query_params && !! d.query_params.map ) {
         return `?map=${d.query_params.map}"`;
       } else {
@@ -8,8 +8,8 @@
       }
     }
   }></iframe>
-  <iframe id=searchplaces name=searchplaces test:12 width=230 height=230 src=searchplaces></iframe>
-  <iframe id=propview name=propview test:12 width=230 height=400 src="propview${ d => {
+  <iframe id=searchprops name=searchprops test:12 width=230 height=230 src=searchprops></iframe>
+  <iframe id=prop name=prop test:12 width=230 height=400 src="prop${ d => {
       if ( !! d.query_params && !! d.query_params.prop ) {
         return `?prop=${d.query_params.prop}"`;
       } else {

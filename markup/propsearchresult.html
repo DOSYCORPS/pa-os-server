@@ -1,9 +1,9 @@
-<form method=POST action=mapeditor target=mapeditor>
+<form method=POST action=map target=map>
   <ul>
   ${ d => d.props.map( p => `
     <li>
       <span class="fixedwidth">
-        <a target=propview href="propview?p=${p.name}">${p.name}</a>
+        <a target=prop href="prop?prop=${p.name}">${p.name}</a>
       </span> 
       <button name=map.addprop value="${JSON.stringify(p).replace(/"/g,'&quot;')}">Add</button>
     </li>`
