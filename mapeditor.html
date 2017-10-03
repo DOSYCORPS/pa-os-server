@@ -3,19 +3,6 @@
      Edit map <button class=middle form=mapeditor name=map.save value=prop>Save map</button>
   </h1>
   <a target=_parent href=maplist>Back to my maps</a>
-  ${
-    d => {
-      if ( d.req_method == 'GET' ) {
-        console.log(d.query_params, d.maps);
-        if ( !! d.query_params && !! d.query_params.m ) {
-          d.map = Object.assign( I.deep_clone( d.empty_map ), d.maps.find( ({name}) => name == d.query_params.m ) || {} );
-        } else {
-          d.map = I.deep_clone( d.empty_map );
-        }
-      }
-      return '';
-    }
-  }
   <p>
     <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
@@ -24,9 +11,9 @@
     <textarea required rows=3 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
   <dl>
-  ${ d => d.map.places.map( ({name,slot},idx) => `
-    <dd><input size=7 placeholder=name name=map.places.${idx}.slot value="${slot}">
-    <input type=hidden name=map.places.${idx}.name value="${name}">
+  ${ d => d.map.props.map( ({name,slot},idx) => `
+    <dd><input size=7 placeholder=name name=map.props.${idx}.slot value="${slot}">
+    <input type=hidden name=map.props.${idx}.name value="${name}">
     <span class=fixedwidth>
       <a target=propview href="propview?p=${name}">${name}</a> 
     </span>

@@ -15,7 +15,29 @@
       Prefer to just have some way to add actions
       This really ought to be here.
     **/
-    journeys: [],
+    journeys: [
+      {
+        addstep: '',
+        removestep: '',
+        addmap: '',
+        removemap: '',
+        save: '',
+        maps: [
+          { name : 'login form' }
+        ],
+        steps: [
+          { structure: { name: 'login', type : 'prop' }, action: 'type' },
+          { structure: { name: 'password', type : 'prop' }, action: 'type' },
+          { structure: { name: 'button', type: 'prop' }, action: 'click' },
+          { structure: { name: 'post', type: 'map' }, action: 'record' },
+        ],
+        name : 'test journey',
+        desc: 'test',
+        concepts: [
+          'test'
+        ]
+      }
+    ],
     query: {
       place: '',
       map: '',
@@ -23,15 +45,17 @@
     },
     maps: [
     ],
-    places: [
+    props: [
       { name: 'links', slot: '',
         desc: 'all links', generalized: 'a', locations: []},
       { name: 'paragraphs', slot: '',
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     journey: {
-      addprop: '',
-      removeprop: '',
+      addmap: '',
+      removemap: '',
+      addstep: '',
+      removestep: '',
       save: '',
       maps: [
       ],
@@ -43,17 +67,14 @@
       ]
     },
     empty_journey: {
-      addprop: '',
-      removeprop: '',
+      addstep: '',
+      removestep: '',
+      addmap: '',
+      removemap: '',
       save: '',
       maps: [
-        { name : 'login form' }
       ],
       steps: [
-        { structure: { name: 'login', type : 'prop' }, action: 'type' },
-        { structure: { name: 'password', type : 'prop' }, action: 'type' },
-        { structure: { name: 'button', type: 'prop' }, action: 'click' },
-        { structure: { name: 'post', type: 'map' }, action: 'record' },
       ],
       name : 'test journey',
       desc: 'test',
@@ -65,7 +86,7 @@
       addprop: '',
       removeprop: '',
       save: '',
-      places: [
+      props: [
       ],
       name : '',
       desc: '',
@@ -76,7 +97,7 @@
       addprop: '',
       removeprop: '',
       save: '',
-      places: [
+      props: [
       ],
       name : 'test map',
       desc: 'test',
@@ -119,6 +140,14 @@
     }
   };
   const actions = {
+    'journey.save': val => {
+      const journey_exists = db.journeys.find( ({name}) => name == db.journey.name );
+      if ( !! journey_exists ) {
+        Object.assign( journey_exists, deep_clone( db.journey ) );
+      } else if ( /* validates */ !! db.journey.name ) {
+        db.journeys.push( deep_clone( db.journey ) );
+      }
+    },
     'map.save': val => {
       const map_exists = db.maps.find( ({name}) => name == db.map.name );
       if ( !! map_exists ) {
@@ -128,15 +157,15 @@
       }
     },
     'prop.save': val => {
-      const prop_exists = db.places.find( ({name}) => name == db.prop.name );
+      const prop_exists = db.props.find( ({name}) => name == db.prop.name );
       if ( !! prop_exists ) {
         Object.assign( prop_exists, deep_clone( db.prop ) );
       } else if ( /* validates */ !! db.prop.name ) {
-        db.places.push( deep_clone( db.prop ) );
+        db.props.push( deep_clone( db.prop ) );
       }
     },
     'map.removeprop': val => {
-      db.map.places = db.map.places.filter( ({name}) => val !== name );
+      db.map.props = db.map.props.filter( ({name}) => val !== name );
       actions['map.save'](db.map.name);
     },
     'map.addprop': val => {
@@ -147,7 +176,7 @@
         console.warn("Incoming map.addprop value failed JSON parse", val+'');
         return;
       }
-      db.map.places.push( prop );
+      db.map.props.push( prop );
       actions['map.save'](db.map.name);
     },
     'prop.dellocation': val => {

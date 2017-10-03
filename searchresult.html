@@ -1,6 +1,6 @@
 <form method=POST action=mapeditor target=mapeditor>
   <ul>
-  ${ d => d.places.map( p => `
+  ${ d => d.props.map( p => `
     <li>
       <span class="fixedwidth">
         <a target=propview href="propview?p=${p.name}">${p.name}</a>

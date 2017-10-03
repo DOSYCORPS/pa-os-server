@@ -4,7 +4,7 @@
   <a href=journeyer>Create new journey</a>
   <ul>
     ${ d => d.journeys.map( j => `
-    <li>journey ${j.name} <a href="journeyer?j=${j.name}">Edit</a>` 
+    <li>journey ${j.name} <a href="journeyer?journey=${j.name}">Edit</a>` 
     )}
   </ul>
 </main>
