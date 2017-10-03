@@ -15,7 +15,6 @@
       Prefer to just have some way to add actions
       This really ought to be here.
     **/
-    dbckey: '',
     journeys: [
       {
         addstep: '',
