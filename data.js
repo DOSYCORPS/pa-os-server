@@ -21,8 +21,12 @@
     'on-demand'
   ];
 
+  const TYPES = ['map', 'prop', 'journey' ];
+  const STEPS = [ 'get', 'do' ];
+  const ACTIONS = [ 'record', 'press', 'scroll', 'hover', 'type' ];
+
   const data = {
-    PLACE_TYPES, MAP_TYPES, JOURNEY_TYPES 
+    PLACE_TYPES, MAP_TYPES, JOURNEY_TYPES, TYPES, ACTIONS, STEPS
   };
   
   module.exports = data;

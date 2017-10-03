@@ -1,30 +1,26 @@
 "use strict";
 {
   const {def,T,I} = require('dosyhil');
-  const {PLACE_TYPES,MAP_TYPES,JOURNEY_TYPES} = require('./data.js');
-  const TYPES = ['map', 'prop', 'journey'];
+  const {TYPES} = require('./data.js');
   const stylesheet = 'styles/xyz.css';
   const script = 'scripts/size.js';
-  const states = {
-
-  };
   const views = {
     serveTo
   };
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
 
-  def`maplist ${{file:'markup/maplist.html', script }}`;
-  def`journeylist ${{file:'markup/journeylist.html', script }}`;
-  def`journeyeditor ${{file:'markup/journeyeditor.html', script, stylesheet}}`;
-  def`mapper ${{file:'markup/mapper.html', script}}`;
-  def`journeyer ${{file:'markup/journeyer.html', script}}`;
-  def`mapeditor ${{file:'markup/mapeditor.html', script, stylesheet}}`;
-  def`searchplaces ${{file:'markup/searchplaces.html', script, stylesheet}}`;
+  def`mymaps ${{file:'markup/mymaps.html', script }}`;
+  def`myjourneys ${{file:'markup/myjourneys.html', script }}`;
+  def`buildmap ${{file:'markup/buildmap.html', script}}`;
+  def`buildjourney ${{file:'markup/buildjourney.html', script}}`;
+  def`map ${{file:'markup/map.html', script, stylesheet}}`;
+  def`journey ${{file:'markup/journey.html', script, stylesheet}}`;
+  def`prop ${{file:'markup/prop.html', script, stylesheet}}`;
   def`searchmaps ${{file:'markup/searchmaps.html', script, stylesheet}}`;
+  def`searchprops ${{file:'markup/searchprops.html', script, stylesheet}}`;
   def`mapsearchresult ${{file:'markup/mapsearchresult.html', script, stylesheet}}`;
-  def`searchresult ${{file:'markup/searchresult.html', script, stylesheet}}`;
-  def`propview ${{file:'markup/propview.html', script, stylesheet}}`;
+  def`propsearchresult ${{file:'markup/propsearchresult.html', script, stylesheet}}`;
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;

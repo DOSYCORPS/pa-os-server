@@ -1,20 +1,6 @@
 "use strict";
 {
-  const STEP = new Set([
-    'get', 'do'
-  ]);
-  const ACTION = new Set([
-    'record', 'press', 'scroll', 'hover', 'type'
-  ]);
   const db = {
-    // functions
-    /**
-      things like query.<thing>
-      and <thing>.remove ought to trigger an action when they update.
-      I could standardise things like remove...maybe? 
-      Prefer to just have some way to add actions
-      This really ought to be here.
-    **/
     journeys: [
       {
         addstep: '',

@@ -1,13 +1,13 @@
 <link rel=stylesheet href=styles/mapper.css>
 <main>
   <h1 id=mymaps>My Maps</h1>
-  <a href=mapper>Create new map</a>
+  <a href=buildmap>Create new map</a>
   <ul>
     ${ d => d.maps.map( m => `
-    <li>map ${m.name} <a href="mapper?map=${m.name}">Edit</a>` 
+    <li>map ${m.name} <a href="buildmap?map=${m.name}">Edit</a>` 
     )}
   </ul>
   <footer>
-    <a href=journeylist>My journeys</a>
+    <a href=myjourneys>My journeys</a>
   </footer>
 </main>
