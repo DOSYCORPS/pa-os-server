@@ -2,7 +2,7 @@
 {
   const {def,T,I} = require('dosyhil');
   const {TYPES} = require('./data.js');
-  const stylesheet = 'styles/xyz.css';
+  const stylesheet = 'styles/component.css';
   const script = 'scripts/size.js';
   const views = {
     serveTo
