@@ -50,9 +50,9 @@
         const dbc = I.deep_clone(db);
         dbc.dbckey = Math.random()+'';
         dbc.req_method = req.method;
-        dbc.route_params = req.params;
-        dbc.query_params = req.query; 
-        dbc.body_params = req.body;
+        dbc.route_params = I.deep_clone(req.params);
+        dbc.query_params = I.deep_clone(req.query); 
+        dbc.body_params = I.deep_clone(req.body)
         update_working_memory(dbc,req);
         states[dbc.dbckey] = dbc;
         const html = await I[view](dbc);
@@ -64,10 +64,13 @@
         console.log(states, req.body.dbckey);
         dbc.req_method = req.method;
         dbc.route_params = req.params;
-        dbc.query_params = req.query; 
-        dbc.body_params = req.body;
+        dbc.query_params = I.deep_clone(req.query); 
+        dbc.body_params = I.deep_clone(req.body);
         update_db(dbc,req.body);
-        Object.assign(db,I.deep_clone(dbc));
+        const {map,journey,prop} = dbc;
+        Object.assign(db.map, map);
+        Object.assign(db.prop, prop);
+        Object.assign(db.journey, journey);
         const html = await I[view](dbc);
         res.end(html);
       });
