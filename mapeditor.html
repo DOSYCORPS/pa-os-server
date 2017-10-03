@@ -6,10 +6,11 @@
   ${
     d => {
       if ( d.req_method == 'GET' ) {
+        console.log(d.query_params, d.maps);
         if ( !! d.query_params && !! d.query_params.m ) {
-          d.map = Object.assign( d.deep_clone( d.empty_map ), d.maps.find( ({name}) => name == d.query_params.m ) || {} );
+          d.map = Object.assign( I.deep_clone( d.empty_map ), d.maps.find( ({name}) => name == d.query_params.m ) || {} );
         } else {
-          d.map = d.deep_clone( d.empty_map );
+          d.map = I.deep_clone( d.empty_map );
         }
       }
       return '';

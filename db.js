@@ -8,7 +8,6 @@
   ]);
   const db = {
     // functions
-    deep_clone,
     /**
       things like query.<thing>
       and <thing>.remove ought to trigger an action when they update.
@@ -240,6 +239,10 @@
 
   function deep_clone( o ) {
     return JSON.parse( JSON.stringify( o ) );
+  }
+
+  function clone_self() {
+     
   }
 
   // helpers

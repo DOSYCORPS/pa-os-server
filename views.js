@@ -8,6 +8,8 @@
     serveTo
   };
 
+  I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
+
   def`maplist ${{file:'maplist.html', script }}`;
   def`journeylist ${{file:'journeylist.html', script }}`;
   def`journeyeditor ${{file:'journeyeditor.html', script, stylesheet}}`;
@@ -29,11 +31,12 @@
     for( const view in I ) {
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
+        console.log("get", req.url, req.query);
         db.req_method = req.method;
         db.route_params = req.params;
         db.query_params = req.query; 
         db.body_params = req.body;
-        const html = await I[view](db);
+        const html = await I[view](I.deep_clone(db));
         res.end(html);
       });
       app.post(`/${view}`, async (req,res,next) => {
@@ -43,7 +46,7 @@
         db.query_params = req.query; 
         db.body_params = req.body;
         update_db(db,req.body);
-        const html = await I[view](db);
+        const html = await I[view](I.deep_clone(db));
         res.end(html);
       });
     }

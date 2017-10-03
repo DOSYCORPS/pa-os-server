@@ -3,7 +3,7 @@
   ${ d => d.maps.map( m => `
     <li>
       <span class="fixedwidth">
-        <a target=propview href="mapeditor?m=${m.name}">${m.name}</a>
+        <a target=mapeditor href="mapeditor?m=${m.name}">${m.name}</a>
       </span> 
       <button name=map.addprop value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
     </li>`

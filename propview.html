@@ -7,9 +7,9 @@
     d => {
       if ( d.req_method == 'GET' ) {
         if ( !! d.query_params && d.query_params.p ) {
-          d.prop = Object.assign( d.deep_clone( d.empty_prop ), d.places.find( ({name}) => name == d.query_params.p ) || {} );
+          d.prop = Object.assign( I.deep_clone( d.empty_prop ), d.places.find( ({name}) => name == d.query_params.p ) || {} );
         } else {
-          d.prop = d.deep_clone( d.empty_prop );
+          d.prop = I.deep_clone( d.empty_prop );
         }
       }
       return '';

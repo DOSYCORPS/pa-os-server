@@ -7,9 +7,9 @@
     d => {
       if ( d.req_method == 'GET' ) {
         if ( !! d.query_params && !! d.query_params.j ) {
-          d.journey = Object.assign( d.deep_clone( d.empty_journey ), d.journeys.find( ({name}) => name == d.query_params.j ) || {} );
+          d.journey = Object.assign( I.deep_clone( d.empty_journey ), d.journeys.find( ({name}) => name == d.query_params.j ) || {} );
         } else {
-          d.journey = d.deep_clone( d.empty_journey );
+          d.journey = I.deep_clone( d.empty_journey );
         }
       }
       return '';
@@ -28,7 +28,7 @@
     <dd>
       <input type=hidden name=journey.maps.${idx}.name value="${map.name}">
       <span class=fixedwidth>
-        <a target=propview href="mapeditor?m=${map.name}">${map.name}</a> 
+        <a target=_parent href="journeyer?m=${map.name}&v=${Math.random()}#mapeditor">${map.name}</a> 
       </span>
       <button name=journey.removemap value="${map.name}">Del</button>
     ` 
@@ -40,9 +40,9 @@
     <li>
       <span class=fixedwidth>
         ${ structure.type == 'prop' ? 
-          `<a target=propview href="propview?p=${structure.name}">${structure.name}</a>` :
+          `<a target=propview href="propview?p=${structure.name}#propview">${structure.name}</a>` :
            structure.type == 'map' ?
-          `<a target=mapeditor href="mapeditor?m=${structure.name}">${structure.name}</a>` : 'unknown type'
+          `<a target=mapeditor href="mapeditor?m=${structure.name}#mapeditor">${structure.name}</a>` : 'unknown type'
         }
       </span>
       <select name=action>
@@ -58,7 +58,7 @@
   )}
   </ol>
   <p>
-    <a rel=search target=_parent href=journeyper#searchplaces>Search more maps to add</a>
+    <a rel=search target=_parent href=journeyer#searchplaces>Search more maps to add</a>
   <p>
     <button class=middle form=journeyeditor name=journey.save value=prop>Save journey</button>
 </form>
