@@ -2,7 +2,7 @@
 <main>
   <iframe id=journeyeditor name=journeyeditor test:12 width=230 height=335 src="journeyeditor${ d => {
       if ( !! d.query_params && !! d.query_params.j ) {
-        return `?j=${d.query_params.j}&v=${Math.random()}"`;
+        return `?j=${d.query_params.j}"`;
       } else {
         return '"';
       }
@@ -12,7 +12,7 @@
   <iframe id=mapeditor name=mapeditor test:12 width=230 height=335 src="mapeditor${ d => {
       console.log(d.query_params, d.maps);
       if ( !! d.query_params && !! d.query_params.m ) {
-        return `?m=${d.query_params.m}&v=${Math.random()}"`;
+        return `?m=${d.query_params.m}"`;
       } else {
         return '"';
       }
@@ -21,7 +21,7 @@
   <iframe id=searchplaces name=searchplaces test:12 width=230 height=230 src=searchplaces></iframe>
   <iframe id=propview name=propview test:12 width=230 height=400 src="propview${ d => {
       if ( !! d.query_params && !! d.query_params.p ) {
-        return `?p=${d.query_params.p}&v=${Math.random()}"`;
+        return `?p=${d.query_params.p}"`;
       } else {
         return '"';
       }
