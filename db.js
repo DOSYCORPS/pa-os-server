@@ -155,6 +155,21 @@
     }
   };
   const actions = {
+    'journey.removemap': val => {
+      db.journey.maps = db.journey.maps.filter( ({name}) => val !== name );
+      actions['journey.save'](db.journey.name);
+    },
+    'journey.addmap': val => {
+      let map;
+      try {
+        map = JSON.parse(val);
+      } catch(e) {
+        console.warn("Incoming journey.addmap value failed JSON parse", val+'');
+        return;
+      }
+      db.journey.maps.push( map );
+      actions['journey.save'](db.journey.name);
+    },
     'journey.save': val => {
       const journey_exists = db.journeys.find( ({name}) => name == db.journey.name );
       if ( !! journey_exists ) {
