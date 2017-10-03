@@ -252,13 +252,13 @@
     const doc = await mongodb();
   }
 
-  function update_db(db, params) {
+  function update_db(dbv, params) {
     console.log(params);
     const todo = [];
     for ( const name in params ) {
       const [slot,type] = name.split(';'); 
       try {
-        resolve_slot(db,slot);
+        resolve_slot(dbv,slot);
       } catch(e) {
         console.warn(e);
         continue;
@@ -274,9 +274,9 @@
       } else if ( type == 'array' ) {
         val = val.split(/,/g);
       }
-      set_slot(db,slot,val);
+      set_slot(dbv,slot,val);
       if ( actions[name] && not_empty( val ) ) {
-        todo.push( () => (actions[name](val), set_slot(db,slot,'')) );
+        todo.push( () => (actions[name](val), set_slot(dbv,slot,'')) );
       }
     }
     todo.forEach( act => act() );

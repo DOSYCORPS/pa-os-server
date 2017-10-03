@@ -33,12 +33,14 @@
 
   function update_working_memory(db,req) {
     for( const type of TYPES ) {
-      const target_name = req.query[type];
-      const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
-      if ( !! target ) {
-        Object.assign( db[type], I.deep_clone( target ) );
-      } else {
-        Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
+      if ( req.originalUrl.includes(type) ) {
+        const target_name = req.query[type];
+        const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
+        if ( !! target ) {
+          Object.assign( db[type], I.deep_clone( target ) );
+        } else {
+          Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
+        }
       }
     }
   }
@@ -47,31 +49,22 @@
     for( const view in I ) {
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
-        const dbc = I.deep_clone(db);
-        dbc.dbckey = Math.random()+'';
-        dbc.req_method = req.method;
-        dbc.route_params = I.deep_clone(req.params);
-        dbc.query_params = I.deep_clone(req.query); 
-        dbc.body_params = I.deep_clone(req.body)
-        update_working_memory(dbc,req);
-        states[dbc.dbckey] = dbc;
-        const html = await I[view](dbc);
+        db.req_method = req.method;
+        db.route_params = I.deep_clone(req.params);
+        db.query_params = I.deep_clone(req.query); 
+        db.body_params = I.deep_clone(req.body)
+        update_working_memory(db,req);
+        const html = await I[view](I.deep_clone(db));
         res.end(html);
       });
       app.post(`/${view}`, async (req,res,next) => {
         res.type('html');
-        const dbc = states[req.body.dbckey];
-        console.log(states, req.body.dbckey);
-        dbc.req_method = req.method;
-        dbc.route_params = req.params;
-        dbc.query_params = I.deep_clone(req.query); 
-        dbc.body_params = I.deep_clone(req.body);
-        update_db(dbc,req.body);
-        const {map,journey,prop} = dbc;
-        Object.assign(db.map, map);
-        Object.assign(db.prop, prop);
-        Object.assign(db.journey, journey);
-        const html = await I[view](dbc);
+        db.req_method = req.method;
+        db.route_params = req.params;
+        db.query_params = I.deep_clone(req.query); 
+        db.body_params = I.deep_clone(req.body);
+        update_db(db,req.body);
+        const html = await I[view](I.deep_clone(db));
         res.end(html);
       });
     }
