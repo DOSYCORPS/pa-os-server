@@ -29,9 +29,10 @@
 
   function update_working_memory(db,req) {
     for( const type of TYPES ) {
-      if ( req.originalUrl.includes(type) ) {
+      if ( req.path == "/" + type ) {
         const target_name = req.query[type];
         const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
+        console.log(target_name,target);
         if ( !! target ) {
           Object.assign( db[type], I.deep_clone( target ) );
         } else {
