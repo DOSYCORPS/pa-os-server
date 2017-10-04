@@ -1,12 +1,15 @@
-<form method=POST action=prop>
+<form method=POST action=prop?${ d => !d.query_params.buildjourney? '' : `buildjourney=true` }>
   <h1 class=sticky id=prop>
     Edit prop <button class=middle name=prop.save value=prop>Save prop</button>
   </h1>
-  <a target=map href=map#map>Back to map</a>
+  ${ d => !d.query_params.buildjourney ? 
+  `<a target=map href=map#map>Back to map</a>` :
+  `<a target=journey href=journey#journey>Back to journey</a>` 
+  }
   <p>
     <input required name=prop.name placeholder=name value="${T.prop.name}">
   <p>
-    <input required name=prop.concepts placeholder=concepts value="${T.prop.concepts}">
+    <input required name=prop.concepts;array placeholder=concepts value="${T.prop.concepts}">
   <p>
     <textarea required rows=2 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property places</h2>
