@@ -155,6 +155,21 @@
       db.journey.maps.push( map );
       actions['journey.save'](db.journey.name);
     },
+    'journey.addstep': val => {
+      let step;
+      try {
+        step = JSON.parse(val);
+      } catch(e) {
+        console.warn("Incoming journey.addstep value failed JSON parse", val+'');
+        return;
+      }
+      db.journey.steps.push( step );
+      actions['journey.save'](db.journey.name);
+    },
+    'journey.removestep': val => {
+      db.journey.steps.splice( val, 1 );
+      actions['journey.save'](db.journey.name);
+    },
     'journey.save': val => {
       const journey_exists = db.journeys.find( ({name}) => name == db.journey.name );
       if ( !! journey_exists ) {

@@ -8,7 +8,6 @@
     }
     if ( frames.length ) {
       const subframes = Array.from( frames ).map( windowContext => windowContext.frameElement );
-      console.log(subframes, location.href);
       subframes.forEach( f => f.addEventListener('load', size ) );
     }
     if ( !!frameElement ) {
