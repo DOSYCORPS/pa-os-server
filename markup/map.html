@@ -1,4 +1,4 @@
-<form method=POST action=map>
+<form method=POST action=map?${d=>!d.query_params.buildjourney?'':`buildjourney=true`}>
   <h1 class=sticky id=map>
      Edit map <button class=middle name=map.save value=prop>Save map</button>
   </h1>
