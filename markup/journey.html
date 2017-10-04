@@ -16,7 +16,7 @@
     <dd>
       <input type=hidden name=journey.maps.${idx}.name value="${map.name}">
       <span class=fixedwidth>
-        <a target=map href="map?map=${map.name}#map">${map.name}</a> 
+        <a target=map href="map?map=${map.name}${ d.query_params.buildjourney ? '&buildjourney=true' : '' }#map">${map.name}</a> 
       </span>
       <button name=journey.removemap value="${map.name}">Del</button>
     ` 
@@ -30,7 +30,7 @@
         ${ structure.type == 'prop' ? 
           `<a target=prop href="prop?prop=${structure.name}#prop">${structure.name}</a>` :
            structure.type == 'map' ?
-          `<a target=map href="map?map=${structure.name}#map">${structure.name}</a>` : 'unknown type'
+          `<a target=map href="map?map=${structure.name}${ d.query_params.buildjourney ? '&buildjourney=true' : '' }#map">${structure.name}</a>` : 'unknown type'
         }
       </span>
       <select name=journey.steps.${idx}.action>
@@ -46,7 +46,8 @@
   )}
   </ol>
   <p>
-    <a rel=search target=searchmaps href=searchmaps#searchmaps>Search more maps to add</a>
+    <a rel=search target=searchmaps href="searchmaps?buildjourney=true${ d => !d.journey.name ? '' : 
+      `&journey=${d.journey.name}` }#searchmaps">Search more maps to add</a>
   <p>
     <button class=middle name=journey.save value=journey>Save journey</button>
 </form>

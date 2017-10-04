@@ -1,11 +1,20 @@
 <form method=POST action=mapsearchresult target=mapsearchresult>
   <h1 class=sticky id=searchmaps>Search maps</h1>
-  <a target=journey href=journey#journey>Back to journey</a>
+  <a target=journey href="journey?${ 
+    d => !d.query_params.journey ? '' :
+    `&journey=${d.query_params.journey}`  
+    }${ 
+    d => !d.query_params.buildjourney ? '' :
+    `&buildjourney=true`}#journey">Back to journey</a>
   <p>
     <input name=query.map mapholder=search size=15>
     <button>Search</button>
   <p>
-    <a target=map href=map#map>Create new map</a>
+    <a target=map href="map?${ 
+      d => !d.query_params.buildjourney ? '' : 
+      `buildjourney=true` }${
+      d => !d.query_params.journey ? '' :
+      `&journey=${d.query_params.journey}` }#map">Create new map</a>
   <p>
-    <iframe name=mapsearchresult test:12 width=95% height=90 frameborder=0 src=mapsearchresult></iframe>
+    <iframe name=mapsearchresult test:12 width=95% height=90 frameborder=0 src="mapsearchresult${ d => !! d.query_params.buildjourney ? '?buildjourney=true' : '' }"></iframe>
 </form>

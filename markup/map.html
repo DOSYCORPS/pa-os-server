@@ -2,7 +2,9 @@
   <h1 class=sticky id=map>
      Edit map <button class=middle name=map.save value=prop>Save map</button>
   </h1>
-  <a target=_parent href=mymaps>Back to my maps</a>
+  ${ d => !!d.query_params.buildjourney ? '' :
+  `<a target=_parent href=mymaps>Back to my maps</a>`
+  }
   <p>
     <input required name=map.name placeholder=name value="${T.map.name}">
   <p>
@@ -12,12 +14,19 @@
   <h2 id=proplist>Properties</h2>
   <dl>
   ${ d => d.map.props.map( ({name,slot},idx) => `
-    <dd><input size=7 placeholder=name name=map.props.${idx}.slot value="${slot}">
-    <input type=hidden name=map.props.${idx}.name value="${name}">
-    <span class=fixedwidth>
-      <a target=prop href="prop?prop=${name}#prop">${name}</a> 
-    </span>
-    <button name=map.removeprop value="${name}">Del</button>
+    <dd>
+      ${ !!d.query_params.buildjourney ? '' : 
+      `<input size=7 placeholder=name name=map.props.${idx}.slot value="${slot}">`
+      }
+      <input type=hidden name=map.props.${idx}.name value="${name}">
+      <span class=fixedwidth>
+        <a target=prop href="prop?prop=${name}#prop">${name}</a> 
+      </span>
+      <button name=map.removeprop value="${name}">Del</button>
+      ${ !d.query_params.buildjourney ? '' :
+      `<button formtarget=journey formaction=journey name=journey.addstep 
+        value="${JSON.stringify({structure:{name,type:'prop'},action:'click'}).replace(/"/g,'&quot;')}">Add step</button>`
+      }
     ` 
   )}
   </dl>

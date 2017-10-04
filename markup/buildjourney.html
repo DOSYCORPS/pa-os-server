@@ -1,24 +1,37 @@
 <link rel=stylesheet href=styles/nav.css>
 <main>
-  <iframe id=journey name=journey test:12 width=230 height=335 src="journey${ d => {
+  <iframe id=journey name=journey test:12 width=230 height=335 src="journey?buildjourney=true${ d => {
       if ( !! d.query_params && !! d.query_params.journey ) {
-        return `?journey=${d.query_params.journey}"`;
+        return `&journey=${d.query_params.journey}"`;
       } else {
         return '"';
       }
     }
   }></iframe>
-  <iframe id=searchmaps name=searchmaps test:12 width=230 height=230 src=searchmaps></iframe>
-  <iframe id=map name=map test:12 width=230 height=335 src="map${ d => {
-      console.log(d.query_params, d.maps);
+  <iframe id=searchmaps name=searchmaps test:12 width=230 height=230 src="searchmaps?buildjourney=true${ d => {
+      if ( !! d.query_params && !! d.query_params.journey ) {
+        return `&journey=${d.query_params.journey}"`;
+      } else {
+        return '"';
+      }
+    }
+  }></iframe>
+  <iframe id=map name=map test:12 width=230 height=335 src="map?buildjourney=true${ d => {
       if ( !! d.query_params && !! d.query_params.map ) {
-        return `?map=${d.query_params.map}"`;
+        return `&map=${d.query_params.map}"`;
       } else {
         return '"';
       }
     }
   }></iframe>
-  <iframe id=searchprops name=searchprops test:12 width=230 height=230 src=searchprops></iframe>
+  <iframe id=searchprops name=searchprops test:12 width=230 height=230 src="searchprops?buildjourney=true${ d => {
+      if ( !! d.query_params && !! d.query_params.journey ) {
+        return `&journey=${d.query_params.journey}"`;
+      } else {
+        return '"';
+      }
+    }
+  }></iframe>
   <iframe id=prop name=prop test:12 width=230 height=400 src="prop${ d => {
       if ( !! d.query_params && !! d.query_params.prop ) {
         return `?prop=${d.query_params.prop}"`;

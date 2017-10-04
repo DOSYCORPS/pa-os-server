@@ -1,6 +1,10 @@
 <form method=POST action=propsearchresult target=propsearchresult>
   <h1 class=sticky id=searchprops>Search props</h1>
-  <a target=map href=map#map>Back to map</a>
+  <a target=map href="map?${ 
+    d => !d.query_params.buildjourney ? '' : 
+    `buildjourney=true` }${
+    d => !d.query_params.journey ? '' :
+    `&journey=${d.query_params.journey}` }#map">Back to map</a>
   <p>
     <input name=query.place placeholder=search size=15>
     <button>Search</button>
