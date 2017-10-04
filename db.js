@@ -43,12 +43,11 @@
           'oorah'
         ]
       },
-
     ],
     props: [
-      { name: 'links', slot: '',
+      { name: 'links', slot: '', concepts: [],
         desc: 'all links', generalized: 'a', locations: []},
-      { name: 'paragraphs', slot: '',
+      { name: 'paragraphs', slot: '', concepts: [],
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     journey: {
