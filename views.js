@@ -2,6 +2,7 @@
 {
   const {def,T,I} = require('dosyhil');
   const {TYPES} = require('./data.js');
+  const ModelRoutes = new Set(TYPES.map( t => "/" + t ));
   const stylesheet = 'styles/component.css';
   const script = 'scripts/size.js';
   const views = {
@@ -28,16 +29,14 @@
   module.exports = views;
 
   function update_working_memory(db,req) {
-    for( const type of TYPES ) {
-      if ( req.path == "/" + type ) {
-        const target_name = req.query[type];
-        const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
-        console.log(target_name,target);
-        if ( !! target ) {
-          Object.assign( db[type], I.deep_clone( target ) );
-        } else {
-          Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
-        }
+    if ( ModelRoutes.has( req.path ) ) {
+      const type = req.path.slice(1);
+      const target_name = req.query[type];
+      const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
+      if ( !! target ) {
+        Object.assign( db[type], I.deep_clone( target ) );
+      } else {
+        Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
       }
     }
   }

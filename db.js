@@ -253,7 +253,6 @@
   }
 
   function update_db(dbv, params) {
-    console.log(params);
     const todo = [];
     for ( const name in params ) {
       const [slot,type] = name.split(';'); 
@@ -280,7 +279,6 @@
       }
     }
     todo.forEach( act => act() );
-    console.log(todo);
   }
 
   function deep_clone( o ) {
