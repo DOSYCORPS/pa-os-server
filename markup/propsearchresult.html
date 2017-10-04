@@ -1,9 +1,12 @@
-<form method=POST action=map target=map>
+<form method=POST action=map?${ d=>!d.query_params.buildjourney?'':`buildjourney=true`} target=map>
   <ul>
   ${ d => d.props.map( p => `
     <li>
       <span class="fixedwidth">
-        <a target=prop href="prop?prop=${p.name}#prop">${p.name}</a>
+        <a target=prop href="prop?prop=${p.name}${ 
+          ! d.query_params.buildjourney ? '' :
+          `&buildjourney=true` 
+        }#prop">${p.name}</a>
       </span> 
       <button name=map.addprop value="${JSON.stringify(p).replace(/"/g,'&quot;')}">Add</button>
     </li>`

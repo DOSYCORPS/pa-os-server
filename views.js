@@ -35,7 +35,7 @@
       const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
       if ( !! target ) {
         Object.assign( db[type], I.deep_clone( target ) );
-      } else {
+      } else if ( target_name == "_new" ) {
         Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
       }
     }
@@ -46,9 +46,9 @@
       app.get(`/${view}`, async (req,res,next) => {
         res.type('html');
         db.req_method = req.method;
-        db.route_params = I.deep_clone(req.params);
-        db.query_params = I.deep_clone(req.query); 
-        db.body_params = I.deep_clone(req.body)
+        db.route_params = req.params;
+        db.query_params = req.query; 
+        db.body_params = req.body;
         update_working_memory(db,req);
         const html = await I[view](I.deep_clone(db));
         res.end(html);
@@ -57,8 +57,8 @@
         res.type('html');
         db.req_method = req.method;
         db.route_params = req.params;
-        db.query_params = I.deep_clone(req.query); 
-        db.body_params = I.deep_clone(req.body);
+        db.query_params = req.query; 
+        db.body_params = req.body;
         update_db(db,req.body);
         const html = await I[view](I.deep_clone(db));
         res.end(html);

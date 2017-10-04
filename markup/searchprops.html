@@ -1,11 +1,19 @@
-<form method=POST action=propsearchresult target=propsearchresult>
+<form method=POST action=propsearchresult?${ d=>!d.query_params.buildjourney?'': `buildjourney=true`} target=propsearchresult>
   <h1 class=sticky id=searchprops>Search props</h1>
-  <a target=map href=map#map>Back to map</a>
+  ${ d => ! d.query_params.buildjourney? 
+    `<a href=map#map target=map>Back to map</a>` :
+    `<a href=journey#journey target=journey>Back to journey</a>`
+  }
   <p>
     <input name=query.place placeholder=search size=15>
     <button>Search</button>
   <p>
-    <a target=prop href=prop#prop>Create new property</a>
+    <a target=prop href=prop?prop=_new${ 
+      d => !d.query_params.buildjourney? '' : 
+      `&buildjourney=true`
+    }#prop>Create new property</a>
   <p>
-    <iframe name=propsearchresult test:12 width=95% height=90 frameborder=0 src=propsearchresult></iframe>
+    <iframe name=propsearchresult test:12 width=95% height=90 frameborder=0 src=propsearchresult?${
+      d => !d.query_params.buildjourney? '' : `buildjourney=true` 
+    }></iframe>
 </form>
