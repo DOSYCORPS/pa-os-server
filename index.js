@@ -1,12 +1,12 @@
 "use strict";
 {
+  const express = require('express');
   const bodyParser = require('body-parser');
   const browserify = require('browserify-middleware');
   const path = require('path');
-  const views = require('./views.js');
   const {I} = require('dosyhil');
+  const views = require('./views.js');
   const {db,connect,update_db} = require('./db.js');
-  const express = require('express');
 
   let app;
 
