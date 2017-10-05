@@ -1,3 +1,6 @@
+  body {
+    background: #10ee98;
+  }
   body, input, textarea {
     margin: 0;
     font-family: Arial;
@@ -39,4 +42,5 @@
     border: 1px solid silver;
     border-radius: 5px;
     box-shadow: 1px 2px 5px silver;
+    background: white;
   }
