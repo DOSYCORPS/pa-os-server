@@ -3,7 +3,8 @@
   const {def,T,I} = require('dosyhil');
   const {TYPES} = require('./data.js');
   const ModelRoutes = new Set(TYPES.map( t => "/" + t ));
-  const stylesheet = 'styles/component.css';
+  const compstyle = 'styles/component.css';
+  const navstyle = 'styles/nav.css';
   const script = 'scripts/size.js';
   const views = {
     serveTo
@@ -11,17 +12,17 @@
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
 
-  def`mymaps ${{file:'markup/mymaps.html', script }}`;
-  def`myjourneys ${{file:'markup/myjourneys.html', script }}`;
-  def`buildmap ${{file:'markup/buildmap.html', script}}`;
-  def`buildjourney ${{file:'markup/buildjourney.html', script}}`;
-  def`map ${{file:'markup/map.html', script, stylesheet}}`;
-  def`journey ${{file:'markup/journey.html', script, stylesheet}}`;
-  def`prop ${{file:'markup/prop.html', script, stylesheet}}`;
-  def`searchmaps ${{file:'markup/searchmaps.html', script, stylesheet}}`;
-  def`searchprops ${{file:'markup/searchprops.html', script, stylesheet}}`;
-  def`mapsearchresult ${{file:'markup/mapsearchresult.html', script, stylesheet}}`;
-  def`propsearchresult ${{file:'markup/propsearchresult.html', script, stylesheet}}`;
+  def`mymaps ${{file:'markup/mymaps.html', script, stylesheet: navstyle }}`;
+  def`myjourneys ${{file:'markup/myjourneys.html', script, stylesheet: navstyle }}`;
+  def`buildmap ${{file:'markup/buildmap.html', script, stylesheet: navstyle}}`;
+  def`buildjourney ${{file:'markup/buildjourney.html', script, stylesheet: navstyle}}`;
+  def`map ${{file:'markup/map.html', script, stylesheet: compstyle}}`;
+  def`journey ${{file:'markup/journey.html', script, stylesheet: compstyle}}`;
+  def`prop ${{file:'markup/prop.html', script, stylesheet: compstyle}}`;
+  def`searchmaps ${{file:'markup/searchmaps.html', script, stylesheet: compstyle}}`;
+  def`searchprops ${{file:'markup/searchprops.html', script, stylesheet: compstyle}}`;
+  def`mapsearchresult ${{file:'markup/mapsearchresult.html', script, stylesheet: compstyle}}`;
+  def`propsearchresult ${{file:'markup/propsearchresult.html', script, stylesheet: compstyle}}`;
   def`db ${0}
     ${ d => JSON.stringify(d) } 
   `;

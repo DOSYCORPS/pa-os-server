@@ -1,15 +1,40 @@
+  iframe {
+    display: block;
+    margin: 0.25rem;
+    padding: 0.25rem;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: 1px 2px 5px silver;
+    background: white;
+  }
+
   body {
     background: #10ee98;
   }
+
   body, input, textarea {
     margin: 0;
     font-family: Arial;
     font-size: 0.851rem;
   }
 
+  main {
+    margin: 0 auto;
+    display: table;
+    padding: 0.125rem;
+    padding-bottom: 2.5rem;
+    min-width: 200px;
+  }
+
+  main.pane {
+    margin-top: 1rem;
+    background-color: white;
+  }
+
   .txcent {
     text-align: center;
   }
+
   .sticky {
     width: 100%;
     position: sticky;
@@ -24,23 +49,9 @@
   dd {
     margin-left: 1rem;
   }
+
   ul {
     padding-left: 1rem;
     list-style-position: outside;
   }
-  main {
-    margin: 0 auto;
-    display: table;
-    padding: 0.125rem;
-    padding-bottom: 2.5rem;
-    min-width: 200px;
-  }
-  iframe {
-    display: block;
-    margin: 0.25rem;
-    padding: 0.25rem;
-    border: 1px solid silver;
-    border-radius: 5px;
-    box-shadow: 1px 2px 5px silver;
-    background: white;
-  }
+

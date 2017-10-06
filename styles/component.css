@@ -1,22 +1,36 @@
 /* styles for components */
+
   ::-webkit-scrollbar {
     width: 5px;
   }
+
   ::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: grey;
   }
+
   :root {
     background: white;
   }
+
   body {
     display: table;
     width:100%;
   }
+
   body, input, textarea {
     margin: 0;
     font-family: Arial;
     font-size: 0.851rem;
+  }
+
+  main {
+    margin: 0 auto;
+    display: table;
+    padding: 0.125rem;
+    padding-bottom: 2.5rem;
+    min-width: 200px;
+    background: white;
   }
 
   h1, h2 {
@@ -26,6 +40,7 @@
   dd {
     margin-left: 1rem;
   }
+
   ul {
     padding-left: 1rem;
     list-style-position: outside;
@@ -47,10 +62,12 @@
   .noscroll::-webkit-scrollbar {
     width: 5px;
   }
+
   .noscroll::-webkit-scrollbar-thumb {
     border-radius: 3px;
     background-color: transparent;
   }
+
   .sticky {
     width: 100%;
     position: sticky;
@@ -65,16 +82,20 @@
   .txleft {
     text-align: left;
   }
+
   .txright {
     text-align: right;
   }
+
   .txcent {
     text-align: center;
   }
+
   .report {
     border-color: transparent;
     color: grey;
   }
+
   input[type=number]::-webkit-inner-spin-button, 
   input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
