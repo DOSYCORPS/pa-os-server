@@ -1,5 +1,5 @@
-<form method=POST action=propsearchresult?${ d=>!d.query_params.buildjourney?'': `buildjourney=true`} target=propsearchresult>
-  <h1 class=sticky id=searchprops>Search props</h1>
+<form role=search method=POST action=propsearchresult?${ d=>!d.query_params.buildjourney?'': `buildjourney=true`} target=propsearchresult>
+  <h1 class=sticky id=searchprops>Prop search</h1>
   ${ d => ! d.query_params.buildjourney? 
     `<a href=map#map target=map>Back to map</a>` :
     `<a href=journey#journey target=journey>Back to journey</a>`

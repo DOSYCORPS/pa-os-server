@@ -1,6 +1,6 @@
 <main class=pane>
   <h1 class=sticky id=myjourneys>My Journeys</h1>
-  <a href=buildjourney>Create new journey</a>
+  <a href=buildjourney?journey=_new>Create new journey</a>
   <ul>
     ${ d => d.journeys.map( j => `
     <li>journey ${j.name} <a href="buildjourney?journey=${j.name}">Edit</a>` 

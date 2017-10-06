@@ -1,5 +1,5 @@
-<form method=POST action=mapsearchresult?${ d=>!d.query_params.buildjourney?'': `buildjourney=true`} target=mapsearchresult>
-  <h1 class=sticky id=searchmaps>Search maps</h1>
+<form role=search method=POST action=mapsearchresult?${ d=>!d.query_params.buildjourney?'': `buildjourney=true`} target=mapsearchresult>
+  <h1 class=sticky id=searchmaps>Map search</h1>
   <a target=journey href=journey#journey>Back to journey</a>
   <p>
     <input name=query.map mapholder=search size=15>

@@ -1,6 +1,6 @@
 <form method=POST action=prop?${ d => !d.query_params.buildjourney? '' : `buildjourney=true` }>
   <h1 class=sticky id=prop>
-    Edit prop <button class=middle name=prop.save value=prop>Save prop</button>
+    Prop <button class=middle name=prop.save value=prop>Save</button>
   </h1>
   ${ d => !d.query_params.buildjourney ? 
   `<a target=map href=map#map>Back to map</a>` :
@@ -20,6 +20,7 @@
     <dd>
       <input type=text size=10 id=generalized name=prop.generalized value="${T.prop.generalized}"><button 
         id=generalize>Get all</button>    </dd>
+  </dl>
   <dl>
     <dt>Place examples
     <dd><input class=new type=text value="" size=10 name=prop.locations><button 

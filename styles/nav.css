@@ -55,3 +55,7 @@
     list-style-position: outside;
   }
 
+  :focus, :active {
+    outline: 1px solid lime;
+  }
+

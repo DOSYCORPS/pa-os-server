@@ -101,3 +101,21 @@
     -webkit-appearance: none; 
     margin: 0; 
   }
+
+  form:invalid p:first-of-type:before {
+    content: "Please complete the red fields.";
+    color: red;
+  }
+
+  input:invalid, select:invalid, textarea:invalid {
+    outline: 2px solid red;
+  }
+
+  form:not([role="search"]):valid h1:after {
+    content: "\2714";
+    color: green;
+  }
+  
+  :focus, :active {
+    outline: 1px solid lime;
+  }
