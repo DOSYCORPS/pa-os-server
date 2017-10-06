@@ -1,5 +1,8 @@
 /* styles for components */
 
+  :root {
+    --error-color: #de1e7e;
+  }
   ::-webkit-scrollbar {
     width: 5px;
   }
@@ -103,12 +106,12 @@
   }
 
   form:invalid p:first-of-type:before {
-    content: "Please complete the red fields.";
-    color: red;
+    content: "Please complete the marked fields.";
+    color: var(--error-color);
   }
 
   input:invalid, select:invalid, textarea:invalid {
-    outline: 2px solid red;
+    outline: 2px solid var(--error-color);
   }
 
   form:not([role="search"]):valid h1:after {
@@ -118,4 +121,8 @@
   
   :focus, :active {
     outline: 1px solid lime;
+  }
+
+  form p {
+    margin-left: 2px;
   }
