@@ -7,7 +7,7 @@
   `<a target=journey href=journey#journey>Back to journey</a>` 
   }
   <p>
-    <input required name=map.name placeholder=name value="${T.map.name}">
+    <input ${d=>!d.query_params.buildjourney?'autofocus':''} required name=map.name placeholder=name value="${T.map.name}">
   <p>
     <textarea required rows=2 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
