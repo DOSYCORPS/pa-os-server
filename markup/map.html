@@ -7,11 +7,11 @@
   `<a target=journey href=journey#journey>Back to journey</a>` 
   }
   <p>
-    <input ${d=>!d.query_params.buildjourney?'autofocus':''} required name=map.name placeholder=name value="${T.map.name}">
+    <input maxlength=26 ${d=>!d.query_params.buildjourney?'autofocus':''} required name=map.name placeholder=name value="${T.map.name}">
   <p>
-    <textarea required rows=2 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
+    <textarea maxlength=140 required rows=2 name=map.concepts;array placeholder=concepts >${T.map.concepts}</textarea>
   <p>
-    <textarea required rows=3 name=map.desc placeholder=description>${T.map.desc}</textarea>
+    <textarea maxlength=140 required rows=3 name=map.desc placeholder=description>${T.map.desc}</textarea>
   <h2 id=proplist>Properties</h2>
   <dl>
   ${ d => d.map.props.map( ({name,slot},idx) => `

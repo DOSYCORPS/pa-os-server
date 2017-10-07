@@ -5,11 +5,11 @@
   <a target=_parent href=myjourneys>Back to my journeys</a>
   <h2 id=about>About</h2>
   <p>
-    <input ${d=>!d.query_params.buildjourney?'':'autofocus'} required name=journey.name placeholder=name value="${T.journey.name}">
+    <input maxlength=30 ${d=>!d.query_params.buildjourney?'':'autofocus'} required name=journey.name placeholder=name value="${T.journey.name}">
   <p>
-    <textarea required rows=2 name=journey.concepts;array placeholder="journey concepts" >${T.journey.concepts}</textarea>
+    <textarea maxlength=140 required rows=2 name=journey.concepts;array placeholder="journey concepts" >${T.journey.concepts}</textarea>
   <p>
-    <textarea required rows=3 name=journey.desc placeholder="about this journey">${T.journey.desc}</textarea>
+    <textarea maxlength=140 required rows=3 name=journey.desc placeholder="about this journey">${T.journey.desc}</textarea>
   <h2 id=maplist>Maps</h2>
   <dl>
   ${ d => d.journey.maps.map( (map,idx) => `

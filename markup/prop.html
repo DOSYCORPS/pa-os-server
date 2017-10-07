@@ -7,11 +7,11 @@
   `<a target=journey href=journey#journey>Back to journey</a>` 
   }
   <p>
-    <input required name=prop.name placeholder=name value="${T.prop.name}">
+    <input maxlength=18 required name=prop.name placeholder=name value="${T.prop.name}">
   <p>
-    <input required name=prop.concepts;array placeholder=concepts value="${T.prop.concepts}">
+    <input maxlength=100 required name=prop.concepts;array placeholder=concepts value="${T.prop.concepts}">
   <p>
-    <textarea required rows=2 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
+    <textarea maxlength=140 required rows=2 name=prop.desc placeholder=description>${T.prop.desc}</textarea>
   <h2 id=proplocations>Property places</h2>
   <p>
   <dl>

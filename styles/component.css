@@ -51,8 +51,8 @@
 
   span.fixedwidth {
     display: inline-block;
-    width: 10ch;
-    max-width: 10ch;
+    width: 8ch;
+    max-width: 8ch;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -142,3 +142,6 @@
     background: #10aded;
   }
 
+  textarea {
+    resize: none;
+  }
