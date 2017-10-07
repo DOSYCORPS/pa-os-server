@@ -1,4 +1,13 @@
 <style>
+  header {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+  header a {
+    color: white;
+  }
   body {
     margin: 0;
     overflow-x: hidden;
@@ -8,11 +17,9 @@
     top: 0;
     position: absolute;
     background: purple;
-    width: 10%;
-    height: 10%;
+    width: 100%;
+    height: 100%;
     filter: hue-rotate(330deg) saturate(4.7);
-    transform: scale3d(100,100,1);
-    transform-origin: 0px 0px 0;
   }    
   aside.bg svg {
     filter: hue-rotate(330deg);
@@ -26,7 +33,7 @@
         x=0 y=0 width=100% height=100%>
           <feTurbulence
             baseFrequency=0.015 
-            numOctaves=1
+            numOctaves=4
             xseed=9729
             seed=${Math.round(Math.random()*10000)} 
             stitchTiles=stitch 
@@ -49,3 +56,6 @@
     <a href=mymaps>My maps</a>
   </footer>
 </main>
+<header>
+  <a href=root>Main menu</a>
+</header>
