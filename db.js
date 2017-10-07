@@ -15,7 +15,7 @@
           { structure: { name: 'login', type : 'prop' }, action: 'type' },
           { structure: { name: 'password', type : 'prop' }, action: 'type' },
           { structure: { name: 'button', type: 'prop' }, action: 'click' },
-          { structure: { name: 'post', type: 'map' }, action: 'record' },
+          { structure: { name: 'post', type: 'map' }, action: 'report' },
         ],
         name : 'test journey2',
         desc: 'test',
@@ -51,6 +51,12 @@
         desc: 'all paragraphs', generalized: 'p', locations: [] }
     ],
     journey: {
+      run: '',
+      newstep : {
+        action : '',
+        content: '',
+        save: ''
+      },
       addmap: '',
       removemap: '',
       addstep: '',
@@ -66,6 +72,12 @@
       ]
     },
     empty_journey: {
+      run: '',
+      newstep : {
+        action : '',
+        content: '',
+        save: ''
+      },
       addstep: '',
       removestep: '',
       addmap: '',

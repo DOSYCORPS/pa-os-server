@@ -3,6 +3,7 @@
      Journey <button class=middle name=journey.save value=journey>Save</button>
   </h1>
   <a target=_parent href=myjourneys>Back to my journeys</a>
+  <button name=journey.run value=journey>Run</button>
   <h2 id=about>About</h2>
   <p>
     <input maxlength=30 ${d=>!d.query_params.buildjourney?'':'autofocus'} required name=journey.name placeholder=name value="${T.journey.name}">
@@ -35,6 +36,7 @@
         }
       </span>
       <select name=journey.steps.${idx}.action>
+        <option ${ action == 'go' ? 'selected' : '' } value=go>go</option>
         <option ${ action == 'report' ? 'selected' : '' } value=report>report</option>
         <option ${ action == 'click' ? 'selected' : '' } value=click>click</option>
         <option ${ action == 'hover' ? 'selected' : '' }  value=hover>hover</option>
@@ -45,6 +47,19 @@
     </li>
     ` 
   )}
+    <li>
+      <span class=fixedwidth>
+        <input name=journey.newstep.content placeholder="step location">
+      </span>
+      <select name=journey.newstep.action>
+        <option value=go>go</option>
+        <option value=click>click</option>
+        <option value=hover>hover</option>
+        <option value=scrollto>scrollto</option>
+        <option value=type>type</option>
+      </select>
+      <button name=journey.newstep.save value=step>Save</button>
+    </li>
   </ol>
   <p>
     <a rel=search target=searchmaps href="searchmaps?buildjourney=true#searchmaps">Search more maps to add</a>
