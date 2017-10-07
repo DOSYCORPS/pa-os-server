@@ -12,13 +12,17 @@
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
 
-  def`mymaps ${{file:'markup/mymaps.html', script, stylesheet: navstyle }}`;
-  def`myjourneys ${{file:'markup/myjourneys.html', script, stylesheet: navstyle }}`;
+  def`root ${{file:'markup/root.html', stylesheet: navstyle }}`;
+  def`mymaps ${{file:'markup/mymaps.html', stylesheet: navstyle }}`;
+  def`myjourneys ${{file:'markup/myjourneys.html', stylesheet: navstyle }}`;
+
   def`buildmap ${{file:'markup/buildmap.html', script, stylesheet: navstyle}}`;
   def`buildjourney ${{file:'markup/buildjourney.html', script, stylesheet: navstyle}}`;
+
   def`map ${{file:'markup/map.html', script, stylesheet: compstyle}}`;
   def`journey ${{file:'markup/journey.html', script, stylesheet: compstyle}}`;
   def`prop ${{file:'markup/prop.html', script, stylesheet: compstyle}}`;
+
   def`searchmaps ${{file:'markup/searchmaps.html', script, stylesheet: compstyle}}`;
   def`searchprops ${{file:'markup/searchprops.html', script, stylesheet: compstyle}}`;
   def`mapsearchresult ${{file:'markup/mapsearchresult.html', script, stylesheet: compstyle}}`;
