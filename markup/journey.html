@@ -24,7 +24,7 @@
   )}
   </dl>
   <h2 id=steplist>Steps</h2>
-  <ol>
+  <ol class=tight>
   ${ d => d.journey.steps.map( ({structure,action},idx) => `
     <li>
       <span class=fixedwidth>
@@ -49,7 +49,7 @@
   )}
     <li>
       <span class=fixedwidth>
-        <input name=journey.newstep.content placeholder="step location">
+        <input name=journey.newstep.content placeholder="step">
       </span>
       <select name=journey.newstep.action>
         <option value=go>go</option>

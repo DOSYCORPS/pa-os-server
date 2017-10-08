@@ -12,7 +12,7 @@
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
 
-  def`root ${{file:'markup/root.html', stylesheet: navstyle }}`;
+  def`/ ${{file:'markup/root.html', stylesheet: navstyle }}`;
   def`mymaps ${{file:'markup/mymaps.html', stylesheet: navstyle }}`;
   def`myjourneys ${{file:'markup/myjourneys.html', stylesheet: navstyle }}`;
 
@@ -31,6 +31,8 @@
     ${ d => JSON.stringify(d) } 
   `;
 
+  def`bg.svg ${{file:'styles/bg.svg', no_viewport: true}}`;
+
   module.exports = views;
 
   function update_working_memory(db,req) {
@@ -46,10 +48,20 @@
     }
   }
 
+  function get_extension(fname) {
+    const dotpos = fname.lastIndexOf(".");
+    if ( dotpos < 0 ) {
+      return "";
+    }
+    return fname.slice(dotpos);
+  }
+
   function serveTo({app,db,update_db}) {
     for( const view in I ) {
+      const ext = get_extension(view) || 'html';
       app.get(`/${view}`, async (req,res,next) => {
-        res.type('html');
+        res.type(ext);
+        console.log("Serving", ext );
         db.req_method = req.method;
         db.route_params = req.params;
         db.query_params = req.query; 

@@ -1,40 +1,20 @@
 <style>
+  body:before {
+    content: "";
+    background: purple url(bg.svg);
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%; 
+    width: 100%;
+    filter: hue-rotate(330deg) saturate(4.7);
+  }
   body {
     margin: 0;
     overflow-x: hidden;
   }
-  aside.bg {
-    z-index:0;
-    top: 0;
-    position: absolute;
-    background: purple;
-    width: 100%;
-    height: 100%;
-    filter: hue-rotate(330deg) saturate(4.7);
-  }    
-  aside.bg svg {
-    filter: hue-rotate(330deg);
-  }
 </style>
-<aside class=bg>
-  <svg width=100% height=100%>
-    <defs>
-      <filter id="noise" 
-        filterUnits="objectBoundingBox"
-        x=0 y=0 width=100% height=100%>
-          <feTurbulence
-            baseFrequency=0.015 
-            numOctaves=4
-            xseed=9729
-            seed=${Math.round(Math.random()*10000)} 
-            stitchTiles=stitch 
-            type=turbulence
-          />
-      </filter> 
-    </defs>
-    <rect x=0 y=0 width=100% height=100% filter=url(#noise)></rect>
-  </svg>
-</aside>
 <main>
   <iframe id=journey name=journey test:12 width=230 height=335 src="journey?buildjourney=true${ d => {
       if ( !! d.query_params && !! d.query_params.journey ) {
