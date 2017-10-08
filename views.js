@@ -61,7 +61,6 @@
       const ext = get_extension(view) || 'html';
       app.get(`/${view}`, async (req,res,next) => {
         res.type(ext);
-        console.log("Serving", ext );
         db.req_method = req.method;
         db.route_params = req.params;
         db.query_params = req.query; 

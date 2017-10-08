@@ -1,3 +1,18 @@
+  body:before {
+    content: "";
+    background: purple url(/bg.svg);
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    height: 100%; 
+    width: 100%;
+    filter: hue-rotate(330deg) saturate(4.7);
+  }
+  body {
+    margin: 0;
+    overflow-x: hidden;
+  }
   iframe {
     display: block;
     margin: 1rem 0.25rem;
@@ -8,16 +23,18 @@
     background: white;
   }
 
-  body {
-    background: #10ee98;
-  }
-
   body, input, textarea {
     margin: 0;
     font-family: Arial;
     font-size: 0.851rem;
   }
 
+  header {
+    margin-top: 1rem;
+  }
+  header a {
+    color: silver;
+  }
   main {
     position: relative;
     z-index: 2;

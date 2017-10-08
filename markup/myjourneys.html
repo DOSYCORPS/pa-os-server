@@ -1,49 +1,3 @@
-<style>
-  header {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    margin-top: 0.5rem;
-  }
-  header a {
-    color: white;
-  }
-  body {
-    margin: 0;
-    overflow-x: hidden;
-  }
-  aside.bg {
-    z-index:0;
-    top: 0;
-    position: absolute;
-    background: purple;
-    width: 100%;
-    height: 100%;
-    filter: hue-rotate(330deg) saturate(4.7);
-  }    
-  aside.bg svg {
-    filter: hue-rotate(330deg);
-  }
-</style>
-<aside class=bg>
-  <svg width=100% height=100%>
-    <defs>
-      <filter id="noise" 
-        filterUnits="objectBoundingBox"
-        x=0 y=0 width=100% height=100%>
-          <feTurbulence
-            baseFrequency=0.015 
-            numOctaves=4
-            xseed=9729
-            seed=${Math.round(Math.random()*10000)} 
-            stitchTiles=stitch 
-            type=turbulence
-          />
-      </filter> 
-    </defs>
-    <rect x=0 y=0 width=100% height=100% filter=url(#noise)></rect>
-  </svg>
-</aside>
 <main class=pane>
   <h1 class=sticky id=myjourneys>My Journeys</h1>
   <a href=buildjourney?journey=_new>Create new journey</a>
@@ -56,6 +10,6 @@
     <a href=mymaps>My maps</a>
   </footer>
 </main>
-<header>
+<header class=txCent>
   <a href=/>Main menu</a>
 </header>
