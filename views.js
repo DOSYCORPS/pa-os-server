@@ -11,6 +11,7 @@
   };
 
   I.deep_clone = o => JSON.parse( JSON.stringify( o ) );
+  I.flow_data = {};
 
   def`/ ${{file:'markup/root.html', stylesheet: navstyle }}`;
   def`mymaps ${{file:'markup/mymaps.html', stylesheet: navstyle }}`;
@@ -33,52 +34,91 @@
 
   def`bg.svg ${{file:'styles/bg.svg', no_viewport: true}}`;
 
+  defflow( 'test', 'markup/flows/test/a.html', 'markup/flows/test/b.html', 'markup/flows/test/c.html' );
+
   module.exports = views;
 
-  function update_working_memory(db,req) {
-    if ( ModelRoutes.has( req.path ) ) {
-      const type = req.path.slice(1);
-      const target_name = req.query[type];
-      const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
-      if ( !! target ) {
-        Object.assign( db[type], I.deep_clone( target ) );
-      } else if ( target_name == "_new" ) {
-        Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
+  function defflow( spec, ...files ) {
+    let name, stylesheet, script;
+    if ( typeof spec !== "string" ) {
+      ({name,stylesheet,script} = spec);
+    } else {
+      name = spec;
+    }
+    files.forEach( (file,i) => def`${{name: 'flow_'+name+'_'+i, file, stylesheet, script}}`) ;
+    const flowinfo = {};
+    I.flow_data[name] = flowinfo;
+    flowinfo.last = files.length - 1;
+  }
+
+  /* probably ought to move this out of views and into some
+     control or app logic file */
+     
+    function update_working_memory(db,req) {
+      if ( ModelRoutes.has( req.path ) ) {
+        const type = req.path.slice(1);
+        const target_name = req.query[type];
+        const target = !! target_name && db[type+'s'].find( ({name}) => name == target_name );
+        if ( !! target ) {
+          Object.assign( db[type], I.deep_clone( target ) );
+        } else if ( target_name == "_new" ) {
+          Object.assign( db[type], I.deep_clone( db["empty_"+type] ) );
+        }
       }
     }
-  }
 
-  function get_extension(fname) {
-    const dotpos = fname.lastIndexOf(".");
-    if ( dotpos < 0 ) {
-      return "";
+    function get_extension(fname) {
+      const dotpos = fname.lastIndexOf(".");
+      if ( dotpos < 0 ) {
+        return "";
+      }
+      return fname.slice(dotpos);
     }
-    return fname.slice(dotpos);
-  }
 
-  function serveTo({app,db,update_db}) {
-    for( const view in I ) {
-      const ext = get_extension(view) || 'html';
-      app.get(`/${view}`, async (req,res,next) => {
-        res.type(ext);
-        db.req_method = req.method;
-        db.route_params = req.params;
-        db.query_params = req.query; 
-        db.body_params = req.body;
-        update_working_memory(db,req);
-        const html = await I[view](I.deep_clone(db));
-        res.end(html);
-      });
-      app.post(`/${view}`, async (req,res,next) => {
-        res.type('html');
-        db.req_method = req.method;
-        db.route_params = req.params;
-        db.query_params = req.query; 
-        db.body_params = req.body;
-        update_db(db,req.body);
-        const html = await I[view](I.deep_clone(db));
-        res.end(html);
-      });
+    function get_flow( viewname ) {
+      const [ prefix, name, rawindex ] = viewname.split(/_/g);
+      const index = parseInt(rawindex);
+      if ( Number.isInteger( index) && prefix == 'flow' ) {
+        const flow_next = `flow_${name}_${index+1}`;
+        const flow_prev = `flow_${name}_${index-1}`;
+        let flow_first = false, flow_last = false;
+        if ( index == 0 ) {
+          flow_first = true; 
+        } 
+        if ( index == I.flow_data[name].last ) {
+          flow_last = true;
+        }
+        return { flow_next, flow_prev, flow_first, flow_last };
+      }
     }
-  }
+
+    function serveTo({app,db,update_db}) {
+      for( const view in I ) {
+        const ext = get_extension(view) || 'html';
+        const flow = get_flow(view);
+        app.get(`/${view}`, async (req,res,next) => {
+          res.type(ext);
+          update_working_memory(db,req);
+          const dbc = I.deep_clone(db);
+          dbc.req_method = req.method;
+          dbc.route_params = req.params;
+          dbc.query_params = req.query; 
+          dbc.body_params = req.body;
+          Object.assign(dbc,flow);
+          const html = await I[view](dbc);
+          res.end(html);
+        });
+        app.post(`/${view}`, async (req,res,next) => {
+          res.type('html');
+          update_db(db,req.body);
+          const dbc = I.deep_clone(db);
+          dbc.req_method = req.method;
+          dbc.route_params = req.params;
+          dbc.query_params = req.query; 
+          dbc.body_params = req.body;
+          const html = await I[view](dbc);
+          res.end(html);
+        });
+      }
+    }
 }

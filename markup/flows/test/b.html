@@ -1,0 +1,9 @@
+<main class=pane>
+  <dl>
+    <dt><h1 class=sticky id=mymaps>Main Menu</h1>
+    <dd><a href=myjourneys>My journeys</a>
+    <dd><a href=mymaps>My maps</a>
+    ${ d => !d.flow_first ? `<dd><a href="${d.flow_prev}">Prev</a>` : '' }
+    ${ d => !d.flow_last ?  `<dd><a href="${d.flow_next}">Next</a>` : '' }
+  <dl>
+</main>
