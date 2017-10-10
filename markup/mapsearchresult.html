@@ -5,9 +5,8 @@
       <span class="fixedwidth">
         <a target=map href="map?map=${m.name}${ d.query_params.buildjourney ? '&buildjourney=true' : '' }#map">${m.name}</a>
       </span> 
-      <button name=journey.addmap value="${JSON.stringify(m).replace(/"/g,'&quot;')}">Add</button>
-    ${ !d.query_params.buildjourney ? '' :
-      `<button formtarget=journey formaction=journey name=journey.addstep 
+    ${ !d.query_params.buildjourney ? '' : `
+      <button formtarget=journey formaction=journey name=journey.addstep 
         value="${JSON.stringify({structure:{name:m.name,type:'map'},action:'report'}).replace(/"/g,'&quot;')}">Add step</button>`
     }
     `
