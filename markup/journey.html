@@ -11,18 +11,6 @@
     <textarea maxlength=140 required rows=2 name=journey.concepts;array placeholder="journey concepts" >${T.journey.concepts}</textarea>
   <p>
     <textarea maxlength=140 required rows=3 name=journey.desc placeholder="about this journey">${T.journey.desc}</textarea>
-  <h2 id=maplist>Maps</h2>
-  <dl>
-  ${ d => d.journey.maps.map( (map,idx) => `
-    <dd>
-      <input type=hidden name=journey.maps.${idx}.name value="${map.name}">
-      <span class=fixedwidth>
-        <a target=map href="map?buildjourney=true&map=${map.name}#map">${map.name}</a> 
-      </span>
-      <button name=journey.removemap value="${map.name}">Del</button>
-    ` 
-  )}
-  </dl>
   <h2 id=steplist>Steps</h2>
   <ol class=tight>
   ${ d => d.journey.steps.map( ({structure,action},idx) => `
@@ -47,22 +35,11 @@
     </li>
     ` 
   )}
-    <li>
-      <span class=fixedwidth>
-        <input name=journey.newstep.content placeholder="step">
-      </span>
-      <select name=journey.newstep.action>
-        <option value=go>go</option>
-        <option value=click>click</option>
-        <option value=hover>hover</option>
-        <option value=scrollto>scrollto</option>
-        <option value=type>type</option>
-      </select>
-      <button name=journey.newstep.save value=step>Save</button>
-    </li>
   </ol>
   <p>
     <a rel=search target=searchmaps href="searchmaps?buildjourney=true#searchmaps">Search more maps to add</a>
+  <p>
+    <a rel=search target=searchprops href="searchprops?buildjourney=true#searchprops">Search more props to add</a>
   <p>
     <button class=middle name=journey.save value=journey>Save journey</button>
 </form>
