@@ -45,12 +45,23 @@
     } else {
       name = spec;
     }
-    const flowviews = files.map( (file,i) => def`${{name: 'flow_'+name+'_'+i, file, stylesheet, script}}`) ;
-    const flowinfo = {};
-    I.flow_data[name] = flowinfo;
-    flowinfo.last_index = files.length - 1;
-    flowinfo.first = flowviews[0].cname;
-    flowinfo.last = flowviews[flowinfo.last_index].cname;
+    if ( Array.isArray( files ) ) {
+      // ordered 
+      const flowviews = files.map( (file,i) => def`${{name: 'flow_'+name+'_'+i, file, stylesheet, script}}`) ;
+      const flowinfo = {};
+      I.flow_data[name] = flowinfo;
+      flowinfo.last_index = files.length - 1;
+      flowinfo.first = flowviews[0].cname;
+      flowinfo.last = flowviews[flowinfo.last_index].cname;
+    } else if ( typeof files == "object" ) {
+      // named
+      const flowinfo = {};
+      I.flow_data[name] = flowinfo;
+      for( const cname of files ) {
+        const file = files[cname];
+        flowinfo[cname] = def`${{name: 'flow_'+cname, file, stylesheet, script}}`;
+      }
+    }
   }
 
   /* probably ought to move this out of views and into some
