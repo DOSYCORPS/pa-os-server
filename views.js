@@ -45,10 +45,12 @@
     } else {
       name = spec;
     }
-    files.forEach( (file,i) => def`${{name: 'flow_'+name+'_'+i, file, stylesheet, script}}`) ;
+    const flowviews = files.map( (file,i) => def`${{name: 'flow_'+name+'_'+i, file, stylesheet, script}}`) ;
     const flowinfo = {};
     I.flow_data[name] = flowinfo;
-    flowinfo.last = files.length - 1;
+    flowinfo.last_index = files.length - 1;
+    flowinfo.first = flowviews[0].cname;
+    flowinfo.last = flowviews[flowinfo.last_index].cname;
   }
 
   /* probably ought to move this out of views and into some
@@ -85,7 +87,7 @@
         if ( index == 0 ) {
           flow_first = true; 
         } 
-        if ( index == I.flow_data[name].last ) {
+        if ( index == I.flow_data[name].last_index ) {
           flow_last = true;
         }
         return { flow_next, flow_prev, flow_first, flow_last };
