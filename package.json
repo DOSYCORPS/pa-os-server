@@ -39,10 +39,7 @@
     "browserify-middleware": "^7.1.0",
     "dosyhil": "^1.5.3",
     "dosylook": "^1.1.4",
-    "express": "^4.16.1",
-    "mongodb": "^2.2.31",
-    "mysql": "^2.15.0",
-    "neo4j-driver": "^1.4.1",
+    "express": "^4.16.2",
     "request-promise": "^4.2.2"
   },
   "devDependencies": {

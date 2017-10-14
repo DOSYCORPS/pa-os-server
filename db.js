@@ -225,28 +225,11 @@
       actions['prop.save'](db.prop.name);
     }
   };
-  const mysql = function () {
-      return new Promise( (res,rej) => {
-      const db = require('mysql');
-      const host = 'localhost';
-      const user = 'root';
-      const password = 'mysql';
-      const sql = db.createConnection({ host, user, password });
-      sql.connect( err => {
-        if ( !!err ) {
-          rej(err);
-        }
-        process.on('exit', () => sql.end() );
-        res(sql);
-      });
-    });
-  };
 
   module.exports = { connect, db, update_db };
 
   async function connect() {
     console.log("Starting database clients...");
-    const sql = await mysql();
   }
 
   function update_db(dbv, params) {
