@@ -34,7 +34,7 @@
 
   def`bg.svg ${{file:'styles/bg.svg', no_viewport: true}}`;
 
-  defflow( 'test', 'markup/flows/test/a.html', 'markup/flows/test/b.html', 'markup/flows/test/c.html' );
+  defflow( 'enlistment', 'markup/flows/enlistment/contact.html' );
 
   module.exports = views;
 
