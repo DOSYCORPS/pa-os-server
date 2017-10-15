@@ -9,6 +9,9 @@
     width: 100%;
     filter: hue-rotate(330deg) saturate(4.7);
   }
+  _:-ms-lang(x), body:before {
+    transform: scale(10.85,10.85);
+  }
   body {
     margin: 0;
     overflow-x: hidden;
