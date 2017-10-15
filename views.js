@@ -35,7 +35,8 @@
   def`bg.svg ${{file:'styles/bg.svg', no_viewport: true}}`;
 
   def`flows ${{file:'markup/flows/test_index.html'}}`;
-  defflow( {name:'enlistment',stylesheet: navstyle}, 'markup/flows/enlistment/contact.html' );
+
+  defflow( {name:'enlistment',stylesheet: navstyle}, 'markup/flows/enlistment/contact.html', 'markup/flows/enlistment/oauth_min_permissions.html' );
 
   module.exports = views;
 

@@ -1,8 +1,8 @@
 <main class=pane>
-  <form method=POST action=signup>
+  <form method=GET action="${T.flow_next}">
     <h1>Welcome</h1>
     <p>
-      <select required name=oauth id=oauth>
+      <select autofocus required name=oauth id=oauth>
         <option selected disabled value="">Select provider...</option>
         <option value=google.com>Google</option>
         <option value=yahoo.com>Yahoo!</option>

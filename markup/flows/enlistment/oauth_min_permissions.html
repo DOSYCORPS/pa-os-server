@@ -1,0 +1,9 @@
+<main class=pane>
+  <form method=GET action="${T.flow_next}">
+    <p>
+      Project Ant needs your email or phone number from <b>${T.query_params.oauth}</b> to confirm your identity.
+      Click "Approve" on the next seen to proceed.
+    <p>
+      <button formaction="${T.flow_prev}" name=intent value=takemeback>No, take me back</button> <button name=intent value=approve>Okay, approved</button>
+  </form>
+</main>
