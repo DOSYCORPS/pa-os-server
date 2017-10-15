@@ -1,14 +1,24 @@
-<form method=POST action=signup>
-  <h1>Welcome</h1>
-  <p>
-    <button>Signup with Google</button> <button>Signup with Facebook</button> <button>Signup with Twitter</button> <button>Signup with Yahoo</button>
-</form>
-<form method=POST action=signin>
-  <h1>Welcome back</h1>
-  <p>
-    <input type=text name=contact placeholder="email or tel">
-  <p>
-    <input type=password name=password placeholder="password">
-  <p>
-    <button>Signin</button>
-</form>
+<main class=pane>
+  <form method=POST action=signup>
+    <h1>Welcome</h1>
+    <p>
+      <select required name=oauth id=oauth>
+        <option selected disabled value="">Select provider...</option>
+        <option value=google.com>Google</option>
+        <option value=yahoo.com>Yahoo!</option>
+        <option value=facebook.com>Facebook</option>
+        <option value=weibo.com>Weibo</option>
+      </select>
+    <p>
+      <button>Signup</button>
+  </form>
+  <form method=POST action=signin>
+    <h1>Welcome back</h1>
+    <p>
+      <input required type=text name=contact placeholder="email or tel">
+    <p>
+      <input required type=password name=password placeholder="password">
+    <p>
+      <button>Signin</button>
+  </form>
+</main>
