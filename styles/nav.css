@@ -54,7 +54,7 @@
     box-shadow: 1px 2px 5px grey;
   }
 
-  .txcent {
+  .txCent {
     text-align: center;
   }
 
@@ -66,6 +66,7 @@
   }
 
   h1, h2 {
+    margin-top: 0;
     font-weight: 300;
   }
 
@@ -78,7 +79,11 @@
     list-style-position: outside;
   }
 
-  :focus, :active {
+  :focus {
     outline: 1px solid lime;
+  }
+
+  :first-child {
+    margin-top: 0;
   }
 

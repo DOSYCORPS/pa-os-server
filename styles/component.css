@@ -37,6 +37,7 @@
   }
 
   h1, h2 {
+    margin-top: 0;
     font-weight: 300;
   }
 
@@ -133,7 +134,7 @@
     color: var(--error-color);
   }
   
-  :focus, :active {
+  :focus {
     outline: 1px solid lime;
   }
 
