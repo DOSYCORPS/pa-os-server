@@ -3,6 +3,7 @@
   addEventListener('load', size );
   addEventListener('focus', size );
   addEventListener('blur', size );
+  addEventListener('input', size );
   
   function size() {
     if ( !!document.scrollingElement ) {
@@ -10,7 +11,8 @@
     }
     if ( frames.length ) {
       const subframes = Array.from( frames ).map( windowContext => windowContext.frameElement );
-      subframes.forEach( f => f.addEventListener('load', size ) );
+      subframes.forEach( f => f.dataset.resizeAttached || f.addEventListener('load', size ) );
+      subframes.forEach( f => f.dataset.resizeAttached = true );
     }
     if ( !!frameElement ) {
       resize();
