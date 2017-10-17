@@ -87,4 +87,21 @@
   :first-child {
     margin-top: 0;
   }
+/* comp imports */
+  :root {
+    --error-color: red;
+  }
+
+  form:focus-within:invalid input:focus:invalid, 
+  form:focus-within:invalid select:focus:invalid, 
+  form:focus-within:invalid textarea:focus:invalid {
+    outline: 2px solid var(--error-color);
+  }
+
+  form:focus-within:invalid textarea:focus:invalid::-webkit-input-placeholder,
+  form:focus-within:invalid input:focus:invalid::-webkit-input-placeholder {
+    color: var(--error-color);
+  }
+
+
 
