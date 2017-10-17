@@ -1,6 +1,8 @@
 "use strict"; 
 {
   addEventListener('load', size );
+  addEventListener('focus', size );
+  addEventListener('blur', size );
   
   function size() {
     if ( !!document.scrollingElement ) {

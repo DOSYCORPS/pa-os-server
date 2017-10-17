@@ -109,34 +109,38 @@
     margin: 0; 
   }
 
-  form:invalid p:first-of-type:before {
+  form:focus-within:invalid p:first-of-type:before {
     content: "Please complete the red fields.";
-    color: var(--error-color);
-  }
-
-  input:invalid, select:invalid, textarea:invalid {
-    outline: 2px solid var(--error-color);
-  }
-
-  textarea:invalid::-webkit-input-placeholder,
-  input:invalid::-webkit-input-placeholder {
     color: var(--error-color);
   }
 
 
   form:not([role="search"]):valid h1:after {
     content: "\2714";
-    color: green;
+    color: lime;
   }
 
-  form:not([role="search"]):invalid h1:after {
+  form:focus-within:not([role="search"]):invalid h1:after {
     content: "\26a0";
     color: var(--error-color);
   }
   
-  :focus {
-    outline: 1px solid lime;
+  form:focus-within input:not(:focus):invalid, 
+  form:focus-within select:not(:focus):invalid, 
+  form:focus-within textarea:not(:focus):invalid {
+    border: 1px solid var(--error-color);
   }
+
+  form:focus-within textarea:invalid::-webkit-input-placeholder,
+  form:focus-within input:invalid::-webkit-input-placeholder {
+    color: var(--error-color);
+  }
+
+  /*
+  :focus {
+    border: 2px solid lime;
+  }
+  */
 
   form p {
     margin-left: 2px;

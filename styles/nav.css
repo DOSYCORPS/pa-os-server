@@ -80,9 +80,11 @@
     list-style-position: outside;
   }
 
+  /*
   :focus {
     outline: 1px solid lime;
   }
+  */
 
   :first-child {
     margin-top: 0;
@@ -92,14 +94,14 @@
     --error-color: red;
   }
 
-  form:focus-within:invalid input:focus:invalid, 
-  form:focus-within:invalid select:focus:invalid, 
-  form:focus-within:invalid textarea:focus:invalid {
-    outline: 2px solid var(--error-color);
+  form:focus-within input:not(:focus):invalid, 
+  form:focus-within select:not(:focus):invalid, 
+  form:focus-within textarea:not(:focus):invalid {
+    border: 1px solid var(--error-color);
   }
 
-  form:focus-within:invalid textarea:focus:invalid::-webkit-input-placeholder,
-  form:focus-within:invalid input:focus:invalid::-webkit-input-placeholder {
+  form:focus-within textarea:invalid::-webkit-input-placeholder,
+  form:focus-within input:invalid::-webkit-input-placeholder {
     color: var(--error-color);
   }
 
