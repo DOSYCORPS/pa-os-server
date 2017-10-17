@@ -4,6 +4,7 @@
   addEventListener('focus', size );
   addEventListener('blur', size );
   addEventListener('input', size );
+  addEventListener('click', size );
   
   function size() {
     if ( !!document.scrollingElement ) {
