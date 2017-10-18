@@ -4,7 +4,7 @@
   </h1>
   ${ d => !d.query_params.buildjourney ? 
   `<a target=_parent href=mymaps>Back to my maps</a>` :
-  `<a target=journey href=journey#journey>Back to journey</a>` 
+  `<a target=journey href=journey#journey>Back to journey</a>`
   }
   <p>
     <input maxlength=26 ${d=>!d.query_params.buildjourney?'autofocus':''} required name=map.name placeholder=name value="${T.map.name}">

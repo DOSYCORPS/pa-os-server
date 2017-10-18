@@ -1,5 +1,5 @@
 <main>
-  <iframe id=journey name=journey test:12 width=230 height=335 src="journey?buildjourney=true${ d => {
+  <iframe id=journey name=journey width=230 height=335 src="journey?buildjourney=true${ d => {
       if ( !! d.query_params && !! d.query_params.journey ) {
         return `&journey=${d.query_params.journey}"`;
       } else {
@@ -7,8 +7,8 @@
       }
     }
   }></iframe>
-  <iframe id=searchmaps name=searchmaps test:12 width=230 height=230 src="searchmaps?buildjourney=true"></iframe>
-  <iframe id=map name=map test:12 width=230 height=335 src="map?buildjourney=true"></iframe>
-  <iframe id=searchprops name=searchprops test:12 width=230 height=230 src="searchprops?buildjourney=true"></iframe>
-  <iframe id=prop name=prop test:12 width=230 height=400 src="prop?buildjourney=true"></iframe>
+  <iframe id=searchmaps name=searchmaps width=230 height=230 src="searchmaps?buildjourney=true"></iframe>
+  <iframe id=map name=map width=230 height=335 src="map?buildjourney=true"></iframe>
+  <iframe id=searchprops name=searchprops width=230 height=230 src="searchprops?buildjourney=true"></iframe>
+  <iframe id=prop name=prop width=230 height=400 src="prop?buildjourney=true"></iframe>
 </main>

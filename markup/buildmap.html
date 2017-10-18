@@ -1,5 +1,5 @@
 <main>
-  <iframe id=map name=map test:12 width=230 height=335 src="map${ d => {
+  <iframe id=map name=map width=230 height=335 src="map${ d => {
       if ( !! d.query_params && !! d.query_params.map ) {
         return `?map=${d.query_params.map}"`;
       } else {
@@ -7,8 +7,8 @@
       }
     }
   }></iframe>
-  <iframe id=searchprops name=searchprops test:12 width=230 height=230 src=searchprops></iframe>
-  <iframe id=prop name=prop test:12 width=230 height=400 src="prop${ d => {
+  <iframe id=searchprops name=searchprops width=230 height=230 src=searchprops></iframe>
+  <iframe id=prop name=prop width=230 height=400 src="prop${ d => {
       if ( !! d.query_params && !! d.query_params.prop ) {
         return `?prop=${d.query_params.prop}"`;
       } else {
