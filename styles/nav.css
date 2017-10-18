@@ -94,15 +94,17 @@
     --error-color: red;
   }
 
-  form:focus-within input:not(:focus):invalid, 
-  form:focus-within select:not(:focus):invalid, 
-  form:focus-within textarea:not(:focus):invalid {
+  form input:not(:focus):invalid, 
+  form select:not(:focus):invalid, 
+  form textarea:not(:focus):invalid {
     border: 1px solid var(--error-color);
   }
 
-  form:focus-within textarea:invalid::-webkit-input-placeholder,
-  form:focus-within input:invalid::-webkit-input-placeholder {
-    color: var(--error-color);
+  form textarea:invalid::-ms-input-placeholder,
+  form input:invalid::-ms-input-placeholder,
+  form textarea:invalid::-webkit-input-placeholder,
+  form input:invalid::-webkit-input-placeholder {
+    coror: var(--error-color);
   }
 
 

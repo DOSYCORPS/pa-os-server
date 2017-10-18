@@ -1,6 +1,6 @@
 <main class=pane>
   <h1 class=sticky id=mymaps>My Maps</h1>
-  <a href=buildmap?map=_new>Create new map</a>
+  <a href="buildmap?map=_new">Create new map</a>
   <ul>
     ${ d => d.maps.map( m => `
     <li>map ${m.name} <a href="buildmap?map=${m.name}">Edit</a>` 
