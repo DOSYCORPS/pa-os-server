@@ -3,7 +3,7 @@
   setup();
 
   function setup() {
-    self.addEventListener('load', () => install() );    
+    self.addEventListener('load', install );    
   }
 
   function install() {
