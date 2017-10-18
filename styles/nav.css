@@ -13,9 +13,19 @@
     width: 100%;
     filter: hue-rotate(330deg) saturate(4.7);
   }
-  _:-ms-lang(x), body:before {
-    transform: scale(10.85,10.85);
-  }
+  /** IE doesn't apply filter so for semi-consistent results
+    blue underlying later works **/
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      body:before {
+        background: blue url(/bg.svg);
+      }
+    }
+  /** IE and Edge don't take into account the octaves SVG property, 
+    in a way consistent with other browsers,
+    so their result needs to be scaled. **/
+    _:-ms-lang(x), body:before {
+      transform: scale(10.85,10.85);
+    }
   body {
     margin: 0;
     padding-top: 1rem;
@@ -58,6 +68,11 @@
     background-color: white;
     box-shadow: 1px 2px 5px grey;
     max-width: 95%;
+  }
+
+  main.pane h1.sticky {
+    /* without an iframe sticky sticks to top of viewport in Edge */
+    position: relative;
   }
 
   .txCent {

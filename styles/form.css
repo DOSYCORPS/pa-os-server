@@ -68,12 +68,12 @@
       color: var(--error-color);
     }
 
-    form:focus-within:not([role="search"]):valid h1:after {
+    form:focus-within:not([role="search"]):valid h1.sticky:after {
       content: "\2714";
       color: lime;
     }
 
-    form:focus-within:not([role="search"]):invalid h1:after {
+    form:focus-within:not([role="search"]):invalid h1.sticky:after {
       content: "\26a0";
       color: var(--error-color);
     }
@@ -98,7 +98,7 @@
       outline: 1.5px solid var(--error-color);
     }
 
-    form:focus-within:not([role="search"]):focus-within h1 {
+    form:focus-within:not([role="search"]):focus-within h1.sticky {
       background: #10aded;
     }
 
