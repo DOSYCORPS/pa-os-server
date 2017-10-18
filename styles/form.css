@@ -1,0 +1,143 @@
+:root {
+  --error-color: #de1e7e;
+}
+/** Webkit **/
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+  /* form styles, especially validation */
+    form:focus-within:invalid p:first-of-type:before {
+      content: "Please complete the red fields.";
+      display: block;
+      color: var(--error-color);
+    }
+
+    form:focus-within:not([role="search"]):valid h1:after {
+      content: "\2714";
+      color: lime;
+    }
+
+    form:focus-within:not([role="search"]):invalid h1:after {
+      content: "\26a0";
+      color: var(--error-color);
+    }
+    
+    form:focus-within input:not(:focus):invalid, 
+    form:focus-within select:not(:focus):invalid, 
+    form:focus-within textarea:not(:focus):invalid {
+      border: 1px solid var(--error-color);
+    }
+
+    form:focus-within textarea:invalid::-ms-input-placeholder,
+    form:focus-within input:invalid::-ms-input-placeholder {
+      color: var(--error-color);
+    }
+    
+    form:focus-within textarea:invalid::-webkit-input-placeholder,
+    form:focus-within input:invalid::-webkit-input-placeholder {
+      color: var(--error-color);
+    }
+
+    form:focus-within select:invalid {
+      outline: 1.5px solid var(--error-color);
+    }
+
+    form:focus-within:not([role="search"]):focus-within h1 {
+      background: #10aded;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    form p {
+      margin-left: 2px;
+    }
+  }
+/** Moz **/
+  @media screen and (min--moz-device-pixel-ratio:0) {
+  /* form styles, especially validation */
+    form:focus-within:invalid p:first-of-type:before {
+      content: "Please complete the red fields.";
+      display: block;
+      color: var(--error-color);
+    }
+
+    form:focus-within:not([role="search"]):valid h1:after {
+      content: "\2714";
+      color: lime;
+    }
+
+    form:focus-within:not([role="search"]):invalid h1:after {
+      content: "\26a0";
+      color: var(--error-color);
+    }
+    
+    form:focus-within input:not(:focus):invalid, 
+    form:focus-within select:not(:focus):invalid, 
+    form:focus-within textarea:not(:focus):invalid {
+      border: 1px solid var(--error-color);
+    }
+
+    form:focus-within textarea:invalid::-moz-placeholder,
+    form:focus-within input:invalid::-moz-placeholder {
+      color: var(--error-color);
+    }
+
+    form:focus-within select:invalid {
+      outline: 1.5px solid var(--error-color);
+    }
+    
+    form:focus-within:not([role="search"]):focus-within h1 {
+      background: #10aded;
+    }
+
+    textarea {
+      resize: none;
+    }
+
+    form p {
+      margin-left: 2px;
+    }
+  }
+/** IE and Edge **/
+  @supports (-ms-ime-align:auto) {
+  /* form styles, especially validation */
+    form:invalid p:first-of-type:before {
+      content: "Please complete the red fields.";
+      display: block;
+      color: var(--error-color);
+    }
+
+    form:not([role="search"]):valid h1:after {
+      content: "\2714";
+      color: lime;
+    }
+
+    form:not([role="search"]):invalid h1:after {
+      content: "\26a0";
+      color: var(--error-color);
+    }
+    
+    form input:not(:focus):invalid, 
+    form select:not(:focus):invalid, 
+    form textarea:not(:focus):invalid {
+      border: 1px solid var(--error-color);
+    }
+
+    form textarea:invalid::-ms-input-placeholder,
+    form input:invalid::-ms-input-placeholder {
+      color: var(--error-color);
+    }
+    
+    form p {
+      margin-left: 2px;
+    }
+
+    form:not([role="search"]):focus-within h1 {
+      background: #10aded;
+    }
+
+    textarea {
+      resize: none;
+    }
+  }
+

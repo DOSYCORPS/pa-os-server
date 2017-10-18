@@ -1,4 +1,7 @@
+@import url(form.css);
+
 /* styles for components */
+
 
   :root {
     --error-color: #de1e7e;
@@ -109,42 +112,3 @@
     margin: 0; 
   }
 
-  form:invalid p:first-of-type:before {
-    content: "Please complete the red fields.";
-    color: var(--error-color);
-  }
-
-  form:not([role="search"]):valid h1:after {
-    content: "\2714";
-    color: lime;
-  }
-
-  form:not([role="search"]):invalid h1:after {
-    content: "\26a0";
-    color: var(--error-color);
-  }
-  
-  form input:not(:focus):invalid, 
-  form select:not(:focus):invalid, 
-  form textarea:not(:focus):invalid {
-    border: 1px solid var(--error-color);
-  }
-
-  form textarea:invalid::-ms-input-placeholder,
-  form input:invalid::-ms-input-placeholder,
-  form textarea:invalid::-webkit-input-placeholder,
-  form input:invalid::-webkit-input-placeholder {
-    color: var(--error-color);
-  }
-
-  form p {
-    margin-left: 2px;
-  }
-
-  form:not([role="search"]):focus-within h1 {
-    background: #10aded;
-  }
-
-  textarea {
-    resize: none;
-  }

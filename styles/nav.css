@@ -1,3 +1,7 @@
+@import url(form.css);
+
+/* styles for nav pages */
+
   body:before {
     content: "";
     background: purple url(/bg.svg);
@@ -14,6 +18,7 @@
   }
   body {
     margin: 0;
+    padding-top: 1rem;
     overflow-x: hidden;
   }
   iframe {
@@ -49,7 +54,7 @@
   }
 
   main.pane {
-    margin-top: 1rem;
+    margin-top: 0;
     background-color: white;
     box-shadow: 1px 2px 5px grey;
     max-width: 95%;
@@ -89,23 +94,3 @@
   :first-child {
     margin-top: 0;
   }
-/* comp imports */
-  :root {
-    --error-color: red;
-  }
-
-  form input:not(:focus):invalid, 
-  form select:not(:focus):invalid, 
-  form textarea:not(:focus):invalid {
-    border: 1px solid var(--error-color);
-  }
-
-  form textarea:invalid::-ms-input-placeholder,
-  form input:invalid::-ms-input-placeholder,
-  form textarea:invalid::-webkit-input-placeholder,
-  form input:invalid::-webkit-input-placeholder {
-    coror: var(--error-color);
-  }
-
-
-
