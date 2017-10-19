@@ -13,11 +13,13 @@
 
     form:not([role="search"]):valid h1:after {
       content: "\2714";
+      font-size: 1.2rem;
       color: lime;
     }
 
     form:not([role="search"]):invalid h1:after {
       content: "\26a0";
+      font-size: 1.2rem;
       color: var(--error-color);
     }
     
@@ -68,13 +70,15 @@
       color: var(--error-color);
     }
 
-    form:focus-within:not([role="search"]):valid h1.sticky:after {
+    form:not([role="search"]):valid h1.sticky:after {
       content: "\2714";
+      font-size: 1.2rem;
       color: lime;
     }
 
-    form:focus-within:not([role="search"]):invalid h1.sticky:after {
+    form:not([role="search"]):invalid h1.sticky:after {
       content: "\26a0";
+      font-size: 1.2rem;
       color: var(--error-color);
     }
     
@@ -118,13 +122,15 @@
       color: var(--error-color);
     }
 
-    form:focus-within:not([role="search"]):valid h1:after {
+    form:not([role="search"]):valid h1:after {
       content: "\2714";
+      font-size: 1.2rem;
       color: lime;
     }
 
-    form:focus-within:not([role="search"]):invalid h1:after {
+    form:not([role="search"]):invalid h1:after {
       content: "\26a0";
+      font-size: 1.2rem;
       color: var(--error-color);
     }
     
