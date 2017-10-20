@@ -7,6 +7,7 @@
   addEventListener('click', size );
   
   function size() {
+    console.log('hi');
     if ( !!document.scrollingElement ) {
       document.scrollingElement.classList.add('noscroll');
     }
@@ -36,7 +37,7 @@
 (function() {
   const isFF = navigator.userAgent.match(/Fire|Sea/g);
   if ( isFF ) {
-    addEventListener('click', e => e.target.localName == 'a' ? scrollTargetIfRequired(e.target) : void 0 );
+    addEventListener('click', function(e) { e.target.localName == 'a' ? scrollTargetIfRequired(e.target) : void 0 });
 
     function scrollTargetIfRequired(link) {
       const url = new URL(link.href);
