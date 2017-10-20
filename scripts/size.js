@@ -36,13 +36,13 @@
 (function() {
   const isFF = navigator.userAgent.match(/Fire|Sea/g);
   if ( isFF ) {
-    addEventListener('click', e => e.target.localName == 'a' ? scrollIfRequired(e.target) : void 0 );
+    addEventListener('click', e => e.target.localName == 'a' ? scrollTargetIfRequired(e.target) : void 0 );
 
-    function scrollIfRequired(link) {
+    function scrollTargetIfRequired(link) {
       const url = new URL(link.href);
       if ( url.hash && link.target ) {
         const targetFrame = findTargetFrame(link.target); 
-        const targetPosition = computeFrameOffset(targetFrame);
+        const targetPosition = computeFrameOffsetToTop(targetFrame);
         window.top.scrollBy( targetPosition.left, targetPosition.top );
       }
     }
@@ -67,7 +67,7 @@
       }
     }
 
-    function computeFrameOffset(frame) {
+    function computeFrameOffsetToTop(frame) {
       const offset = { left: 0, top: 0 };
       while( frame !== top ) {
         const framePos = frame.frameElement.getBoundingClientRect();
