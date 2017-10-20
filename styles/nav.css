@@ -12,6 +12,7 @@
     height: 100%; 
     width: 100%;
     filter: hue-rotate(330deg) saturate(4.7);
+    will-change: transform;
   }
   /** IE and Edge don't take into account the octaves SVG property, 
     in a way consistent with other browsers,
@@ -25,7 +26,18 @@
     @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
       body:before {
         background: rgb(152,0,255) url(/bg.svg);
-        background-attachment: fixed, fixed;
+        background-attachment: fixed, local;
+      }
+      /* to unjankify, as per Dan Abrey's 
+        workaround: https://connect.microsoft.com/IE/feedback/details/819518/fixed-background-image-scrolling-issue */
+      :root {
+        overflow: hidden;
+      }
+      :root, body:before, body {
+        height: 100%;
+      }
+      body:before, body {
+        overflow:auto;
       }
     }
   body {
