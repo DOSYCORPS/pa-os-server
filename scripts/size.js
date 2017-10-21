@@ -17,9 +17,7 @@
     }
     if ( !!frameElement ) {
       resize();
-      //setTimeout( resize, 200 );
       function resize() { 
-        console.log('resize', frameElement );
         const me = frameElement;
         const myheight = parseInt(me.height);
         const elem = document.scrollElement || document.documentElement;
