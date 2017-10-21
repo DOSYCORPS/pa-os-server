@@ -112,3 +112,11 @@
     margin: 0; 
   }
 
+
+  /** IE **/
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    /* IE applies vertical scrollbars to textareas */
+    textarea {
+      overflow: auto;
+    }
+  }
