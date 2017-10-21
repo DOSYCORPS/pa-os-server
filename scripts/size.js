@@ -1,13 +1,12 @@
 "use strict"; 
 (function() {
   addEventListener('load', size );
-  addEventListener('focus', size );
-  addEventListener('blur', size );
   addEventListener('input', size );
-  addEventListener('click', size );
+  addEventListener('focus', size, { capture: true });
+  addEventListener('blur', size, { capture: true });
+  addEventListener('click', size, { capture: true } );
   
   function size() {
-    console.log('hi');
     if ( !!document.scrollingElement ) {
       document.scrollingElement.classList.add('noscroll');
     }
@@ -18,8 +17,9 @@
     }
     if ( !!frameElement ) {
       resize();
-      setTimeout( resize, 100 );
+      //setTimeout( resize, 200 );
       function resize() { 
+        console.log('resize', frameElement );
         const me = frameElement;
         const myheight = parseInt(me.height);
         const elem = document.scrollElement || document.documentElement;
