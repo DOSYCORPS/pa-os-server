@@ -13,6 +13,7 @@
   if ( !module.parent ) {
     start();
   }
+  start();
 
   module.exports = { start };
 
