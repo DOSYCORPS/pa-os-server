@@ -23,7 +23,7 @@
     app.use('/styles', express.static(path.join(__dirname, './styles')));
     app.use('/scripts', browserify((path.join(__dirname, './scripts'))));
     views.serveTo({app,db,update_db});
-    app.listen(8080, () => {
+    app.listen(process.env.PORT || 8080, () => {
       connect();
       console.log("Server started...");
     });
